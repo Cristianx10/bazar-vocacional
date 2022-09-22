@@ -1,4 +1,36 @@
 .Index {
     width: 100%;
     height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__container {
+        background: #0e1237;
+        padding: 30px;
+        border-radius: 10px; 
+
+   
+
+        &__opciones {
+            .btn {
+                width: 100%;
+                margin: 5px;
+            }
+        }
+    }
 }

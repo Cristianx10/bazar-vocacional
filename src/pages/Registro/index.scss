@@ -1,0 +1,98 @@
+.Registro {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    &__container {
+        background: white;
+        width: 50%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        padding-top: 100px;
+        align-items: center;
+
+        @media (max-width: 769px) {
+            width: 70%;
+        }
+
+        @media (max-width: 481px) {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .formulario {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tabla {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding: auto;
+
+            font-size: 2em;
+            text-align: right;
+            font-weight: bolder;
+
+            .fila {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                .columna {
+                  
+                    
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    margin-top: 10px;
+                }
+            }
+
+            .seleccion {
+
+                .contenido{
+
+                }
+
+            
+                .btn {
+                    border: 1px solid black;
+                    margin-left: 15px;
+                    padding: 0;
+                    overflow: hidden;
+                    .label{
+                        width: 100%;
+                        height: 100%;
+                        margin: 0;
+                        padding: 7px ;
+                        transition: all .5s ease;
+                    }
+                }
+
+                input:checked + p {
+                    background: #B5018D ;
+                    color: white;
+                }
+            }
+        }
+        .item {
+            width: 80%;
+        }
+
+        .btn-registro{
+            margin-top: 15px;
+            padding: 10px 50px;
+            font-size: .8em;
+            border-radius: 50px;
+            color: black;
+        }
+    }
+}
