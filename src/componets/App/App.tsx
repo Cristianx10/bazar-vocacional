@@ -1,9 +1,11 @@
 
+import Router from '../Router/Router';
 import './App.scss';
+
 
 const App = () => {
   return <div className='App'>
-    <h1>Aplicacion principal</h1>
+    <Router /> 
   </div>
 }
 

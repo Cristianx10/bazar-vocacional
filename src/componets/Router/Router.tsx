@@ -11,30 +11,28 @@ const Router = () => {
     const [preload, setPreload] = usePreload();
     const [login, setLogin] = useLogin();
 
-    return <BrowserRouter>
-        <Routes>
-          
-                {preload === "Loading" ?
-                    <Preload />
-                    :
-                    <>
-                        {login.isLogin ?
-                            <>
-                              
-                            </>
-                            :
-                            <>
-                               
-                            </>}
-                        <Route path={LINK.INDEX} element={<Index />} />
-                    </>
+    return preload === "Loading" ?
+        <Preload />
+        :
+        <>
+            <BrowserRouter>
+                <Routes>
+                    {login.isLogin ?
+                        <>
 
-                }
-           
-        </Routes>
+                        </>
+                        :
+                        <>
+
+                        </>}
+                    <Route path={LINK.INDEX} element={<Index />} />
+                </Routes>
 
 
-    </BrowserRouter>
+            </BrowserRouter>
+        </>
+
+
 }
 
 export default Router;

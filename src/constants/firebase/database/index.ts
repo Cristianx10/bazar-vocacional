@@ -2,10 +2,16 @@
 import Firebase from '../setup/index';
 
 import { DataSnapshot, getDatabase, ref, onValue, off, set, push } from "firebase/database";
+import FirebaseInit from '../setup/index';
 
 class SetupDatabase {
 
-    db = getDatabase();
+    db;
+
+    constructor() {
+        FirebaseInit();
+        this.db = getDatabase();
+    }
 
     evalueteRouteExist(urls: string[], load: (exist: boolean, snapshot: DataSnapshot | undefined) => void) {
         var { isNull, url } = this.getRoutes(urls);

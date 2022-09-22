@@ -1,9 +1,15 @@
 
-import { getStorage, UploadTaskSnapshot, ref, getDownloadURL, uploadBytes, UploadResult } from "firebase/storage";
+import { getStorage, UploadTaskSnapshot, ref, getDownloadURL, uploadBytes, UploadResult, FirebaseStorage } from "firebase/storage";
+import FirebaseInit from '../setup/index';
 
 class SetupStorage {
 
-    storage = getStorage();
+    storage: FirebaseStorage;
+
+    constructor() {
+        FirebaseInit();
+        this.storage = getStorage();
+    }
 
     readURL(urls: string[], load: (url: string) => void) {
         var { isNull, url } = this.getRoutes(urls);

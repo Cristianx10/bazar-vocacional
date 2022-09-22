@@ -1,7 +1,7 @@
 import "./index.scss"
 import AppContext from "../../componets/App/AppContext";
 import { useEffect } from "react";
-import User from "../../constants/firebase/user";
+import UserFirebase from "../../constants/firebase/user";
 
 
 const Preload = () => {
@@ -11,11 +11,13 @@ const Preload = () => {
     const [login, setLogin] = useLogin()
 
     useEffect(() => {
-
-        User.getUserChangeLocal((login) => {
-            setLogin({ isLogin: login, role: User.information.role })
+        
+        UserFirebase.getUserChangeLocal((login) => {
+            setLogin({ isLogin: login, role: UserFirebase.information.role })
             setPreload("Complete")
         })
+        
+        
 
     }, [])
 

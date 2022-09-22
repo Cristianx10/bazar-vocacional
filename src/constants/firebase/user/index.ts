@@ -1,5 +1,6 @@
 import DBRoutes from '../database/DBRoutes';
 import Database from '../database/index';
+import FirebaseInit from '../setup/index';
 import { 
     Auth, 
     createUserWithEmailAndPassword, 
@@ -22,6 +23,7 @@ class userConfig {
 
 
     constructor() {
+        FirebaseInit();
         this.auth = getAuth();
         this.information = this.getDefaultInformation();
         this.getUserChangeLocal();
@@ -135,6 +137,6 @@ class userConfig {
 
 }
 
-var User = new userConfig();
+var UserFirebase = new userConfig();
 
-export default User;
+export default UserFirebase;
