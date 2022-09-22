@@ -5,6 +5,8 @@ const LINK = {
     LOGIN: "/login",
     REGISTRO: "/registro",
 
+    INTERACCION:"/interaccion",
+
     CREATION: "/crear",
     RESULTADOS: "/resultados",
     USERS:"/usuarios"

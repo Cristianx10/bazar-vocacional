@@ -11,13 +11,14 @@ const Preload = () => {
     const [login, setLogin] = useLogin()
 
     useEffect(() => {
-        
+
         UserFirebase.getUserChangeLocal((login) => {
-            setLogin({ isLogin: login, role: UserFirebase.information.role })
+
+            setLogin({ isLogin: login, role: UserFirebase.usuario ? UserFirebase.usuario.role : "" })
             setPreload("Complete")
         })
-        
-        
+
+
 
     }, [])
 

@@ -4,6 +4,8 @@ import Preload from '../../pages/Preload/index';
 import LINK from './Routes';
 import AppContext from '../App/AppContext';
 import Registro from '../../pages/Registro/Registro';
+import Interaccion from '../Interaccion/Interaccion';
+
 
 
 const Router = () => {
@@ -28,6 +30,7 @@ const Router = () => {
                         </>}
                     <Route path={LINK.INDEX} element={<Index />} />
                     <Route path={LINK.REGISTRO} element={<Registro />} />
+                    <Route path={LINK.INTERACCION} element={<Interaccion type="EXTERNA" />} />
                 </Routes>
 
 

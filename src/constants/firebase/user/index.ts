@@ -1,31 +1,29 @@
 import DBRoutes from '../database/DBRoutes';
 import Database from '../database/index';
 import FirebaseInit from '../setup/index';
-import { 
-    Auth, 
-    createUserWithEmailAndPassword, 
-    getAuth, 
-    signInWithEmailAndPassword,  
-    User, UserCredential } from "firebase/auth";
+import Usuario from './Usuario';
+import { IUsuario } from './Usuario';
+import {
+    Auth,
+    createUserWithEmailAndPassword,
+    getAuth,
+    signInWithEmailAndPassword,
+    User, UserCredential
+} from "firebase/auth";
 
-export interface IUserInformation {
-    UID: string;
-    nombre: string; 
-    correo: string;
-    role: "LOCAL" | "ADMINISTRADOR" | "EDITOR" | "VISOR" | "";
-}
+
 
 class userConfig {
 
     userFirebase?: User;
     auth: Auth;
-    information: IUserInformation;
+    usuario?: Usuario;
 
 
     constructor() {
         FirebaseInit();
         this.auth = getAuth();
-        this.information = this.getDefaultInformation();
+        this.usuario = undefined;
         this.getUserChangeLocal();
     }
 
@@ -51,7 +49,7 @@ class userConfig {
                     nombre: information.name,
                     correo,
                     role: "LOCAL"
-                } as IUserInformation;
+                } as IUsuario;
 
 
                 Database.writeDatabase([RU._THIS, RU.INFORMATION, UID, RU.INFORMATION], user, () => {
@@ -100,14 +98,7 @@ class userConfig {
         }
     }
 
-    private getDefaultInformation(): IUserInformation {
-        return {
-            UID: "",
-            nombre: "",
-            correo: "",
-            role: ""
-        }
-    }
+
 
     loginOut(load: (exit: boolean) => void) {
         this.auth.signOut().then(() => {
@@ -120,11 +111,11 @@ class userConfig {
 
     resetUser() {
         this.userFirebase = undefined;
-        this.information = this.getDefaultInformation();
+        this.usuario = undefined;
     }
 
-    setInformation(information: IUserInformation) {
-        this.information = information;
+    setInformation(information: IUsuario) {
+        this.usuario = new Usuario(information);
     }
 
     getUID() {
