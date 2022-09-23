@@ -14,42 +14,6 @@ const Interaccion = ({ type }: IInteraccion) => {
         if (refIframe.current) {
             var HTMLIframe = refIframe.current as HTMLIFrameElement;
 
-            var channel = new MessageChannel();
-
-            /*
-            HTMLIframe.addEventListener("load", () => {
-
-                //Recibir mensajes
-                channel.port1.onmessage = (e) => {
-                    console.log(document.querySelector(".mensaje"), e);
-                    (document.querySelector(".mensaje") as any).innerHTML = e.data;
-                }
-
-                 //Enviar Mensajes
-            var ventana = HTMLIframe.contentWindow;
-            if (ventana) {
-                ventana.postMessage({ msg: "HOLA DESDE EL MAIN" }, "*", [channel.port2]);
-            }
-
-
-            });
-            */
-
-
-
-            var c = new ComunicacionIFrame(HTMLIframe);
-
-            c.onInit(() => {
-                c.setObserver((data) => {
-                    (document.querySelector(".mensaje") as any).innerHTML = data;
-                })
-
-                c.onSend({ msg: "HOLA DESDE EL MAIN" });
-            })
-
-
-
-
         }
     }, [])
 

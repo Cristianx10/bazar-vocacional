@@ -19,24 +19,31 @@ class ComunicacionIFrame implements IComunicacionIframeDao {
         this.inicializado = false;
 
 
-        this.HTMLIframe.addEventListener("load", () => {
-            this.inicializado = true;
-
-            //Recibir mensajes
-            this.channel.port1.onmessage = (e) => {
-                const data = e.data;
-                this.onMessage(data);
-            }
-
-            this.fOnInit && this.fOnInit()
-        });
+        this.HTMLIframe.addEventListener("load", this.onListener.bind(this));
 
     }
 
-    onInit(fOnInit: () => void){
+    onListener() {
+        this.inicializado = true;
+
+        //Recibir mensajes
+        this.channel.port1.onmessage = (e) => {
+            const data = e.data;
+            this.onMessage(data);
+        }
+
+        this.onSend("Start")
+        this.fOnInit && this.fOnInit()
+    }
+
+    onFinish() {
+        this.HTMLIframe.removeEventListener("load", this.onListener.bind(this));
+    }
+
+    onInit(fOnInit: () => void) {
         this.fOnInit = fOnInit;
     }
-   
+
 
     onMessage(data: Object) {
         if (this.fOnRecived) {

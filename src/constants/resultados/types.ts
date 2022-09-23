@@ -10,15 +10,17 @@ type TState = "INICIADA" | "EN PROCESO" | "FINALIZADA";
 
 export interface ResultadoInteraction {
     UID: string;
+    UIDUser: string;
+    UIDActivity: string;
     fecha: {
         inicio: number;
         fin: number;
     };
     estado: TState;
-    UIDActivity: string;
     resultados: ResultadoPuntuacion[];
     maximos: ResultadoPuntuacion[];
     data: IMedicionUnity;
+    informacion: ResultadoUser[];
 }
 
 
