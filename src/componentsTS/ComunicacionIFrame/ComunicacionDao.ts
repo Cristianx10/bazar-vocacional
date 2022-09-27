@@ -1,8 +1,7 @@
-interface IComunicacionIframeDao {
+interface IComunicacionIframeDao<I> {
 
-    onSend: (data: Object) => void;
-    onMessage: (data: Object) => void;
-    setObserver: (event: (data: Object) => void) => void;
+    onSend: (data: I) => void;
+    setObserver: (event: (data: I) => void) => void;
 
 }
 

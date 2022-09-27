@@ -1,23 +1,27 @@
 import IComunicacionIframeDao from './ComunicacionDao';
 
+export interface IComunicacionIframaMessage {
+    type: string;
+    data: Object;
+}
 
-class ComunicacionIFrame implements IComunicacionIframeDao {
+
+class ComunicacionIFrame<I> implements IComunicacionIframeDao<I> {
 
     HTMLIframe: HTMLIFrameElement;
-    channel: MessageChannel;
+    channel?: MessageChannel;
     inicializado: boolean;
 
     private fOnInit?: () => void;
 
-    private fOnRecived?: (data: Object) => void;
+    private fOnRecived?: (data: I) => void;
 
 
     constructor(HTMLIframe: HTMLIFrameElement) {
 
         this.HTMLIframe = HTMLIframe;
-        this.channel = new MessageChannel();
-        this.inicializado = false;
 
+        this.inicializado = false;
 
         this.HTMLIframe.addEventListener("load", this.onListener.bind(this));
 
@@ -27,41 +31,50 @@ class ComunicacionIFrame implements IComunicacionIframeDao {
         this.inicializado = true;
 
         //Recibir mensajes
-        this.channel.port1.onmessage = (e) => {
-            const data = e.data;
-            this.onMessage(data);
-        }
-
-        this.onSend("Start")
+        this.onSend("START_COMUNICATION")
         this.fOnInit && this.fOnInit()
     }
 
     onFinish() {
+
         this.HTMLIframe.removeEventListener("load", this.onListener.bind(this));
+
     }
 
     onInit(fOnInit: () => void) {
         this.fOnInit = fOnInit;
     }
 
-
-    onMessage(data: Object) {
-        if (this.fOnRecived) {
-            this.fOnRecived(data);
-        }
-    }
-
-    setObserver(event: (data: Object) => void) {
+    setObserver(event: (data: I) => void) {
         this.fOnRecived = event;
     }
 
-    onSend(data: Object) {
+    onSend(data: I | string) {
 
         //Enviar Mensajes
         var ventana = this.HTMLIframe.contentWindow;
         if (ventana) {
+
+            if (this.channel) {
+                this.channel.port1.close();
+                this.channel.port2.close();
+            }
+
+            this.channel = new MessageChannel();
+            this.channel.port1.onmessage = (e) => {
+                const data = e.data;
+
+                if (this.fOnRecived) {
+                    this.fOnRecived(data);
+                }
+
+            }
+
+
             ventana.postMessage(data, "*", [this.channel.port2]);
         }
+
+
     }
 
 }

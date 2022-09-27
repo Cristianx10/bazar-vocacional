@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./index.scss";
-import LINK from '../../componets/Router/Routes';
+import LINK from '../../components/Router/Routes';
 
 const Index = () => {
     return <div className="Index backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal.png')" }}>

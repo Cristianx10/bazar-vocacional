@@ -1,5 +1,5 @@
 import "./index.scss"
-import AppContext from "../../componets/App/AppContext";
+import AppContext from "../../components/App/AppContext";
 import { useEffect } from "react";
 import UserFirebase from "../../constants/firebase/user";
 

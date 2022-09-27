@@ -5,10 +5,9 @@ const DBRoutes = {
     USER: {
         _THIS: app + "/users",
         INFORMATION: "information",
-        RESULTADOS:"resultados",
+        RESULTADOS: "resultados",
         REGISTRO: "register",
-        PERMISOS: "permisos"
-
+        PERMISOS: "permisos",
     },
     BACKUP: {
         _THIS: app + "/backup",

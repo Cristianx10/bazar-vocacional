@@ -1,5 +1,5 @@
 import Tiempo from "./Timer";
-import EstadosManagerAnalitics from './EstadosManagerAnalitics';
+import { TStateProceso } from '../resultados/types';
 
 export interface IEstado {
     index: number;
@@ -7,8 +7,16 @@ export interface IEstado {
     value: number | string | boolean;
 }
 
+export interface RegistroFecha {
+    inicio: number,
+    fin: number
+}
+
 export interface IMedicionUnity {
     lastIndex: number;
+    date: RegistroFecha;
+    estado: TStateProceso;
+    time: number;
     estados: {
         key: string;
         values: IEstado[];
@@ -18,21 +26,26 @@ export interface IMedicionUnity {
 class EstadoManager<T = string> {
 
     timer: Tiempo;
-    estados: Map<T, IEstado[]> = new Map();
-    index = -1;
-    lastIndex = -1;
-    date: {
-        inicio: number,
-        fin: number
-    }
+    estados: Map<T, IEstado[]>;
+    index: number;
+    lastIndex: number;
+    estado: TStateProceso
+
+    date: RegistroFecha;
 
     constructor() {
         this.timer = new Tiempo();
+        this.estados = new Map()
+        this.estado = "NO INICIADA";
+
+        this.index = -1;
+        this.lastIndex = -1;
+
         this.date = {
             inicio: 0,
             fin: 0
         }
-    
+
     }
 
     private fOnObserver?: (estados: { key: string, value: string | number | boolean }[]) => void;
@@ -53,6 +66,7 @@ class EstadoManager<T = string> {
     }
 
     initTime() {
+        this.estado = "INICIADA";
         this.timer.start();
         this.date.inicio = new Date().getTime();
     }
@@ -122,22 +136,51 @@ class EstadoManager<T = string> {
     stopTime() {
         this.timer.stop();
         this.date.fin = new Date().getTime();
+        this.estado = "FINALIZADA";
     }
 
-    toJSON() {
+    toJSON(): IMedicionUnity {
         var estados: { key: string, values: IEstado[] }[] = [];
         this.estados.forEach((estado, index) => {
             var key = index as any;
             estados.push({ key, values: estado })
         })
         const lastIndex = this.lastIndex;
+        const date = this.date;
+        const estado = this.estado;
+        const time = this.timer.tiempo;
         return {
+            date,
+            estado,
             lastIndex,
-            estados
+            estados,
+            time
         };
     }
 
+    loadData(data: IMedicionUnity) {
 
+        this.timer.stop();
+
+        this.timer = new Tiempo(data.time);
+        this.estados = new Map();
+
+        data.estados.forEach(({ key, values }) => {
+            var estado = key as any;
+            this.estados.set(estado, values); 
+        })
+
+        this.index = data.lastIndex;
+        this.lastIndex = data.lastIndex;
+        this.estado = data.estado;
+
+        this.date = data.date;
+
+        if(this.estado === "INICIADA"){
+            this.timer.start()
+        }
+
+    }
 }
 
 export default EstadoManager;

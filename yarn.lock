@@ -2478,6 +2478,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.59.tgz#823f238b9063ccc3b3b7f13186f143a57926c4f6"
   integrity sha512-6u+36Dj3aDzhfBVUf/mfmc92OEdzQ2kx2jcXGdigfl70E/neV21ZHE6UCz4MDzTRcVqGAM27fk+DLXvyDsn3Jw==
 
+"@types/p5@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@types/p5/-/p5-1.4.3.tgz#84565d085237fdc149c15e1e9ae8d81db4aa3699"
+  integrity sha512-UjgBi1/VU0Dz1/JxzRZrDKlC54rMELWW+6oHx1pRKzKkVgwzvP+dEjZ1JbeMjK12VJMUjDx4lhGUmnUL2jBASQ==
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -3782,6 +3787,16 @@ crc-32@~1.2.0, crc-32@~1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/crc-32/-/crc-32-1.2.2.tgz#3cad35a934b8bf71f25ca524b6da51fb7eace2ff"
   integrity sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==
+
+createjs-module@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/createjs-module/-/createjs-module-0.8.3.tgz#328ffa2e14741d7303d3d08bd97ce1823365741f"
+  integrity sha512-Zw/U1UuxiMMXQr/tB1QHTYZf+oB2GzRqFgNEOypFqH4D4R38nCjXimwSyTgQb38eHgjTQLmtrx/oERMjPyePAw==
+
+createjs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/createjs/-/createjs-1.0.1.tgz#163e8ba35814f62c8033cd9628033f190dfdaa9f"
+  integrity sha512-VutFczgM8GNzOSiFKlYEwFRgZRMQkZt34ooaewKi7lzxuQ7JSsUs/Y1qb95G4CKOnHA/C/yghCJ6wfivuKOawA==
 
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -7034,6 +7049,11 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
+
+p5@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/p5/-/p5-1.4.2.tgz#c258fcf655ff75bd4e8b530607c9a96e6a556023"
+  integrity sha512-J5zqZ/l1NIbJSuNr/FH9nDYgBRg7/NubStNPnx1fQCMSAgxI6peKDHs9i5iaG9EuwbJzjuG6/5bX/D0lqqrP9A==
 
 pako@~1.0.2:
   version "1.0.11"

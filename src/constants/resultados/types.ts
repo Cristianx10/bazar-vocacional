@@ -6,7 +6,7 @@ export interface ResultadoPuntuacion {
     value: number;
 }
 
-type TState = "INICIADA" | "EN PROCESO" | "FINALIZADA";
+export type TStateProceso = "NO INICIADA" | "INICIADA" | "FINALIZADA";
 
 export interface ResultadoInteraction {
     UID: string;
@@ -16,7 +16,7 @@ export interface ResultadoInteraction {
         inicio: number;
         fin: number;
     };
-    estado: TState;
+    estado: TStateProceso;
     resultados: ResultadoPuntuacion[];
     maximos: ResultadoPuntuacion[];
     data: IMedicionUnity;

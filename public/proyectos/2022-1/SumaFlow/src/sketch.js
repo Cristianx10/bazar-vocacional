@@ -173,9 +173,27 @@ function preload() {
 function setup() {
 
     var myCanvas = createCanvas(1280, 720);
+
+   
     observerScale(document.querySelector("body"), myCanvas, {
         width: 1280, height: 720
     })
+
+    oActivity.addState("page", "inicio")
+
+    setTimeout(() => {
+
+        oActivity.setInit(()=>{
+            oActivity.addState("page", "final")
+
+            console.log(oActivity.medicion)
+        })
+       
+
+        
+    }, 2000)
+
+
 
     createMap(instMap, instMapType);
     setupTutorialMap(instMap);
@@ -1609,4 +1627,3 @@ function calculateScore(m) {
     //actividad.finish()
 }
 
-console.log("MENSAJE")

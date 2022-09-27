@@ -1,5 +1,10 @@
-import { ResultadoInteraction } from '../../resultados/types';
+import { ResultadoInteraction, ResultadoPuntuacion } from '../../resultados/types';
 type TRoles = "LOCAL" | "ADMINISTRADOR" | "EDITOR" | "VISOR" | "";
+
+interface IUserInformation {
+    id: string;
+    value: string | number;
+}
 
 export interface IUsuario {
     UID: string;
@@ -10,6 +15,15 @@ export interface IUsuario {
         inicial: number
     }
     preferencias: string[];
+    informacion: IUserInformation[];
+    resultados: {
+        fecha: number,
+        result: {
+            global: ResultadoPuntuacion[];
+            maximo: ResultadoPuntuacion[];
+            porcentaje: ResultadoPuntuacion[];
+        }
+    }
 }
 
 class Usuario implements IUsuario {
@@ -20,7 +34,18 @@ class Usuario implements IUsuario {
     role: TRoles;
     date: { inicial: number; }
     preferencias: string[];
+
+    //Pendiente de metodo para obtener
+    informacion: IUserInformation[];
     interacciones: ResultadoInteraction[];
+    resultados: {
+        fecha: number,
+        result: {
+            global: ResultadoPuntuacion[];
+            maximo: ResultadoPuntuacion[];
+            porcentaje: ResultadoPuntuacion[];
+        }
+    }
 
     constructor(user: IUsuario) {
         this.UID = user.UID;
@@ -29,13 +54,16 @@ class Usuario implements IUsuario {
         this.role = user.role;
         this.date = user.date;
         this.preferencias = user.preferencias;
+        this.resultados = user.resultados;
+        this.informacion = user.informacion;
         this.interacciones = [];
     }
 
-    getAllInteracciones(){
+
+    getAllInteracciones() {
         //Codigo pendiente
     }
-   
+
 
 }
 

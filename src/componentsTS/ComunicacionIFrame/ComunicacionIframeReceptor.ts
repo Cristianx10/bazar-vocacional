@@ -4,8 +4,11 @@ class ComunicacionIFrameReceptor {
     fOnInit?: () => void;
     inicializado;
 
+    initIniciado;
+
     constructor() {
         this.inicializado = false;
+        this.initIniciado = false;
 
         //Recibir mensajes
         window.addEventListener("message", this.onListener.bind(this));
@@ -13,25 +16,31 @@ class ComunicacionIFrameReceptor {
     }
 
     onListener(e: MessageEvent) {
+
+        this.inicializado = true;
+
         const data = e.data;
 
-        if (this.inicializado === true) {
-            this.onMessage(data);
-        }
+
+        this.onMessage(data);
+
 
         //Enviar mensajes
         this.channel = e;
 
-        this.fOnInit && this.fOnInit()
+        if (this.initIniciado === false) {
+            this.initIniciado = true;
+            this.fOnInit && this.fOnInit()
+        }
 
-        this.inicializado = true;
+
     }
 
     onFinish() {
         window.removeEventListener("message", this.onListener.bind(this));
     }
 
-    onInit(fOnInit: () => void) {
+    onInit(fOnInit?: () => void) {
         this.fOnInit = fOnInit;
     }
 
@@ -55,4 +64,4 @@ class ComunicacionIFrameReceptor {
 
 }
 
-export default ComunicacionIFrameReceptor
+export default ComunicacionIFrameReceptor;

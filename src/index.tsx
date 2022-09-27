@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import App from './componets/App/App';
+import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
-import AppContext from './componets/App/AppContext';
-import { AppContextProvider } from './componets/App/AppContext';
+import AppContext from './components/App/AppContext';
+import { AppContextProvider } from './components/App/AppContext';
 import "./constants/styles/main.scss";
 
 
