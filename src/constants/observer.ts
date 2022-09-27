@@ -35,7 +35,7 @@ ObserverStyle.innerHTML = `
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
   `
-
+ 
 document.head.appendChild(ObserverStyle)
 
 
@@ -236,7 +236,6 @@ class Tiempo {
     }
 
 }
-
 
 
 class EstadoManager<T = string> {
