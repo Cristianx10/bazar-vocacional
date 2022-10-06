@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Index from "../../pages/Index"
+import Home from "../../pages/Home"
 import Preload from '../../pages/Preload/index';
 import LINK from './Routes';
 import AppContext from '../App/AppContext';
@@ -30,7 +31,7 @@ const Router = () => {
                         <>
 
                         </>}
-                    <Route path={LINK.INDEX} element={<Index />} />
+                    <Route path={LINK.INDEX} element={<Home />} />
                     <Route path={LINK.REGISTRO} element={<Registro />} />
                     <Route path={LINK.INTERACCION} element={<Interaccion interaccion={Interacciones20221[0]} onFinish={(interaccion) => {
                         const r = interaccion.getResultado()

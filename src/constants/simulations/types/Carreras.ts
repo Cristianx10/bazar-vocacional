@@ -44,4 +44,19 @@ export const CARRERAS_NAME = {
     DISENO_INTERACTIVO: "DISEÑO DE MEDIOS INTERACTIVOS",
 }
 
+export const getNamesCarrerasMap = () => {
+    const NAMES_CARRERAS_MAP = new Map();
+
+    Object.entries(CARRERAS_NAME).forEach(
+        ([key, value]) => {
+            NAMES_CARRERAS_MAP.set(key, value)
+        }
+    )
+
+  //  console.log(NAMES_CARRERAS_MAP)
+    return NAMES_CARRERAS_MAP;
+}
+
+
+
 export default CARRERAS;
