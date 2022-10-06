@@ -11,6 +11,9 @@ export interface IUsuario {
     nombre: string;
     correo: string;
     role: TRoles;
+    identificacion: string;
+    genero: string;
+    prueba: string;
     date: {
         inicial: number
     }
@@ -30,6 +33,9 @@ class Usuario implements IUsuario {
 
     UID: string;
     nombre: string;
+    identificacion: string;
+    genero: string;
+    prueba: string;
     correo: string;
     role: TRoles;
     date: { inicial: number; }
@@ -56,6 +62,9 @@ class Usuario implements IUsuario {
         this.preferencias = user.preferencias;
         this.resultados = user.resultados;
         this.informacion = user.informacion;
+        this.identificacion = user.identificacion;
+        this.genero = user.genero;
+        this.prueba = user.prueba;
         this.interacciones = [];
     }
 

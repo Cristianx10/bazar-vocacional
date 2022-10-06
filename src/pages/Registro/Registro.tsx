@@ -1,17 +1,47 @@
 import "./index.scss";
+import UserFirebase from '../../constants/firebase/user/index';
+import { DEFAULT_PASS } from '../../constants/firebase/user/index';
 
 const Registro = () => {
+
+
+    const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const getNameInput = (name: string) => {
+            const input = e.currentTarget[name] as HTMLInputElement;
+            return input.value;
+        }
+
+        const identificacion = getNameInput("identificacion");
+        const nombre = getNameInput("nombre") as string;
+        const genero = getNameInput("genero") as string;
+        const prueba = getNameInput("prueba") as string;
+        const correo = identificacion + "@mail.com";
+
+
+        const data = {
+            name: nombre,
+            genero,
+            prueba,
+            identificacion
+        }
+
+
+        UserFirebase.register(correo, DEFAULT_PASS, data);
+    }
+
     return <div className="Registro backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal-persona.png')" }}>
         <div className="Registro__container">
             <h1><strong>HCI Vocacional</strong></h1>
-            <form className="formulario" onSubmit={(e)=>{e.preventDefault()}} method="POST">
+            <form className="formulario" onSubmit={onRegister} method="POST">
                 <table className="tabla">
                     <tr className="fila">
                         <td className="columna">
                             <label className="form-label">N° de Identificación</label>
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon3">#</span>
-                                <input type="text" required className="form-control" placeholder="N° de Identificación" id="basic-url" aria-describedby="basic-addon3" />
+                                <input type="text" required name="identificacion" className="form-control" placeholder="N° de Identificación" id="basic-url" aria-describedby="basic-addon3" />
                             </div>
                         </td>
                     </tr>
@@ -20,7 +50,7 @@ const Registro = () => {
                             <label className="form-label">Nombre Completo</label>
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon3">@</span>
-                                <input type="text" required className="form-control" placeholder="Nombre Completo" id="basic-url" aria-describedby="basic-addon3" />
+                                <input type="text" required name="nombre" className="form-control" placeholder="Nombre Completo" id="basic-url" aria-describedby="basic-addon3" />
                             </div>
                         </td>
                     </tr>

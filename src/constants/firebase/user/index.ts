@@ -11,7 +11,7 @@ import {
     User, UserCredential
 } from "firebase/auth";
 
-
+export const DEFAULT_PASS = "1234567890";
 
 class userConfig {
 
@@ -27,16 +27,16 @@ class userConfig {
         this.getUserChangeLocal();
     }
 
-    login(correo: string, pass: string, load?: (login: boolean) => void) {
+    login(correo: string, pass: string, load?: (login: boolean, error: string) => void) {
         signInWithEmailAndPassword(this.auth, correo, pass).then(() => {
-            load && load(true);
-        }).catch(() => {
-            load && load(false);
+            load && load(true, "");
+        }).catch((err) => {
+            load && load(false, err);
         });
 
     }
 
-    register(correo: string, pass: string, information: { name: string }, load?: (register: boolean) => void) {
+    register(correo: string, pass: string, information: { name: string, identificacion: string, genero: string, prueba: string }, load?: (register: boolean) => void) {
 
         const RU = DBRoutes.USER;
 
@@ -47,6 +47,9 @@ class userConfig {
                 let user = {
                     UID,
                     nombre: information.name,
+                    identificacion: information.identificacion,
+                    prueba: information.prueba,
+                    genero: information.genero,
                     correo,
                     role: "LOCAL"
                 } as IUsuario;

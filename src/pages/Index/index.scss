@@ -19,12 +19,25 @@
         align-items: center;
     }
 
+    .error {
+        padding: 5px;
+        background: white;
+        color: red;
+
+        margin-top: 20px;
+        border-radius: 10px;
+        text-align: center;
+        &__title{
+
+        }
+
+        &__msg{}
+    }
+
     &__container {
         background: #0e1237;
         padding: 30px;
-        border-radius: 10px; 
-
-   
+        border-radius: 10px;
 
         &__opciones {
             .btn {
