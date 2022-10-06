@@ -29,7 +29,10 @@ class userConfig {
 
     login(correo: string, pass: string, load?: (login: boolean, error: string) => void) {
         signInWithEmailAndPassword(this.auth, correo, pass).then(() => {
-            load && load(true, "");
+            this.getUserChangeLocal(()=>{
+                load && load(true, "");
+            })
+       
         }).catch((err) => {
             load && load(false, err);
         });
@@ -55,7 +58,7 @@ class userConfig {
                 } as IUsuario;
 
 
-                Database.writeDatabase([RU._THIS, RU.INFORMATION, UID, RU.INFORMATION], user, () => {
+                Database.writeDatabase([RU._THIS, RU.INFORMATION, UID], user, () => {
                     this.setInformation(user);
                     load && load(true);
                 });
@@ -79,8 +82,8 @@ class userConfig {
                     Database.readBrachOnlyDatabase([
                         RU._THIS,
                         RU.INFORMATION,
-                        this.userFirebase.uid,
-                        RU.INFORMATION], (snap) => {
+                        this.userFirebase.uid
+                        ], (snap) => {
                             if (snap) {
                                 var information = snap.val();
                                 // console.log("Mi informacion", information)

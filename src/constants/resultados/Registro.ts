@@ -1,6 +1,6 @@
 import Database from "../firebase/database";
 import DBRoutes from "../firebase/database/DBRoutes";
-import { ResultadoInteraction, ResultadoPuntuacion, ResultadoUser } from './types';
+import { ResultadoInteraction, ResultadoPuntuacion, ResultadoUser, ResultadoInteractionSimple } from './types';
 
 export interface IRegistroLoad {
     UIDTest: string | undefined;
@@ -51,10 +51,6 @@ class Registro {
 
         this.time.inicial = (new Date()).getTime();
 
-        const data = localStorage.getItem(this.IDLocal);
-        if (data) {
-            this.loadJSONData(JSON.parse(data))
-        }
     }
 
     finish(load: (state: boolean) => void) {
@@ -78,41 +74,13 @@ class Registro {
 
         this.save();
 
-        if(this.nav.database === false){
+        if (this.nav.database === false) {
             this.updateMetadata()
         }
 
     }
 
-    addResult(data: ResultadoInteraction) {
-        this.datos.set(data.UID, data)
 
-        this.calculateMaximo();
-        this.calculatePonderado();
-        this.calculatePorcentaje();
-
-        this.save();
-
-        const UIDTest = this.UIDTest;
-        const UIDUser = this.UIDUser;
-
-        if (UIDTest && UIDUser) {
-            const RT = DBRoutes.TEST;
-            const RB = DBRoutes.BACKUP;
-            Database.writeDatabase([RB._THIS, UIDTest, UIDUser, RB.INTERACCIONES, data.UID], JSON.stringify(data))
-
-            const value = {
-                resultados: [...this.resultados],
-                porcentajes: [...this.porcentajes],
-                maximos: [...this.maximos]
-            }
-
-            Database.writeDatabase([RB._THIS, UIDTest, UIDUser, RB.RESULTADOS], JSON.stringify(value))
-        }
-
-
-
-    }
 
     addUserInfo(user: ResultadoUser[]) {
 
@@ -211,11 +179,11 @@ class Registro {
 
     }
 
-    calculateMaximo() {
+    static calculateMaximo(datos: Map<string, ResultadoInteractionSimple>) {
 
         var resultMax = new Map<string, number>();
 
-        this.datos.forEach(({ maximos }) => {
+        datos.forEach(({ maximos }) => {
             maximos.forEach(({ id, value }) => {
                 var result = resultMax.get(id);
 
@@ -231,10 +199,12 @@ class Registro {
             })
         })
 
-        this.maximos = [];
+        var maximos: ResultadoPuntuacion[] = [];
         resultMax.forEach((value, key) => {
-            this.maximos.push({ id: key, value })
+            maximos.push({ id: key, value })
         })
+
+        return maximos;
     }
 
     static calculateMaxPuntuacion(puntuacionesArray: ResultadoPuntuacion[][]) {
@@ -272,7 +242,7 @@ class Registro {
             var value = 0;
             carrera.forEach(c => {
                 id = c.id;
-                if(c.value > value){
+                if (c.value > value) {
                     value = c.value
                 }
             })
@@ -291,11 +261,11 @@ class Registro {
     }
 
 
-    calculatePonderado() {
+    static calculatePonderado(datos: Map<string, ResultadoInteractionSimple>) {
 
         var resultMax = new Map<string, number>();
 
-        this.datos.forEach(({ resultados }) => {
+        datos.forEach(({ resultados }) => {
             resultados.forEach(({ id, value }) => {
                 var result = resultMax.get(id);
 
@@ -311,41 +281,12 @@ class Registro {
             })
         })
 
-        this.resultados = [];
+        var resultados: ResultadoPuntuacion[] = [];
         resultMax.forEach((value, key) => {
-            this.resultados.push({ id: key, value })
-        })
-    }
-
-    calculatePorcentaje() {
-
-        var resultados = new Map<string, number>();
-        var maximos = new Map<string, number>();
-        var porcentajes = new Map<string, number>();
-
-        this.resultados.forEach(({ id, value }) => {
-            resultados.set(id, value);
+            resultados.push({ id: key, value })
         })
 
-        this.maximos.forEach(({ id, value }) => {
-            maximos.set(id, value);
-        })
-
-        resultados.forEach((value, key) => {
-            const resultado = resultados.get(key);
-            const maximo = maximos.get(key);
-
-            if (resultado !== undefined && maximo !== undefined) {
-                porcentajes.set(key, resultado / maximo)
-            }
-        })
-
-        this.porcentajes = [];
-        porcentajes.forEach((value, key) => {
-            this.porcentajes.push({ id: key, value })
-        })
-
-
+        return resultados
     }
 
     clearAll() {

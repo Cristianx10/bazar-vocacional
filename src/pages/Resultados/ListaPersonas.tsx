@@ -123,7 +123,7 @@ const ListaPersonaItem = ({ registro, onChecked, useRegistros }: {
         onChecked(e.target.checked);
     }
 
-    const fechaInit = new Date(registro.usuario.resultados.fecha);
+    const fechaInit = new Date(registro.usuario.resultados.fecha.inicio);
 
     var name = registro.usuario.nombre;
     var carrera = "No encontrada";

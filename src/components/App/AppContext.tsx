@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useState } from "react";
 import createContext, { IPropsState } from "../Context/Context";
+import InteractionStructure from '../../constants/simulations/types/InteractionStructure';
 
 interface IStyle {
     header: {
@@ -17,6 +18,7 @@ interface IPropsContext {
     useLogin: IPropsState<ILoginProp>;
     useStyle: IPropsState<IStyle>;
     usePreload: IPropsState<"Loading" | "Complete">;
+    useInteraccion: IPropsState<InteractionStructure | undefined>;
 }
 
 const { Provider, Consumer } = createContext<IPropsContext>();
@@ -33,18 +35,24 @@ export const AppContextProvider = (props: any) => {
     const [login, setLogin] = useLogin;
 
 
+    const useInteraccion = useState<InteractionStructure | undefined>(undefined);
+    const [interaccion] = useInteraccion;
+
+
     const value = useMemo(() => {
 
         return {
             useLogin: () => useLogin,
             usePreload: () => usePreload,
             useStyle: () => useStyle,
+            useInteraccion: () => useInteraccion
         }
 
     }, [
         style,
         preload,
-        login
+        login,
+        interaccion
     ])
 
     return <Provider value={value} {...props} />

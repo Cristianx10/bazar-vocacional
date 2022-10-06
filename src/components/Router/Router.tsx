@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import Index from "../../pages/Index"
 import Home from "../../pages/Home"
 import Preload from '../../pages/Preload/index';
@@ -10,14 +10,17 @@ import Interacciones20221 from '../../constants/simulations/2022-1/Interacciones
 import ChooseCarreras from '../../pages/ChooseCarreras/index';
 import { useEffect } from 'react';
 import Perfil from '../../pages/Perfil/Perfil';
+import { Navigate } from "react-router";
 
 
 
 const Router = () => {
 
-    const { usePreload, useLogin } = AppContext();
+    const { usePreload, useLogin, useInteraccion } = AppContext();
     const [preload, setPreload] = usePreload();
     const [login, setLogin] = useLogin();
+
+    const [interaccion] = useInteraccion()
 
     useEffect(() => {
 
@@ -29,7 +32,7 @@ const Router = () => {
         <>
             <BrowserRouter>
                 <Routes>
-                   
+
                     {login.isLogin ?
                         <>
                             <Route path={LINK.INDEX} element={<Home />} />
@@ -40,10 +43,15 @@ const Router = () => {
                             <Route path={LINK.REGISTRO} element={<Registro />} />
                         </>}
 
-                    <Route path={LINK.INTERACCION} element={<Interaccion interaccion={Interacciones20221[0]} onFinish={(interaccion) => {
-                        const r = interaccion.getResultado()
-                        console.log("FINALIZADO", r)
-                    }} />} />
+                    {interaccion ?
+                        <Route path={LINK.INTERACCION} element={<Interaccion interaccion={interaccion} onFinish={(interaccion) => {
+                            const r = interaccion.getResultado()
+                            console.log("FINALIZADO", r)
+                        }} />} />
+                        :
+                        <Route path={LINK.INTERACCION} element={<Navigate to={LINK.INDEX} />} />
+                    }
+
                 </Routes>
 
 

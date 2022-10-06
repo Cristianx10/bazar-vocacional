@@ -8,7 +8,7 @@ export interface ResultadoPuntuacion {
 
 export type TStateProceso = "NO INICIADA" | "INICIADA" | "FINALIZADA";
 
-export interface ResultadoInteraction {
+export interface ResultadoInteractionSimple {
     UID: string;
     UIDUser: string;
     UIDActivity: string;
@@ -19,6 +19,11 @@ export interface ResultadoInteraction {
     estado: TStateProceso;
     resultados: ResultadoPuntuacion[];
     maximos: ResultadoPuntuacion[];
+    porcentajes: ResultadoPuntuacion[];
+}
+
+
+export interface ResultadoInteraction extends ResultadoInteractionSimple{
     data: IMedicionUnity;
     informacion: ResultadoUser[];
 }

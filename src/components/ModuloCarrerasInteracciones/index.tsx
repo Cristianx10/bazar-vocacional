@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { getNamesCarrerasMap } from '../../constants/simulations/types/Carreras';
 import ListGeneral from '../../constants/simulations/ListGeneral';
 import IconPlay from '../../constants/icons/IconPlay';
+import AppContext from '../App/AppContext';
+import { useNavigate } from 'react-router';
+import LINK from '../Router/Routes';
 
 
 export interface IInteraccion {
@@ -17,6 +20,10 @@ export interface IInteraccion {
 
 
 const ModuloCarrerasInteracciones = () => {
+
+    const { useInteraccion } = AppContext();
+    const [, setInteaccion] = useInteraccion();
+    const nav = useNavigate()
 
     const [interacciones, setInteracciones] = useState<{ name: string, interacciones: IInteraccion[] }[]>([]);
 
@@ -69,6 +76,13 @@ const ModuloCarrerasInteracciones = () => {
         setInteracciones(actividades)
     }, [])
 
+    const onOpen = (UID: string) => {
+        const interaccion = ListGeneral.get(UID);
+        if (interaccion) {
+            setInteaccion(interaccion)
+            nav(LINK.INTERACCION);
+        }
+    }
 
 
     return <div className="ModuloCarrerasInteracciones">
@@ -84,14 +98,13 @@ const ModuloCarrerasInteracciones = () => {
                     <h4 className="interacciones__group__title">{groupInteraccion.name}</h4>
                     <ul className="interacciones__group__lista">
                         {groupInteraccion.interacciones.map(({ UID, name, img, puntuacion, carreras, fecha }) => {
-                            return <li className="interacciones__group__lista__item card backgroundImage" key={UID} style={{ backgroundImage: "url('" + img + "')" }}>
+                            return <li onClick={() => onOpen(UID)} className="interacciones__group__lista__item card backgroundImage" key={UID} style={{ backgroundImage: "url('" + img + "')" }}>
                                 <img src={img} className="card-img" alt={name}></img>
 
                                 <div className="card-img-overlay">
                                     <IconPlay classname="icon" />
                                     <h5 className="card-title">{name}</h5>
                                 </div>
-
 
                             </li>
                         })}

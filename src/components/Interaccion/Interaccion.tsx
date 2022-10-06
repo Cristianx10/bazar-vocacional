@@ -40,9 +40,6 @@ const InteraccionLoad = ({ onFinish }: { onFinish: (actividad: ActividadTS) => v
         }
 
         interaccion.onFinish(() => {
-
-      
-
             onFinish(interaccion)
         })
 

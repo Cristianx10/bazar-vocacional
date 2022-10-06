@@ -8,6 +8,8 @@ import Database from '../../../constants/firebase/database/index';
 import { IEstado } from '../../../constants/estados/EstadoManager';
 import { ActivityLiteResult } from './ActividadTSLite';
 import DBRoutes from '../../../constants/firebase/database/DBRoutes';
+import { calculatePorcentaje } from '../../../constants/helpers/index';
+
 
 
 
@@ -93,6 +95,9 @@ class ActividadTS {
         const data = this.actividad.medicion.toJSON();
         const informacion = this.actividad.informacion;
 
+        const porcentajes = calculatePorcentaje(maximos, resultados);
+        
+
         var result: ResultadoInteraction = {
             UID,
             UIDUser,
@@ -102,7 +107,8 @@ class ActividadTS {
             resultados,
             maximos,
             data,
-            informacion
+            informacion,
+            porcentajes
         }
 
         return result;

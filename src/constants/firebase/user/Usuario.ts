@@ -1,4 +1,8 @@
-import { ResultadoInteraction, ResultadoPuntuacion } from '../../resultados/types';
+import { ResultadoInteraction, ResultadoPuntuacion, ResultadoInteractionSimple } from '../../resultados/types';
+import DBRoutes from '../database/DBRoutes';
+import Database from '../database/index';
+import { calculatePorcentaje } from '../../helpers/index';
+import Registro from '../../resultados/Registro';
 type TRoles = "LOCAL" | "ADMINISTRADOR" | "EDITOR" | "VISOR" | "";
 
 interface IUserInformation {
@@ -19,13 +23,15 @@ export interface IUsuario {
     }
     preferencias: string[];
     informacion: IUserInformation[];
-    resultados: {
-        fecha: number,
-        result: {
-            global: ResultadoPuntuacion[];
-            maximo: ResultadoPuntuacion[];
-            porcentaje: ResultadoPuntuacion[];
-        }
+    resultados: IDataResult;
+}
+
+interface IDataResult {
+    fecha: { inicio: number, fin: number },
+    result: {
+        global: ResultadoPuntuacion[];
+        maximo: ResultadoPuntuacion[];
+        porcentaje: ResultadoPuntuacion[];
     }
 }
 
@@ -44,14 +50,7 @@ class Usuario implements IUsuario {
     //Pendiente de metodo para obtener
     informacion: IUserInformation[];
     interacciones: ResultadoInteraction[];
-    resultados: {
-        fecha: number,
-        result: {
-            global: ResultadoPuntuacion[];
-            maximo: ResultadoPuntuacion[];
-            porcentaje: ResultadoPuntuacion[];
-        }
-    }
+    resultados: IDataResult;
 
     constructor(user: IUsuario) {
         this.UID = user.UID;
@@ -68,6 +67,89 @@ class Usuario implements IUsuario {
         this.interacciones = [];
     }
 
+    addInteraction(interaction: ResultadoInteraction, onAdded: () => void) {
+        const DR = DBRoutes.RESULTADOS;
+        const UID = this.UID;
+        const UIDInteraction = interaction.UID;
+
+        const resultados: ResultadoInteractionSimple = {
+            UID: interaction.UID,
+            UIDUser: interaction.UIDUser,
+            UIDActivity: interaction.UIDActivity,
+            estado: interaction.estado,
+            fecha: interaction.fecha,
+            maximos: interaction.maximos,
+            porcentajes: interaction.porcentajes,
+            resultados: interaction.resultados 
+        }
+
+        Database.writeDatabase([
+            DR._THIS,
+            DR.PUNTAJE,
+            UID,
+            UIDInteraction
+        ], JSON.stringify(resultados), () => {
+            Database.writeDatabase([
+                DR._THIS,
+                DR.DATA,
+                UID,
+                UIDInteraction
+            ], interaction, () => {
+
+
+                this.updatePrincipalResult(interaction.fecha, () => {
+                    onAdded()
+                })
+            })
+        })
+    }
+
+    updatePrincipalResult(fecha: { inicio: number, fin: number }, load: () => void) {
+
+        const DR = DBRoutes.RESULTADOS;
+        const DU = DBRoutes.RESULTADOS;
+        const UID = this.UID;
+
+        Database.readBrachOnlyDatabaseVal([
+            DR._THIS,
+            DR.PUNTAJE,
+            UID
+        ], (sResult) => {
+
+
+            var datos = new Map<string, ResultadoInteractionSimple>();
+
+            Object.values<ResultadoInteractionSimple>(sResult).forEach((result) => {
+                datos.set(result.UID, result);
+            });
+
+
+            var resultados = Registro.calculatePonderado(datos);
+            var maximo = Registro.calculateMaximo(datos);
+
+            const porcentaje = calculatePorcentaje(maximo, resultados);
+
+            const dataResult: IDataResult = {
+                fecha,
+                result: {
+                    global: resultados,
+                    porcentaje,
+                    maximo
+                }
+
+            }
+
+            Database.writeDatabase([
+                DU._THIS,
+                DU.INFORMATION,
+                UID,
+                "resultados"
+            ], dataResult, () => {
+                load();
+            });
+
+        })
+    }
 
     getAllInteracciones() {
         //Codigo pendiente
