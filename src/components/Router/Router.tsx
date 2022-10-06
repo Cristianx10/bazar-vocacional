@@ -31,7 +31,7 @@ const Router = () => {
 
                         </>}
                     <Route path={LINK.INDEX} element={<Index />} />
-                    <Route path={LINK.REGISTRO} element={<ChooseCarreras />} />
+                    <Route path={LINK.REGISTRO} element={<Registro />} />
                     <Route path={LINK.INTERACCION} element={<Interaccion interaccion={Interacciones20221[0]} onFinish={(interaccion) => {
                         const r = interaccion.getResultado()
                         console.log("FINALIZADO", r)

@@ -181,6 +181,8 @@ function setup() {
 
     oActivity.addState("page", "inicio")
 
+    
+
     setTimeout(() => {
 
         oActivity.setInit(()=>{

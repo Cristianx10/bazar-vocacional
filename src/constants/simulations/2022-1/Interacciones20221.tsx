@@ -20,6 +20,20 @@ Interacciones20221.push(SumaFlowInteraccion)
 
 
 
+const GatoPrueba: InteractionStructure = {
+    UID: "37528af0-9c13-4d66-b9df-880b0b5d4f66",
+    type: "EXTERNA",
+    title: "Suma Flow",
+    image: "/includes/preview/version6/sumaflow_Preview.png",
+    actividad: "/proyectos/prueba1/index.html",
+    tags: [CARRERAS.INGENIERIA_SISTEMAS],
+    defaultMaximos: [{ id: CARRERAS.INGENIERIA_SISTEMAS, value: 200 }]
+}
+
+Interacciones20221.push(GatoPrueba)
+
+
+
 const MadLabInteraction: InteractionStructure = {
     UID: "f0e9bf55-c353-4889-b252-e382f23fba22",
     type: "INTERNA",

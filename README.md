@@ -20,7 +20,7 @@ A continuación te damos los pasos para ser contribuyente del proyecto:
 -1. Clone el proyecto
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/Cristianx10/bazar-vocacional.git
 ```
 
 -2. Cree una carpeta donde se almacenara su proyecto con un nombre distinto a las existentes
