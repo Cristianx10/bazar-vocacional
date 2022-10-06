@@ -60,11 +60,13 @@ class Usuario implements IUsuario {
         this.date = user.date;
         this.preferencias = user.preferencias;
         this.resultados = user.resultados;
-        this.informacion = user.informacion;
+        this.informacion = user.informacion ? user.informacion : [];
         this.identificacion = user.identificacion;
         this.genero = user.genero;
         this.prueba = user.prueba;
         this.interacciones = [];
+
+        
     }
 
     addInteraction(interaction: ResultadoInteraction, onAdded: () => void) {
@@ -80,7 +82,7 @@ class Usuario implements IUsuario {
             fecha: interaction.fecha,
             maximos: interaction.maximos,
             porcentajes: interaction.porcentajes,
-            resultados: interaction.resultados 
+            resultados: interaction.resultados
         }
 
         Database.writeDatabase([
@@ -107,7 +109,7 @@ class Usuario implements IUsuario {
     updatePrincipalResult(fecha: { inicio: number, fin: number }, load: () => void) {
 
         const DR = DBRoutes.RESULTADOS;
-        const DU = DBRoutes.RESULTADOS;
+        const DU = DBRoutes.USER;
         const UID = this.UID;
 
         Database.readBrachOnlyDatabaseVal([
@@ -116,18 +118,17 @@ class Usuario implements IUsuario {
             UID
         ], (sResult) => {
 
-
             var datos = new Map<string, ResultadoInteractionSimple>();
 
-            Object.values<ResultadoInteractionSimple>(sResult).forEach((result) => {
-                datos.set(result.UID, result);
+            Object.entries<string>(sResult).forEach(([key, result]) => {
+                datos.set(key, JSON.parse(result));
             });
 
 
             var resultados = Registro.calculatePonderado(datos);
             var maximo = Registro.calculateMaximo(datos);
 
-            const porcentaje = calculatePorcentaje(maximo, resultados);
+            const porcentaje = calculatePorcentaje(resultados, maximo);
 
             const dataResult: IDataResult = {
                 fecha,

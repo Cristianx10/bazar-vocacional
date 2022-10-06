@@ -16,9 +16,13 @@ const SelectInteracciones = ({ useRegistrosSelect }: { useRegistrosSelect: IProp
     const useRegistros = useState<UserResultCheck[]>([]);
     const [registros, setRegistros] = useRegistros;
 
+    useEffect(()=>{
+
+    }, [])
+
     return <div>
         <h2>Total de las pruebas: {registrosSelect.length}</h2>
-        {registros.length > 0 ? <ResultadosItemDescarga registros={registrosSelect} /> : <h1>Aun no se han realizado pruebas</h1>}
+        {registrosSelect.length > 0 ? <ResultadosItemDescarga registros={registrosSelect} /> : <h1>Aun no se han realizado pruebas</h1>}
     </div>
 }
 

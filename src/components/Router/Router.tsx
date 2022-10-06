@@ -11,6 +11,9 @@ import ChooseCarreras from '../../pages/ChooseCarreras/index';
 import { useEffect } from 'react';
 import Perfil from '../../pages/Perfil/Perfil';
 import { Navigate } from "react-router";
+import UserFirebase from '../../constants/firebase/user/index';
+import Resultados from '../../pages/Resultados/index';
+
 
 
 
@@ -37,7 +40,8 @@ const Router = () => {
                         <>
                             <Route path={LINK.INDEX} element={<Home />} />
                             <Route path={LINK.PERFIL} element={<Perfil />} />
-                        </>
+                            <Route path={LINK.RESULTADOS} element={<Resultados />} />
+                        </> 
                         : <>
                             <Route path={LINK.INDEX} element={<Index />} />
                             <Route path={LINK.REGISTRO} element={<Registro />} />
@@ -46,7 +50,14 @@ const Router = () => {
                     {interaccion ?
                         <Route path={LINK.INTERACCION} element={<Interaccion interaccion={interaccion} onFinish={(interaccion) => {
                             const r = interaccion.getResultado()
-                            console.log("FINALIZADO", r)
+                            const usuario = UserFirebase.usuario;
+                            if (usuario) {
+                                UserFirebase.usuario?.addInteraction(r, () => {
+                                    console.log("FINALIZADO", r)
+                                });
+                            }
+
+                       
                         }} />} />
                         :
                         <Route path={LINK.INTERACCION} element={<Navigate to={LINK.INDEX} />} />

@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Una imagen</h1>}
     <img src="./gato.jpg" alt="">
+    <button id="subir">SUBIR RESULTADOS</button>
 </body>
+
+<script src="/js/observer.js"></script>
+
+<script>
+
+    oActivity.setInit(()=>{
+        oActivity.addResultMaximo([{ id: "INGENIERIA", value: 200 }]);
+    oActivity.addResult([{ id: "INGENIERIA", value: 100 }]);
+    oActivity.addState("page", "inicio");
+
+    console.log("INICIADO FRAME")
+    })
+  
+
+
+    const subir = () => {
+        console.log("subir")
+    }
+
+    document.querySelector("#subir").addEventListener("click", () => {
+        oActivity.finish();
+    })
+
+
+</script>
+
 </html>

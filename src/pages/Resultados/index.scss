@@ -4,6 +4,8 @@
     width: 100%;
     height: 100%;
 
+    overflow: auto;
+
     color: black;
     &List {
         &Item {
@@ -25,13 +27,16 @@
                 padding: 10px 0px;
                 margin: 10px;
 
+                background: white;
+
                 width: 450px;
 
                 transition: all 0.5s ease;
 
                 &.select {
-                    background: rgba(137, 43, 226, 0.158);
+                    background: rgb(137, 43, 226);
                     border: none;
+                    color: white;
                 }
 
                 &__label {

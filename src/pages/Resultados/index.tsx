@@ -13,6 +13,7 @@ import { CheckListSelect, CheckBoxListContextProvider } from '../../components/C
 import CheckBoxList from '../../components/CheckBoxList/index';
 import ListaPersonas from './ListaPersonas';
 import ListGeneral from '../../constants/simulations/ListGeneral';
+import Header from "../../components/Header/Header";
 
 export type UserResultCheck = UserResult & { check: boolean };
 
@@ -29,7 +30,8 @@ const ResultadosLoad = () => {
     const { useRegistro } = ResultadosContext();
     const [registro] = useRegistro();
 
-    return <div className="Resultados backgroundImage" style={{ backgroundImage: "url('/includes/background/claro.png')" }}>
+    return <div className="Resultados backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal-white.jpg')" }}>
+        <Header />
         {registro === undefined ?
             <ListaPersonas />
             :

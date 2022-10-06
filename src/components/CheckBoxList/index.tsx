@@ -53,10 +53,10 @@ export const CheckListSelect = ({ onCheckAll }: { onCheckAll: (status: boolean) 
         onCheckAll(status)
     }
     return <div className="CheckListSelect">
-        <button className="btn dark"
+        <button className="btn btn-info"
             onClick={() => onCheck(true)}
         >Seleccionar todas</button>
-        <button className="btn secondary"
+        <button className="btn btn-secondary"
             onClick={() => onCheck(false)}
         >Deseleccionar todas</button>
     </div>

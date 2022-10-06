@@ -1,11 +1,12 @@
 import XLSX from "xlsx";
 import { Descargar } from '../helpers/index';
 
+
 class Excel { 
 
     excel: XLSX.WorkBook;
 
-    constructor() {
+    constructor() { 
         this.excel = XLSX.utils.book_new();
     }
 
@@ -15,10 +16,10 @@ class Excel {
             Subject: sujeto,
             Author: autor,
             CreatedDate: fecha
-        };
+        }; 
     }
 
-    crearHoja(nombre: string) {
+    crearHoja(nombre: string) { 
         this.excel.SheetNames.push(nombre);
     }
 

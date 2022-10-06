@@ -79,6 +79,10 @@ class ResultadosFormat {
             configMap.set(con.UIDActivity, con)
         })
 
+        titularesGeneralMap.set("#NOMBRE", "#NOMBRE");
+        titularesEspecificasMap.set("#NOMBRE", "#NOMBRE");
+        titularesMapPropsMap.set("#NOMBRE", "#NOMBRE");
+
         registros.forEach(registro => {
 
             var dataUserFile = new Map<string, string | number>();
@@ -194,6 +198,8 @@ class ResultadosFormat {
                         fila.push(dataUser);
                     } else if (resultado !== undefined) {
                         fila.push(resultado);
+                    } else if (titular === "#NOMBRE") {
+                        fila.push(registro.usuario.nombre);
                     } else {
                         fila.push("");
                     }
@@ -220,6 +226,8 @@ class ResultadosFormat {
                         fila.push(dataUser);
                     } else if (resultado !== undefined) {
                         fila.push(resultado);
+                    } else if (titular === "#NOMBRE") {
+                        fila.push(registro.usuario.nombre);
                     } else {
                         fila.push("");
                     }
@@ -255,6 +263,8 @@ class ResultadosFormat {
                         } else if (resultado !== undefined) {
                             encontrado = true;
                             fila.push(resultado);
+                        } else if (titular === "#NOMBRE") {
+                            fila.push(registro.usuario.nombre);
                         }
 
                         if (encontrado === false) {

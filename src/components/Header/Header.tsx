@@ -14,7 +14,7 @@ const Header = () => {
 
         const loginOut = () => {
                 UserFirebase.loginOut(() => {
-
+                        nav(LINK.INDEX)
                 });
         }
         const selectClass = (name: string) => {

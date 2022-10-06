@@ -263,7 +263,9 @@ class Registro {
 
     static calculatePonderado(datos: Map<string, ResultadoInteractionSimple>) {
 
-        var resultMax = new Map<string, number>();
+        console.log("datos", datos)
+
+        var resultMax = new Map<string, number>(); 
 
         datos.forEach(({ resultados }) => {
             resultados.forEach(({ id, value }) => {
@@ -273,7 +275,7 @@ class Registro {
                     resultMax.set(id, 0);
                     result = resultMax.get(id);
                 }
-
+ 
                 if (result !== undefined) {
                     const valueResult = result + value;
                     resultMax.set(id, valueResult)

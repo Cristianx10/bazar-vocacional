@@ -12,6 +12,8 @@ interface IMedicionFilter {
 class EstadosManagerAnalitics {
     static getArrayMap(info: IMedicionUnity, config?: IMedicionFilter) {
 
+        console.log("MY INFO:", info)
+
         const { estados, lastIndex } = info;
 
         var titulares: string[] = [];
@@ -50,13 +52,17 @@ class EstadosManagerAnalitics {
 
         while (buscando) {
 
-            var isFindObjectState = index < lastIndex;
+            var isFindObjectState = index < lastIndex || (lastIndex === 0 && index === 0);
+
+
 
             while (isFindObjectState) {
 
                 titulares.forEach((titular) => {
                     var estadoArray = mapEstados.get(titular) as IMedicion;
                     var lastState = estadoArray.estados[estadoArray.index];
+
+                    console.log("1: ", lastState.index, index)
 
                     if (currentObjectState === undefined && lastState.index === index) {
                         currentObjectState = lastState;
@@ -82,6 +88,7 @@ class EstadosManagerAnalitics {
                         }
                     }
 
+                    console.log("2: ", currentObjectState)
 
                 })
 
@@ -124,6 +131,9 @@ class EstadosManagerAnalitics {
                 (currentObjectState !== undefined && nextObjectState !== undefined
                     && currentObjectState.time !== nextObjectState.time) || nextObjectState === undefined
                     ? "VERDADERO" : "";
+
+            console.log("3: ", currentObjectState)
+
 
             var lastTimeObject = currentObjectState ? currentObjectState.time : -1
 
@@ -180,7 +190,10 @@ class EstadosManagerAnalitics {
 
         }
 
-        titulares = ["LAST STATE", "LAST TIME", "TIEMPO P.", ...titulares] as string[];
+        titulares = ["LAST STATE", "LAST TIME", "TIEMPO P. " + `(${config ? config.time : "MILISEGUNDOS"})`, ...titulares] as string[];
+
+
+        console.log("MY INFO:", titulares, values)
 
         return { titulares, values }
     }

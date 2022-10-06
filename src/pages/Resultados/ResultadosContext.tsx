@@ -63,7 +63,7 @@ export const ResultadosContextProvider = (props: any) => {
             useConfigRegistro: () => useConfigRegistro
         }
 
-    }, [test, interaccionesSelect, types, typesConfig, registro])
+    }, [ interaccionesSelect, types, typesConfig, registro])
 
     return <Provider value={value} {...props} />
 }

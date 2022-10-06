@@ -47,6 +47,7 @@ class ActividadTS {
 
                     if (data.type === "FINISH_ACTIVITY") {
                         const objeto = data.data as ActivityLiteResult;
+                        
                         this.actividad.loadData(objeto)
 
                         this.actividad.isFinalizado = false;
@@ -95,7 +96,7 @@ class ActividadTS {
         const data = this.actividad.medicion.toJSON();
         const informacion = this.actividad.informacion;
 
-        const porcentajes = calculatePorcentaje(maximos, resultados);
+        const porcentajes = calculatePorcentaje(resultados,maximos);
         
 
         var result: ResultadoInteraction = {

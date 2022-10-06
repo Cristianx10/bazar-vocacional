@@ -43,15 +43,13 @@ const ListaPersonas = () => {
 
 
     return <div className="Resultados__item">
-        <h1>Usuarios Registrados:</h1>
-
         {registrosSelect.length > 0 ?
             isDescargar ?
                 <div className="Resultados__item__action">
-                    <button className="btn dark" onClick={onDescargar}>Descargar</button>
-                    <button className="btn secondary" onClick={() => setIsDescargar(false)}>Cancelar</button>
+                    <button className="btn btn-secondary" onClick={onDescargar}>Descargar</button>
+                    <button className="btn btn-secondary" onClick={() => setIsDescargar(false)}>Cancelar</button>
                 </div>
-                : <button className="btn dark" onClick={() => setIsDescargar(true)}>Descargar Resultados</button>
+                : <button className="btn btn-primary" onClick={() => setIsDescargar(true)}>Descargar Resultados</button>
             : <></>}
 
 
@@ -59,7 +57,7 @@ const ListaPersonas = () => {
             <SelectInteracciones useRegistrosSelect={() => useRegistrosSelect} />
             :
             <div>
-                <h2>Pruebas seleccionadas: {registrosSelect.length} de {registros.length}</h2>
+                <h4>Pruebas seleccionadas: {registrosSelect.length} de {registros.length}</h4>
                 <CheckBoxListContextProvider>
                     <CheckListSelect
                         onCheckAll={(status) => {
@@ -146,12 +144,12 @@ const ListaPersonaItem = ({ registro, onChecked, useRegistros }: {
             <div className="Resultados__item__list__item__label__info">
                 <p><strong>Nombre:</strong> {name}</p>
                 <p><strong>Carrera:</strong> {carrera}</p>
-                <p><strong>Fecha:</strong> {fechaInit.toLocaleDateString()}</p>
-                <p><strong>Hora:</strong> {fechaInit.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                <p><strong>Fecha:</strong> {fechaInit.toLocaleDateString()} - {fechaInit.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+            
             </div>
         </label>
         <div className="Resultados__item__list__item__btns">
-            <button className="btn dark" onClick={() => setRegistro(registro)}>Ver</button>
+            <button className="btn btn-success" onClick={() => setRegistro(registro)}>Ver</button>
         </div>
 
     </li>
