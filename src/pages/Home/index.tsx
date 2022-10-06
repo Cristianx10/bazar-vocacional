@@ -4,16 +4,9 @@ import "./index.scss"
 import ListGeneral from '../../constants/simulations/ListGeneral';
 import { CARRERAS_NAME, getNamesCarrerasMap } from '../../constants/simulations/types/Carreras';
 import IconPlay from '../../constants/icons/IconPlay';
+import ModuloCarrerasInteracciones from '../../components/ModuloCarrerasInteracciones/index';
+import { IInteraccion } from '../../components/ModuloCarrerasInteracciones/index';
 
-interface IInteraccion {
-    UID: string;
-    name: string;
-    carreras: string[];
-    img: string;
-    puntuacion?: number;
-    fecha?: string;
-
-}
 
 const Home = () => {
 
@@ -46,7 +39,10 @@ const Home = () => {
     return <div className="Home backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal-white.jpg')" }}>
         <Header />
         <div className="Home__container">
-            <h2>Carreras que te pueden interesar</h2>
+            <div className="Home__title">
+                <span></span>
+                <h2>Tus Carreras Preferidas</h2>
+            </div>
             <ul className="interacciones">
                 {interacciones.map(({ UID, name, img, puntuacion, carreras, fecha }) => {
                     return <li className="interacciones__item card backgroundImage" key={UID} style={{ backgroundImage: "url('" + img + "')" }}>
@@ -63,6 +59,8 @@ const Home = () => {
                     </li>
                 })}
             </ul>
+
+            <ModuloCarrerasInteracciones />
 
         </div>
     </div >

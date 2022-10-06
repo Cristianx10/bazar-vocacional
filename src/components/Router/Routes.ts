@@ -4,6 +4,7 @@ const LINK = {
     SIMULACIONES: "/simulaciones",
     LOGIN: "/login",
     REGISTRO: "/registro",
+    PERFIL: "/perfil",
 
     INTERACCION:"/interaccion",
 

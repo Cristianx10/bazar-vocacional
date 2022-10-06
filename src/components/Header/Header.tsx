@@ -1,13 +1,24 @@
 import "./index.scss";
 import { Categorias } from '../../constants/simulations/ListGeneral';
 import UserFirebase from '../../constants/firebase/user/index';
+import LINK from '../Router/Routes';
+import { useNavigate } from "react-router";
 
 const Header = () => {
 
-        const loginOut = ()=>{
-                UserFirebase.loginOut(()=>{
+        const nav = useNavigate()
+
+
+
+        const path = window.location.pathname;
+
+        const loginOut = () => {
+                UserFirebase.loginOut(() => {
 
                 });
+        }
+        const selectClass = (name: string) => {
+                return path === name ? " select" : "";
         }
 
 
@@ -18,8 +29,14 @@ const Header = () => {
                         </div>
                         <nav className="nav">
                                 <ul className="nav__lista">
-                                        <li className="nav__lista__item select">Perfil</li>
-                                        <li className="nav__lista__item" onClick={loginOut}>Salir</li>
+                                        <li
+                                                onClick={() => nav(LINK.INDEX)}
+                                                className={"nav__lista__item" + selectClass(LINK.INDEX)}>Inicio</li>
+                                        <li
+                                                onClick={() => nav(LINK.PERFIL)}
+                                                className={"nav__lista__item" + selectClass(LINK.PERFIL)}>Perfil</li>
+                                        <li
+                                                className="nav__lista__item" onClick={loginOut}>Salir</li>
                                 </ul>
                         </nav>
                 </div>

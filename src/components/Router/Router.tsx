@@ -9,6 +9,7 @@ import Interaccion from '../Interaccion/Interaccion';
 import Interacciones20221 from '../../constants/simulations/2022-1/Interacciones20221';
 import ChooseCarreras from '../../pages/ChooseCarreras/index';
 import { useEffect } from 'react';
+import Perfil from '../../pages/Perfil/Perfil';
 
 
 
@@ -28,19 +29,11 @@ const Router = () => {
         <>
             <BrowserRouter>
                 <Routes>
-                    {login.isLogin ?
-                        <>
-
-                        </>
-                        :
-                        <>
-
-                        </>}
-
-
+                   
                     {login.isLogin ?
                         <>
                             <Route path={LINK.INDEX} element={<Home />} />
+                            <Route path={LINK.PERFIL} element={<Perfil />} />
                         </>
                         : <>
                             <Route path={LINK.INDEX} element={<Index />} />

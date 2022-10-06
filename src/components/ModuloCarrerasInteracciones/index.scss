@@ -1,0 +1,68 @@
+.ModuloCarrerasInteracciones {
+    &__title {
+        display: flex;
+        align-items: flex-end;
+
+        margin: 10px 0;
+        span {
+            display: flex;
+            background: #01ccd9;
+            width: 30px;
+            height: 5px;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            box-shadow: 0px 0px 5px 0px rgb(53, 237, 250);
+        }
+
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .interacciones {
+        display: flex;
+        justify-content: space-evenly;
+
+        &__group {
+            display: flex;
+            flex-direction: column;
+            max-width: 50%;
+
+            &__title{
+                margin-left: 30px;
+            }
+            &__lista {
+                display: flex;
+              
+                &__item {
+                    margin: 7px;
+                    text-align: center;
+                    width: 200px;
+
+                    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
+
+                    .card-img-overlay {
+                        opacity: 0;
+                        transition: all 0.5s ease;
+
+                        color: white;
+
+                        .card-title{
+                            font-size: 1em;
+                            margin-top: 5px;
+                        }
+
+                        .icon {
+                            width: 50px;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                            background-color: rgba(0, 0, 0, 0.562);
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
