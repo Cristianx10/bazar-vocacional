@@ -53,10 +53,26 @@ export const getNamesCarrerasMap = () => {
         }
     )
 
-  //  console.log(NAMES_CARRERAS_MAP)
+    //  console.log(NAMES_CARRERAS_MAP)
     return NAMES_CARRERAS_MAP;
 }
 
+const formatCarrera = getNamesCarrerasMap();
+
+export const formatCarreraString = (name: string) => {
+    var carrera: string = formatCarrera.get(name);
+
+    var cadena = carrera.toLowerCase().split(' ');
+    for (var i = 0; i < cadena.length; i++) {
+        cadena[i] = cadena[i].charAt(0).toUpperCase() + cadena[i].substring(1) + " ";
+    }
+
+    var result = "";
+    cadena.forEach(c => {
+        result = result + c;
+    })
+    return result;
+}
 
 
 export default CARRERAS;

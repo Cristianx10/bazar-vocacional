@@ -39,7 +39,7 @@ const CheckBoxList = ({ title, onChecked, img, value, checking }: { checking: bo
         <input type="checkbox" defaultChecked={check} checked={check} onChange={onCheck} />
         {img ? <img src={img} alt="" /> : <></>}
 
-        {value !== undefined ? <p><strong>{title} :</strong> {value}</p> : <h3>{title}</h3>}
+        {value !== undefined ? <p><strong>{title} :</strong> {value}</p> : <h4>{title}</h4>}
 
     </label>
 }

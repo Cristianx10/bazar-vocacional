@@ -23,7 +23,7 @@ Interacciones20221.push(SumaFlowInteraccion)
 const GatoPrueba: InteractionStructure = {
     UID: "37528af0-9c13-4d66-b9df-880b0b5d4f66",
     type: "EXTERNA",
-    title: "Suma Flow",
+    title: "PRUEBA 1",
     image: "/includes/preview/version6/sumaflow_Preview.png",
     actividad: "/proyectos/prueba1/index.html",
     tags: [CARRERAS.INGENIERIA_SISTEMAS],

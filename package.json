@@ -17,6 +17,7 @@
     "createjs": "^1.0.1",
     "createjs-module": "^0.8.3",
     "firebase": "^9.10.0",
+    "knob": "^1.1.0",
     "p5": "^1.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -16,7 +16,7 @@ const SelectInteracciones = ({ useRegistrosSelect }: { useRegistrosSelect: IProp
     const useRegistros = useState<UserResultCheck[]>([]);
     const [registros, setRegistros] = useRegistros;
 
-    useEffect(()=>{
+    useEffect(() => {
 
     }, [])
 
@@ -32,8 +32,6 @@ export default SelectInteracciones;
 
 const ResultadosItemDescarga = ({ registros }: { registros: UserResultCheck[] }) => {
 
-    const model = registros[0];
-
     const { useConfigRegistro, useTypes, useTypesCofig } = ResultadosContext();
     const [interaccionesSelect, setInteraccionesSelect] = useConfigRegistro();
 
@@ -47,7 +45,7 @@ const ResultadosItemDescarga = ({ registros }: { registros: UserResultCheck[] })
 
     useEffect(() => {
         setInteraccionesSelect(interacciones.filter((interaccion) => {
-            if (interaccion.check) return interaccion
+            if (interaccion.check) return interaccion;
         }))
 
     }, [interacciones])
@@ -58,39 +56,43 @@ const ResultadosItemDescarga = ({ registros }: { registros: UserResultCheck[] })
         var interaccionesMap = new Map<string, IResultadoInteracciones>();
 
 
+        registros.forEach((model) => {
+            
+            model.interacciones.forEach((dato) => {
+                const UIDActivity = dato.UIDActivity;
 
-        model.interacciones.forEach((dato) => {
-            const UIDActivity = dato.UIDActivity;
+                var interaccion = interaccionesMap.get(UIDActivity);
 
-            var interaccion = interaccionesMap.get(UIDActivity);
+                if (interaccion === undefined) {
+                    const interacionPrueba = ListGeneral.get(UIDActivity);
+                    if (interacionPrueba) {
+                        const { title, image } = interacionPrueba;
 
-            if (interaccion === undefined) {
-                const interacionPrueba = ListGeneral.get(UIDActivity);
-                if (interacionPrueba) {
-                    const { title, image } = interacionPrueba;
+                        var props = [] as { key: string, value: string | number | boolean, check: boolean }[];
 
-                    var props = [] as { key: string, value: string | number | boolean, check: boolean }[];
+                        dato.data.estados.forEach(({ key, values }) => {
+                            var valueO = values[values.length - 1];
+                            var value: string | number | boolean = "#VALOR NULL";
+                            if (valueO) {
+                                value = valueO.value
+                            }
+                            props.push({ key, value, check: true })
+                        })
 
-                    dato.data.estados.forEach(({ key, values }) => {
-                        var valueO = values[values.length - 1];
-                        var value: string | number | boolean = "#VALOR NULL";
-                        if (valueO) {
-                            value = valueO.value
+                        const interaccionMap: IResultadoInteracciones = {
+                            UIDActivity,
+                            name: title,
+                            check: false,
+                            img: image,
+                            props
                         }
-                        props.push({ key, value, check: false })
-                    })
-
-                    const interaccionMap: IResultadoInteracciones = {
-                        UIDActivity,
-                        name: title,
-                        check: false,
-                        img: image,
-                        props
+                        interaccionesMap.set(UIDActivity, interaccionMap)
                     }
-                    interaccionesMap.set(UIDActivity, interaccionMap)
                 }
-            }
+            })
+
         })
+
 
 
 

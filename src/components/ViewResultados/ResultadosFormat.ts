@@ -118,10 +118,14 @@ class ResultadosFormat {
 
             var resultadosMap = new Map<string, number>()
 
-            registro.usuario.resultados.result.global.forEach(({ id, value }) => {
-                titularesGeneralMap.set(id, id)
-                resultadosMap.set(id, value)
-            })
+            if (registro.usuario.resultados && registro.usuario.resultados.result) {
+                registro.usuario.resultados.result.global.forEach(({ id, value }) => {
+                    titularesGeneralMap.set(id, id)
+                    resultadosMap.set(id, value)
+                })
+            }
+
+
 
             datosDePruebasGeneral.push(resultadosMap);
 
@@ -144,11 +148,14 @@ class ResultadosFormat {
 
                     var resultMap = new Map<string, number | string>()
 
-                    resultados.forEach(({ id, value }) => {
-                        titularesEspecificasMap.set(id, id);
-                        titularesMapPropsMap.set(id, id);
-                        resultMap.set(id, value)
-                    })
+                    if(resultados){
+                        resultados.forEach(({ id, value }) => {
+                            titularesEspecificasMap.set(id, id);
+                            titularesMapPropsMap.set(id, id);
+                            resultMap.set(id, value)
+                        })
+                    }
+                   
 
                     resultMap.set("#INDEX", j + 1)
                     const nameInteraction = dataInteractionFile.get(UIDActivity);

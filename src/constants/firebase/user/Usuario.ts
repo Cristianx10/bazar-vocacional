@@ -49,7 +49,7 @@ class Usuario implements IUsuario {
 
     //Pendiente de metodo para obtener
     informacion: IUserInformation[];
-    interacciones: ResultadoInteraction[];
+    interacciones: ResultadoInteractionSimple[];
     resultados: IDataResult;
 
     constructor(user: IUsuario) {
@@ -66,7 +66,7 @@ class Usuario implements IUsuario {
         this.prueba = user.prueba;
         this.interacciones = [];
 
-        
+
     }
 
     addInteraction(interaction: ResultadoInteraction, onAdded: () => void) {
@@ -104,6 +104,62 @@ class Usuario implements IUsuario {
                 })
             })
         })
+    }
+
+    getOrdenCarreras(): { global: ResultadoPuntuacion, maximo: ResultadoPuntuacion, porcentaje: ResultadoPuntuacion }[] {
+        const resultados = [...this.resultados.result.global];
+        const porcentajes = [...this.resultados.result.porcentaje];
+        const maixmos = [...this.resultados.result.maximo];
+
+        const resultMap = new Map<string, { global: ResultadoPuntuacion, maximo: ResultadoPuntuacion, porcentaje: ResultadoPuntuacion }>();
+        resultados.forEach(({ id, value }) => {
+            var results = resultMap.get(id);
+            if (results === undefined) {
+                results = {
+                    global: { id: "", value: -1 },
+                    maximo: { id: "", value: -1 },
+                    porcentaje: { id: "", value: -1 }
+                }
+            }
+            resultMap.set(id, { ...results, global: { id, value } })
+        })
+
+        porcentajes.forEach(({ id, value }) => {
+            var results = resultMap.get(id);
+            if (results === undefined) {
+                results = {
+                    global: { id: "", value: -1 },
+                    maximo: { id: "", value: -1 },
+                    porcentaje: { id: "", value: -1 }
+                }
+            }
+            resultMap.set(id, { ...results, porcentaje: { id, value } })
+        })
+
+
+        maixmos.forEach(({ id, value }) => {
+            var results = resultMap.get(id);
+            if (results === undefined) {
+                results = {
+                    global: { id: "", value: -1 },
+                    maximo: { id: "", value: -1 },
+                    porcentaje: { id: "", value: -1 }
+                }
+            }
+            resultMap.set(id, { ...results, maximo: { id, value } })
+        })
+
+        var carreras: { global: ResultadoPuntuacion, maximo: ResultadoPuntuacion, porcentaje: ResultadoPuntuacion }[] = []
+
+        resultMap.forEach((value, key) => {
+            carreras.push(value);
+        })
+
+        carreras.sort((a, b) => {
+            return b.porcentaje.value - a.porcentaje.value;
+        })
+
+        return carreras;
     }
 
     updatePrincipalResult(fecha: { inicio: number, fin: number }, load: () => void) {
@@ -152,9 +208,97 @@ class Usuario implements IUsuario {
         })
     }
 
-    getAllInteracciones() {
+    getAllInteracciones(load: () => void) {
         //Codigo pendiente
+        const DR = DBRoutes.RESULTADOS;
+        const UID = this.UID;
+
+       
+        Database.readBrachOnlyDatabaseVal([
+            DR._THIS, DR.PUNTAJE, UID
+        ], (sData) => {
+
+            this.interacciones = [];
+
+            Object.values<string>(sData).forEach((data) => {
+                this.interacciones.push(JSON.parse(data))
+            })
+
+          
+
+            load();
+        })
+
+        return this.interacciones;
     }
+
+    getOrdenInteracciones(): ResultadoInteractionSimple[][] {
+
+        var interaccionesArray: ResultadoInteractionSimple[][] = [];
+        var interaccionesMap = new Map<string, ResultadoInteractionSimple[]>()
+        this.interacciones.forEach((interaccion) => {
+
+            interaccion.resultados.forEach((result) => {
+                var actividad = interaccionesMap.get(result.id);
+                if (actividad === undefined) {
+                    interaccionesMap.set(result.id, []);
+                    actividad = interaccionesMap.get(result.id);
+                }
+                if (actividad) {
+                    var interac = Object.assign({}, interaccion);
+                    interac.resultados.sort((a, b) => {
+                        return b.value - a.value;
+                    })
+                    actividad.push(interac)
+                }
+            })
+        })
+
+        console.log(interaccionesMap, interaccionesArray)
+
+        interaccionesMap.forEach((interacciones, key) => {
+            interacciones.sort((a, b) => {
+
+                var rA = 0;
+                var rB = 0;
+                a.resultados.forEach(r => {
+                    if (key === r.id) {
+                        rA = r.value;
+                    }
+                })
+
+                b.resultados.forEach(r => {
+                    if (key === r.id) {
+                        rB = r.value;
+                    }
+                })
+                return rB - rA;
+            })
+
+            interaccionesArray.push(interacciones);
+        })
+
+        interaccionesArray.sort((a, b) => {
+            var rA = 0;
+            var rB = 0;
+
+            if (b.length > 0 && b[0].resultados && b[0].resultados.length > 0 && a.length > 0 && a[0].resultados && a[0].resultados.length > 0) {
+                return b[0].resultados[0].value - a[0].resultados[0].value;
+            } else {
+                return 0
+            }
+
+
+        })
+
+        console.log(interaccionesMap, interaccionesArray)
+
+
+        return interaccionesArray;
+
+    }
+
+
 
 
 }

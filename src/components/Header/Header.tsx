@@ -6,9 +6,7 @@ import { useNavigate } from "react-router";
 
 const Header = () => {
 
-        const nav = useNavigate()
-
-
+        const nav = useNavigate();
 
         const path = window.location.pathname;
 
@@ -24,7 +22,7 @@ const Header = () => {
 
         return <div className="Header backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal.png')" }}>
                 <div className="Header__container container">
-                        <div className="title">
+                        <div className="title" onClick={() => nav(LINK.INDEX)}>
                                 <h1>HCI Vocacional</h1>
                         </div>
                         <nav className="nav">

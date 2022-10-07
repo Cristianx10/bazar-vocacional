@@ -32,7 +32,7 @@ const ListaPersonas = () => {
     useEffect(() => {
 
         getAllUserPruebas((registros) => {
-            setRegistros(registros);
+            setRegistros([...registros]);
         })
 
     }, [])
@@ -128,13 +128,16 @@ const ListaPersonaItem = ({ registro, onChecked, useRegistros }: {
 
     var max = 0;
 
+  
+    if (registro.usuario.resultados && registro.usuario.resultados.result) {
+        registro.usuario.resultados.result.porcentaje.forEach(({ id, value }) => {
+            if (value >= max) {
+                max = value;
+                carrera = id;
+            }
+        })
+    }
 
-    registro.usuario.resultados.result.porcentaje.forEach(({ id, value }) => {
-        if (value >= max) {
-            max = value;
-            carrera = id;
-        }
-    })
 
     return <li className={"Resultados__item__list__item" + (check ? " select" : "")} >
         <label className="Resultados__item__list__item__label">
@@ -145,7 +148,7 @@ const ListaPersonaItem = ({ registro, onChecked, useRegistros }: {
                 <p><strong>Nombre:</strong> {name}</p>
                 <p><strong>Carrera:</strong> {carrera}</p>
                 <p><strong>Fecha:</strong> {fechaInit.toLocaleDateString()} - {fechaInit.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-            
+
             </div>
         </label>
         <div className="Resultados__item__list__item__btns">

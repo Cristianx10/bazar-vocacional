@@ -1,6 +1,6 @@
 import "./index.scss";
 import { useEffect, useState } from 'react';
-import { getNamesCarrerasMap } from '../../constants/simulations/types/Carreras';
+import { formatCarreraString, getNamesCarrerasMap } from '../../constants/simulations/types/Carreras';
 import ListGeneral from '../../constants/simulations/ListGeneral';
 import IconPlay from '../../constants/icons/IconPlay';
 import AppContext from '../App/AppContext';
@@ -27,22 +27,7 @@ const ModuloCarrerasInteracciones = () => {
 
     const [interacciones, setInteracciones] = useState<{ name: string, interacciones: IInteraccion[] }[]>([]);
 
-    const formatCarrera = getNamesCarrerasMap();
-
-    const formatCarreraString = (name: string) => {
-        var carrera: string = formatCarrera.get(name);
-
-        var cadena = carrera.toLowerCase().split(' ');
-        for (var i = 0; i < cadena.length; i++) {
-            cadena[i] = cadena[i].charAt(0).toUpperCase() + cadena[i].substring(1) + " ";
-        }
-
-        var result = "";
-        cadena.forEach(c => {
-            result = result + c;
-        })
-        return result;
-    }
+    
 
     useEffect(() => {
 

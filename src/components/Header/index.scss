@@ -17,6 +17,10 @@
             h1 {
                 margin: 0;
             }
+
+            &:hover {
+                cursor: pointer;
+            }
         }
         .nav {
             display: flex;
