@@ -18,7 +18,7 @@ const CARRERAS = {
     DISENO_INDUSTRIAL: "DISENO_INDUSTRIAL",
     QUIMICA: "QUIMICA",
     DISENO_MODAS: "DISENO_MODAS",
-    DISENO_INTERACTIVO: "DISENO_MEDIOS_INTERACTIVOS",
+    DISENO_MEDIOS_INTERACTIVOS: "DISENO_MEDIOS_INTERACTIVOS",
 }
 
 export const CARRERAS_NAME = {
@@ -41,7 +41,7 @@ export const CARRERAS_NAME = {
     DISENO_INDUSTRIAL: "DISEÑO INDUSTRIAL",
     QUIMICA: "QUÍMICA",
     DISENO_MODAS: "DISEÑO MODAS",
-    DISENO_INTERACTIVO: "DISEÑO DE MEDIOS INTERACTIVOS",
+    DISENO_MEDIOS_INTERACTIVOS: "DISEÑO DE MEDIOS INTERACTIVOS",
 }
 
 export const getNamesCarrerasMap = () => {
@@ -61,16 +61,20 @@ const formatCarrera = getNamesCarrerasMap();
 
 export const formatCarreraString = (name: string) => {
     var carrera: string = formatCarrera.get(name);
-
-    var cadena = carrera.toLowerCase().split(' ');
-    for (var i = 0; i < cadena.length; i++) {
-        cadena[i] = cadena[i].charAt(0).toUpperCase() + cadena[i].substring(1) + " ";
+    var result = "";
+    if (carrera) {
+        var cadena = carrera.toLowerCase().split(' ');
+        for (var i = 0; i < cadena.length; i++) {
+            cadena[i] = cadena[i].charAt(0).toUpperCase() + cadena[i].substring(1) + " ";
+        }
+        cadena.forEach(c => {
+            result = result + c;
+        })
     }
 
-    var result = "";
-    cadena.forEach(c => {
-        result = result + c;
-    })
+
+
+
     return result;
 }
 

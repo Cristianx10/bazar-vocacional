@@ -1,13 +1,13 @@
-const app = "app"
-
-const DBRoutes = {
-
+"use strict";
+exports.__esModule = true;
+var app = "app";
+var DBRoutes = {
     USER: {
         _THIS: app + "/users",
         INFORMATION: "information",
         RESULTADOS: "resultados",
         REGISTRO: "register",
-        PERMISOS: "permisos",
+        PERMISOS: "permisos"
     },
     BACKUP: {
         _THIS: app + "/backup",
@@ -19,7 +19,6 @@ const DBRoutes = {
     TEST: {
         _THIS: app + "/test",
         INFORMATION: "information",
-
         DATA: "data",
         ORDEN: "orden",
         URL: "URL",
@@ -39,9 +38,7 @@ const DBRoutes = {
     REALTIME: {
         _THIS: app + "/realtime",
         INFO: "/info",
-        VAR: "/var",
+        VAR: "/var"
     }
-
-}
-
-export default DBRoutes;
+};
+exports["default"] = DBRoutes;

@@ -2,6 +2,7 @@
 import InteractionStructure from "./types/InteractionStructure";
 
 import Interacciones20221 from "./2022-1/Interacciones20221";
+import Interacciones20211 from './2021/Interacciones20212';
 
 
 
@@ -13,6 +14,11 @@ export var Categorias = new Map<number, string>();
 var index = 0;
 
 [
+    {
+        title: "Interacciones 2021-1",
+        values: Interacciones20211
+    }
+    ,
     {
         title: "Interacciones 2022-1",
         values: Interacciones20221

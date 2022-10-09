@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celular</title>
+</head>
+
+<body>
+    <h2>Interfaz celular</h2>
+    <button id="siguiente">Siguiente</button>
+
+    <script src="/js/observer.js"></script>
+    <script src="/js/realtime.js"></script>
+
+
+    <script>
+        var btn = document.querySelector("#siguiente");
+
+        var cli = true;
+        var r = oActivity.initRealtime("daff74e2-6e24-4b21-ace3-46b6bb268249", "1")
+
+        btn.addEventListener("click", () => {
+          
+            if (cli) {
+                r.change("page", "inicio");
+            } else {
+                r.change("page", "volver");
+            }
+
+            cli = !cli
+        })
+    </script>
+
+</body>
+
+</html>

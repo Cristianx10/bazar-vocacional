@@ -271,6 +271,7 @@ class ResultadosFormat {
                             encontrado = true;
                             fila.push(resultado);
                         } else if (titular === "#NOMBRE") {
+                            encontrado = true;
                             fila.push(registro.usuario.nombre);
                         }
 

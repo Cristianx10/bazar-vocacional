@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+</head>
+
+<body>
+
+    <script src="/js/observer.js"></script>
+    <script src="/js/realtime.js"></script>
+
+
+    <script src="/libraries/p5.min.js"></script>
+    <script src="./Game.js"></script>
+
+    <script>
+
+        var r = oActivity.initRealtime("daff74e2-6e24-4b21-ace3-46b6bb268249", "1");
+        r.listener("page", (value) => {
+            console.log(value)
+            if (value === "inicio") {
+                setPage(1)
+            }
+
+            if (value === "volver") {
+                setPage(0)
+            }
+        })
+
+    </script>
+</body>
+
+</html>

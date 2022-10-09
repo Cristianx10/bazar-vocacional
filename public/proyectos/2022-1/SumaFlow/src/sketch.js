@@ -179,23 +179,6 @@ function setup() {
         width: 1280, height: 720
     })
 
-    oActivity.addState("page", "inicio")
-
-    
-
-    setTimeout(() => {
-
-        oActivity.setInit(()=>{
-            oActivity.addState("page", "final")
-
-            console.log(oActivity.medicion)
-        })
-       
-
-        
-    }, 2000)
-
-
 
     createMap(instMap, instMapType);
     setupTutorialMap(instMap);
@@ -666,14 +649,14 @@ function mousePressed() {
         case 8:
             if (528 < mouseX && mouseX < 528 + 225 && 605 < mouseY && mouseY < 605 + 53) {
 
-                actividad.addState("NIVEL 1", scoreTimes[0]);
-                actividad.addState("NIVEL 2", scoreTimes[1]);
-                actividad.addState("NIVEL3", scoreTimes[2]);
+                oActivity.addState("NIVEL 1", scoreTimes[0]);
+                oActivity.addState("NIVEL 2", scoreTimes[1]);
+                oActivity.addState("NIVEL3", scoreTimes[2]);
                 //actividad.addResult([{id:NameCarrera1, value:scoreTimes[0]}]);
                 //actividad.addResult([{id:NameCarrera1, value:scoreTimes[1]}]);
                 //actividad.addResult([{id:NameCarrera1, value:scoreTimes[2]}]);
-                actividad.addResult([{ id: CARRERAS.INGENIERIA_SISTEMAS, value: scoreTimes[0] + scoreTimes[1] + scoreTimes[2] }]);
-                actividad.finish();
+                oActivity.addResult([{ id: CARRERAS.INGENIERIA_SISTEMAS, value: scoreTimes[0] + scoreTimes[1] + scoreTimes[2] }]);
+                oActivity.finish();
             }
             break;
 
@@ -1626,6 +1609,6 @@ function calculateScore(m) {
     m[2] = score3;
 
 
-    //actividad.finish()
+   // oActivity.finish()
 }
 
