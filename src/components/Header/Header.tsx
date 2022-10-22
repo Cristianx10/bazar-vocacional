@@ -3,10 +3,15 @@ import { Categorias } from '../../constants/simulations/ListGeneral';
 import UserFirebase from '../../constants/firebase/user/index';
 import LINK from '../Router/Routes';
 import { useNavigate } from "react-router";
+import { useMediaQuery } from 'react-responsive'
 
 const Header = () => {
 
         const nav = useNavigate();
+
+        const isCelular = useMediaQuery({ query: '(max-width: 320px)' })
+        const isTablet = useMediaQuery({ query: '(max-width: 768px)' })
+
 
         const path = window.location.pathname;
 
@@ -23,7 +28,9 @@ const Header = () => {
         return <div className="Header backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal.png')" }}>
                 <div className="Header__container container">
                         <div className="title" onClick={() => nav(LINK.INDEX)}>
-                                <h1>HCI Vocacional</h1>
+                                {isCelular ? <img src="/includes/favicon.svg" width="40px" style={{ filter: "brightness(5)" }} />
+                                        : isTablet ? <h1>Vocacional</h1> : <h1>HCI Vocacional</h1>}
+
                         </div>
                         <nav className="nav">
                                 <ul className="nav__lista">

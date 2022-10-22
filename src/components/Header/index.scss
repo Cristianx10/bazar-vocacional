@@ -38,6 +38,7 @@
                     transition: all 0.5s ease;
                     position: relative;
 
+
                     &::after {
                         content: "";
                         width: 100%;
@@ -62,6 +63,29 @@
                         &::after {
                             background-color: #000425;
                             height: 20%;
+                        }
+                    }
+
+                    
+                    @media screen and (max-width: 320px) {
+                        font-size: 10px;
+                        padding: 5px 10px;
+
+                        &.select {
+                            &::after {
+                                height: 10%;
+                            }
+                        }
+                    }
+
+                    @media screen and (max-width: 768px) {
+                        font-size: 15px;
+                        padding: 5px 10px;
+
+                        &.select {
+                            &::after {
+                                height: 10%;
+                            }
                         }
                     }
                 }
