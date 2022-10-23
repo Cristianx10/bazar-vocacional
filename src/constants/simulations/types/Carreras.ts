@@ -61,6 +61,7 @@ const formatCarrera = getNamesCarrerasMap();
 
 export const formatCarreraString = (name: string) => {
     var carrera: string = formatCarrera.get(name);
+ 
     var result = "";
     if (carrera) {
         var cadena = carrera.toLowerCase().split(' ');

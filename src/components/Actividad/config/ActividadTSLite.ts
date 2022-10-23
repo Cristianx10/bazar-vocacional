@@ -3,6 +3,8 @@ import { ResultadoPuntuacion, ResultadoUser } from '../../../constants/resultado
 import ComunicacionIFrameReceptor from '../../../componentsTS/ComunicacionIFrame/ComunicacionIframeReceptor';
 import { IMedicionUnity } from '../../../constants/estados/EstadoManager';
 import { IComunicacionIframaMessage } from '../../../componentsTS/ComunicacionIFrame/index';
+import ListGeneral from '../../../constants/simulations/ListGeneral';
+import ActividadTS from './ActividadTS';
 
 export interface ActivityLiteResult {
     data: IMedicionUnity;
@@ -13,6 +15,8 @@ export interface ActivityLiteResult {
 }
 
 class ActividadTSLite {
+
+    actividad?: ActividadTS;
 
     medicion: EstadoManager;
     resultados: ResultadoPuntuacion[];
@@ -28,7 +32,7 @@ class ActividadTSLite {
 
     private fOnFinish?: (result: ActivityLiteResult) => void;
 
-    constructor() {
+    constructor(actividad?: ActividadTS) {
         this.initEjecutado = false;
         this.medicion = new EstadoManager();
         this.resultados = [];
@@ -36,6 +40,7 @@ class ActividadTSLite {
         this.informacion = [];
 
         this.isFinalizado = false;
+        this.actividad = actividad;
     }
 
     initIframe(load?: () => void) {
@@ -147,7 +152,7 @@ class ActividadTSLite {
             this.isFinalizado = true;
             this.medicion.stopTime();
 
-            const resultData = this.getData()
+            const resultData = this.getData();
 
             if (this.comunicacion) {
                 this.comunicacion.onSend({
@@ -185,9 +190,17 @@ class ActividadTSLite {
     getData(): ActivityLiteResult {
         const data = this.medicion.toJSON();
         const resultados = this.resultados;
-        const maximos = this.maximos;
+        var maximos = this.maximos;
         const informacion = this.informacion;
         const isFinalizado = this.isFinalizado;
+        
+
+        if (maximos.length === 0 && this.actividad) {
+            var info = ListGeneral.get(this.actividad.info.UID);
+            if (info) {
+                maximos = info.defaultMaximos;
+            }
+        }
 
 
         const resultData: ActivityLiteResult = {

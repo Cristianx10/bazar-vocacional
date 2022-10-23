@@ -20,7 +20,7 @@ class ActividadTS {
 
     constructor(info: InteractionStructure) {
         this.info = info;
-        this.actividad = new ActividadTSLite();
+        this.actividad = new ActividadTSLite(this);
     }
 
     initIframe(HTMLIframe: HTMLIFrameElement) {

@@ -1,18 +1,24 @@
 .ChooseCarreras {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+ 
+ 
     width: 100%;
     height: 100%;
 
     color: white;
+    margin: 0px;
+
+    overflow-y: auto;
 
     &__container {
+       
         .title {
             margin-bottom: 20px;
         }
-        margin: 50px;
+
+        padding: 20px 0px;
+        margin: auto 50px;
         text-align: center;
 
         &__lista {

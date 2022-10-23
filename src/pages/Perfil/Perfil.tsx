@@ -21,10 +21,8 @@ const Perfil = () => {
 
             usuario.getAllInteracciones(() => {
                 const actividades = usuario.getOrdenInteracciones()
-                console.log(actividades)
+          //      console.log(actividades)
                 setInteracciones(actividades)
-
-
             })
 
         }
@@ -123,7 +121,7 @@ const Perfil = () => {
                 <h2 className="Perfil__puntajes__title">Fidelidad</h2>
                 <ul className="Perfil__puntajes__lista">
                     {puntajes.map((puntaje) => {
-                        return <li className="Perfil__puntajes__lista__item">
+                        return <li key={puntaje.porcentaje.id} className="Perfil__puntajes__lista__item">
                             <RadioGraph value={puntaje.porcentaje.value} name={formatCarreraString(puntaje.porcentaje.id)} />
                         </li>
                     })}

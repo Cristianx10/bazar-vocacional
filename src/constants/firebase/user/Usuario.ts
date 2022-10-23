@@ -5,7 +5,7 @@ import { calculatePorcentaje } from '../../helpers/index';
 import Registro from '../../resultados/Registro';
 type TRoles = "LOCAL" | "ADMINISTRADOR" | "EDITOR" | "VISOR" | "";
 
-interface IUserInformation {
+export interface IUserInformation {
     id: string;
     value: string | number;
 }
@@ -58,7 +58,7 @@ class Usuario implements IUsuario {
         this.correo = user.correo;
         this.role = user.role;
         this.date = user.date;
-        this.preferencias = user.preferencias;
+        this.preferencias = user.preferencias ? user.preferencias : [];
         this.resultados = user.resultados;
         this.informacion = user.informacion ? user.informacion : [];
         this.identificacion = user.identificacion;
@@ -112,6 +112,7 @@ class Usuario implements IUsuario {
         const maixmos = [...this.resultados.result.maximo];
 
         const resultMap = new Map<string, { global: ResultadoPuntuacion, maximo: ResultadoPuntuacion, porcentaje: ResultadoPuntuacion }>();
+
         resultados.forEach(({ id, value }) => {
             var results = resultMap.get(id);
             if (results === undefined) {
@@ -158,6 +159,8 @@ class Usuario implements IUsuario {
         carreras.sort((a, b) => {
             return b.porcentaje.value - a.porcentaje.value;
         })
+
+
 
         return carreras;
     }
@@ -213,7 +216,7 @@ class Usuario implements IUsuario {
         const DR = DBRoutes.RESULTADOS;
         const UID = this.UID;
 
-       
+
         Database.readBrachOnlyDatabaseVal([
             DR._THIS, DR.PUNTAJE, UID
         ], (sData) => {
@@ -224,7 +227,7 @@ class Usuario implements IUsuario {
                 this.interacciones.push(JSON.parse(data))
             })
 
-          
+
 
             load();
         })
@@ -254,7 +257,7 @@ class Usuario implements IUsuario {
             })
         })
 
-        console.log(interaccionesMap, interaccionesArray)
+       // console.log(interaccionesMap, interaccionesArray)
 
         interaccionesMap.forEach((interacciones, key) => {
             interacciones.sort((a, b) => {
@@ -291,11 +294,26 @@ class Usuario implements IUsuario {
 
         })
 
-        console.log(interaccionesMap, interaccionesArray)
+       // console.log(interaccionesMap, interaccionesArray)
 
 
         return interaccionesArray;
 
+    }
+
+    getPreferencias() {
+        return this.preferencias;
+    }
+
+    setPreferencias(preferencias: string[], load?: () => void) {
+        const RU = DBRoutes.USER;
+        this.preferencias = preferencias;
+        Database.writeDatabase([
+            RU._THIS,
+            RU.INFORMATION,
+            this.UID,
+            "preferencias"
+        ], preferencias, load)
     }
 
 
