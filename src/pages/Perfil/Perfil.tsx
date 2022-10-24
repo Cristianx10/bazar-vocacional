@@ -28,7 +28,15 @@ const Perfil = () => {
         }
     }, [])
 
-    const firstInteraccion = interacciones.length > 0 && interacciones[0].length > 0 ? interacciones[0][0] : undefined;
+    var firstInteraccion = interacciones.length > 0 && interacciones[0].length > 0 ? interacciones[0][0] : undefined;
+
+    console.log("interacciones",interacciones)
+    if(interacciones.length > 1 && interacciones[0].length > 0 ){
+        if(interacciones[0][0].UIDActivity === "7a082f19-7699-406c-bacd-e2825f32ae57"){
+        
+            firstInteraccion = interacciones[0][0]
+        }
+    }
     const getInfoFirstInteraccion = firstInteraccion ? ListGeneral.get(firstInteraccion.UIDActivity) : undefined;
 
     return <div className="Perfil backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal-white.jpg')" }}>

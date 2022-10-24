@@ -6,7 +6,7 @@ import LINK from './Routes';
 import AppContext from '../App/AppContext';
 import Registro from '../../pages/Registro/Registro';
 import Interaccion from '../Interaccion/Interaccion';
-import Interacciones20221 from '../../constants/simulations/2022-1/Interacciones20221';
+import Interacciones20221 from '../../constants/simulations/2022/Interacciones20221';
 import ChooseCarreras from '../../pages/ChooseCarreras/index';
 import { useEffect } from 'react';
 import Perfil from '../../pages/Perfil/Perfil';

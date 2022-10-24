@@ -4,7 +4,6 @@ import PreguntasExcel from "../Pregunta/database/preguntas2022-2.json";
 import ActividadContext, { ActividadContextProvider } from "../../../components/Interaccion/ActividadContext";
 import { ResultadoPuntuacion } from "../../../constants/resultados/types";
 import Registro from "../../../constants/resultados/Registro";
-import { CARRERAS_NAME } from "../../../constants/simulations/types/Carreras";
 
 
 const Pregunta = ({ interaccion }: { interaccion?: boolean }) => {
@@ -86,6 +85,17 @@ const ActividadLoad = ({ interaccion }: { interaccion?: boolean }) => {
         }
     }
 
+    const onClick = (value: string) => {
+        setDisable(false);
+        setSelect(parseInt(value));
+
+        if (actividad) {
+            actividad.addState("respuesta", value)
+        }
+    }
+
+
+
     useEffect(() => {
 
         if (actividad) {
@@ -138,7 +148,9 @@ const ActividadLoad = ({ interaccion }: { interaccion?: boolean }) => {
 
     }, [])
 
-    return <div className="Pregunta backgroundImage" style={{ backgroundImage: `url(/includes/backgrounds/fondo-principal-white.jpg)` }}>
+    const liker = false;
+
+    return <div className="Pregunta backgroundImage" style={{ backgroundImage: `url(/includes/backgrounds/fondo-principal.png)` }}>
         <div className="Pregunta__container">
             <div className="Pregunta__titular">
                 <h1>{titulo}</h1>
@@ -148,14 +160,29 @@ const ActividadLoad = ({ interaccion }: { interaccion?: boolean }) => {
                     <p>{rango.min}</p>
                 </div>
                 <div className="Pregunta__opciones__likert">
-                    <div className="Pregunta__opciones__likert__barra">
-                        <input onClick={onInicialClick} onChange={onChange} type="range" min="0" max={opciones.length - 1} defaultValue={select} />
-                    </div>
-                    <div className="Pregunta__opciones__likert__text">
-                        {opciones.map((o, i) => {
-                            return <p key={i}>{o.titular}</p>
-                        })}
-                    </div>
+                    {liker ?
+                        <>
+                            <div className="Pregunta__opciones__likert__barra">
+                                <input onClick={onInicialClick} onChange={onChange} type="range" min="0" max={opciones.length - 1} defaultValue={select} />
+                            </div>
+                            <div className="Pregunta__opciones__likert__text">
+                                {opciones.map((o, i) => {
+                                    return <p key={i}>{o.titular}</p>
+                                })}
+                            </div>
+                        </>
+                        :
+                        <ul className="Pregunta__opciones__likert__items">
+                            {opciones.map((o, i) => {
+                                return <label className="Pregunta__opciones__likert__items__item">
+                                    <input key={i} type="radio" name="opciones" value={o.titular} onClick={() => onClick(o.titular)} />
+                                    <p>{o.titular}</p>
+                                </label>
+                            })}
+                        </ul>
+                    }
+
+
                 </div>
                 <div className="Pregunta__opciones__maximo">
                     <p>{rango.max}</p>

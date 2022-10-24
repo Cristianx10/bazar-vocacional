@@ -10,11 +10,15 @@ import { InteractionStructureChild } from '../../constants/simulations/types/Int
 import { create_UUID } from "../../constants/helpers/utils";
 import Database from "../../constants/firebase/database";
 import DBRoutes from "../../constants/firebase/database/DBRoutes";
+import { useNavigate } from 'react-router';
+import LINK from '../Router/Routes';
 
 const InteractionComponent = () => {
 
     const { usePreload, useLogin, useInteraccion } = AppContext();
     const [interaccion] = useInteraccion();
+
+    const navigate = useNavigate()
 
     const [beforeIndex, setBeforeIndex] = useState(-1);
     const [isFinish, setIsFinist] = useState(false);
@@ -103,6 +107,7 @@ const InteractionComponent = () => {
 
             } else {
                 console.log("TERMINADO")
+                navigate(LINK.INDEX)
             }
         }
     }
