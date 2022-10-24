@@ -1,0 +1,1400 @@
+[
+    {
+        "id": "B1",
+        "titular": "Las matemáticas y las ciencias son materias entretenidas para mi.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 10
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 1.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 20
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 3
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 3
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B7",
+        "titular": "Me considero una persona curiosa y apasionada por las tecnologías de información.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 10
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 0.5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 0.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 20
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 4
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B13",
+        "titular": "Me considero una persona analítica y con un buen razonamiento lógico.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 10
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 3
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 2.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 20
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 6
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B19",
+        "titular": "Me interesa aprender a crear soluciones tecnológicas basadas en software.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 10
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 20
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B25",
+        "titular": "Me gusta trabajar con computadores",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 10
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 0.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 20
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 3
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B2",
+        "titular": "Me considero una persona creativa y que encuentra soluciones distintas a los problemas.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 4
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 10
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 2
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 4
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 8
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 20
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 2
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 4
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 8
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B8",
+        "titular": "Me interesa saber cómo funcionan las cosas y cómo están diseñadas.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 4
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 10
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 8
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 20
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 2
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 3
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B14",
+        "titular": "Expreso fácilmente mis ideas mediante bocetos, dibujos y mapas conceptuales.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 1
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 10
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 2
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 20
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 2
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B20",
+        "titular": "Considero que tengo una alta atención al detalle.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 3
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 10
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 3
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 3
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 4
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 6
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 20
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 6
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 6
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 8
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B26",
+        "titular": "Tengo destreza manual para materializar mis ideas.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 10
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 0.5
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 20
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 3
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B3",
+        "titular": "Me interesan los trabajos de investigación científica",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": []
+            },
+            {
+                "titular": "3",
+                "resultados": []
+            }
+        ]
+    },
+    {
+        "id": "B9",
+        "titular": "Tengo buena memoria para retener fórmulas y palabras técnicas",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": []
+            },
+            {
+                "titular": "3",
+                "resultados": []
+            }
+        ]
+    },
+    {
+        "id": "B15",
+        "titular": "Me causa curiosidad los fenómenos químicos en la naturaleza",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": []
+            },
+            {
+                "titular": "3",
+                "resultados": []
+            }
+        ]
+    },
+    {
+        "id": "B21",
+        "titular": "Me gusta poner a prueba las cosas mediante experimentación",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": []
+            },
+            {
+                "titular": "3",
+                "resultados": []
+            }
+        ]
+    },
+    {
+        "id": "B27",
+        "titular": "Me gusta mezclar sustancias químicas en laboratorio y analizar sus reaciones químicas.",
+        "min": "En desacuerdo",
+        "max": "De acuerdo ",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": []
+            },
+            {
+                "titular": "3",
+                "resultados": []
+            }
+        ]
+    },
+    {
+        "id": "B4",
+        "titular": "Considero que puedo entender la personalidad de los demás a través de sus comportamientos",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B10",
+        "titular": "Considero que tengo la capacidad de interpretar adecuadamente el lenguaje corporal de los demás",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 10
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 3
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 20
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B16",
+        "titular": "Me considero una persona paciente y con capacidad de escucha",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 10
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 3
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 4
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 5
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 20
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 6
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B22",
+        "titular": "Me considero una persona empática que es capaz de ponerse en los zapatos de los demás.",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 10
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 2.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 20
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B28",
+        "titular": "Considero que la salud mental es tan importante como la salud física.",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 10
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 20
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B5",
+        "titular": "Me interesa saber sobre el funcionamiento y las afecciones del cuerpo humano",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "quimica",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "quimica",
+                        "valor": 5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B11",
+        "titular": "Puedo trabajar bajo presión y tener una hábil toma decisiones ",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 3
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 3
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 10
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 3
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 6
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 6
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 3
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 20
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B17",
+        "titular": "Tengo vocación de servicio a los demás y estoy dispuesto sacrificarme por el bien de los demás ",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "quimica",
+                        "valor": 1
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "quimica",
+                        "valor": 2
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 5
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B23",
+        "titular": "Me considero una persona con un alto nivel para retener información",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1.5
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 3
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 2
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 10
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1.5
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "ingenieria_sistemas",
+                        "valor": 5
+                    },
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 3
+                    },
+                    {
+                        "id": "quimica",
+                        "valor": 6
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 4
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 20
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B29",
+        "titular": "Me considero una persona con la capacidad identificar los riesgos y manejar las situaciones de crisis de manera adecuada",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "quimica",
+                        "valor": 4
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 3
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 10
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 1
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "quimica",
+                        "valor": 8
+                    },
+                    {
+                        "id": "psicologia",
+                        "valor": 6
+                    },
+                    {
+                        "id": "medicina",
+                        "valor": 20
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B6",
+        "titular": "Las actividades artísticas son mis asignaturas escolares favoritas",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2.5
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 5
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B12",
+        "titular": "Me gusta la sensación de estar en público",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 1
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "diseno_industrial",
+                        "valor": 2
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B18",
+        "titular": "Me gusta expresarme a través de la música",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "psicologia",
+                        "valor": 0.5
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B24",
+        "titular": "Considero que tengo un buen oído para la música ",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "psicologia",
+                        "valor": 0.5
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "psicologia",
+                        "valor": 1
+                    },
+                    {
+                        "id": "musica",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B30",
+        "titular": "Tengo habilidades significativas en algún instrumento ",
+        "min": "en desacuerdo",
+        "max": "De acuerdo",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": [
+                    {
+                        "id": "musica",
+                        "valor": 10
+                    }
+                ]
+            },
+            {
+                "titular": "3",
+                "resultados": [
+                    {
+                        "id": "musica",
+                        "valor": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "B31",
+        "titular": "¿Que tan acertados te parecieron los resultados de tu prueba?",
+        "min": "Poco",
+        "max": "Mucho",
+        "opciones": [
+            {
+                "titular": "1",
+                "resultados": []
+            },
+            {
+                "titular": "2",
+                "resultados": []
+            },
+            {
+                "titular": "3",
+                "resultados": []
+            },
+            {
+                "titular": "4",
+                "resultados": []
+            },
+            {
+                "titular": "5",
+                "resultados": []
+            }
+        ]
+    }
+]

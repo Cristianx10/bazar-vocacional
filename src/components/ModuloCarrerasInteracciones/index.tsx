@@ -27,31 +27,35 @@ const ModuloCarrerasInteracciones = () => {
 
     const [interacciones, setInteracciones] = useState<{ name: string, interacciones: IInteraccion[] }[]>([]);
 
-    
+
 
     useEffect(() => {
 
         var actividades: { name: string, interacciones: IInteraccion[] }[] = []
         var actividadesMap = new Map<string, IInteraccion[]>();
 
-        ListGeneral.forEach(({ UID, image, title, tags }) => {
-            var actividad: IInteraccion = {
-                UID, img: image, name: title, carreras: tags
+        ListGeneral.forEach(({ UID, image, title, tags, visibility }) => {
+            if (visibility === undefined || visibility) {
+                var actividad: IInteraccion = {
+                    UID, img: image, name: title, carreras: tags
+                }
+
+                const firtName = tags[0];
+                var itemMap = actividadesMap.get(firtName)
+                if (itemMap === undefined) {
+                    actividadesMap.set(firtName, []);
+                    itemMap = actividadesMap.get(firtName)
+                }
+
+                if (itemMap !== undefined) {
+                    itemMap.push(actividad)
+                }
             }
 
-            const firtName = tags[0];
-            var itemMap = actividadesMap.get(firtName)
-            if (itemMap === undefined) {
-                actividadesMap.set(firtName, []);
-                itemMap = actividadesMap.get(firtName)
-            }
-
-            if (itemMap !== undefined) {
-                itemMap.push(actividad)
-            }
         })
 
         actividadesMap.forEach((value, key) => {
+
             actividades.push({
                 name: formatCarreraString(key),
                 interacciones: value

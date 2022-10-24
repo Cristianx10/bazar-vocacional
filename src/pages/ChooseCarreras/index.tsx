@@ -3,6 +3,7 @@ import { CARRERAS_NAME } from '../../constants/simulations/types/Carreras';
 import { useEffect, useState, useRef } from 'react';
 import UserFirebase from '../../constants/firebase/user/index';
 import { IUserInformation } from '../../constants/firebase/user/Usuario';
+import CARRERAS from '../../constants/simulations/types/Carreras';
 
 
 const ChooseCarreras = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<"" | "HOME" | "CHOOSE">> }) => {
@@ -13,11 +14,23 @@ const ChooseCarreras = ({ setPage }: { setPage: React.Dispatch<React.SetStateAct
 
     useEffect(() => {
 
+        /*
         var arrayCarreras: { id: string, value: string }[] = [];
         Object.entries(CARRERAS_NAME).forEach((c) => {
             arrayCarreras.push({ id: c[0], value: c[1] })
         });
         setCarreras(arrayCarreras)
+        */
+
+        setCarreras([
+            { id: CARRERAS.INGENIERIA_SISTEMAS, value: CARRERAS_NAME.INGENIERIA_SISTEMAS },
+            { id: CARRERAS.PSICOLOGIA, value: CARRERAS_NAME.PSICOLOGIA },
+            { id: CARRERAS.MERCADEO, value: CARRERAS_NAME.MERCADEO },
+            { id: CARRERAS.MEDICINA, value: CARRERAS_NAME.MEDICINA },
+            { id: CARRERAS.ADMINISTRACION_EMPRESA, value: CARRERAS_NAME.ADMINISTRACION_EMPRESA },
+            { id: CARRERAS.QUIMICA, value: CARRERAS_NAME.QUIMICA }
+            
+        ])
 
     }, [])
 
@@ -36,11 +49,10 @@ const ChooseCarreras = ({ setPage }: { setPage: React.Dispatch<React.SetStateAct
     const onContinuar = () => {
         const usuario = UserFirebase.usuario;
         if (usuario) {
-         
+
             usuario.setPreferencias([...usuario.getPreferencias(), ...selectCarreras], () => {
                 setPage("HOME")
             })
-
 
         }
     }
@@ -62,7 +74,7 @@ const ChooseCarreras = ({ setPage }: { setPage: React.Dispatch<React.SetStateAct
                         </li>
                     })}
                 </ul>
-                <h1>No. {selectCarreras.length}</h1>
+
                 <button onClick={onContinuar} type="button" className="btn btn-primary" disabled={selectCarreras.length < 3 || selectCarreras.length > 3}>Continuar</button>
             </div>
 

@@ -378,7 +378,7 @@ function draw() {
 
 
 function mousePressed() {
-
+    oActivity.finish();
 
     switch (pantalla) {
         case 0:

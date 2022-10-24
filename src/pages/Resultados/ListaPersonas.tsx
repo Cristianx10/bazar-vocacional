@@ -32,6 +32,7 @@ const ListaPersonas = () => {
     useEffect(() => {
 
         getAllUserPruebas((registros) => {
+            console.log("REGISTRO", registros)
             setRegistros([...registros]);
         })
 

@@ -2,7 +2,9 @@
 import InteractionStructure from "./types/InteractionStructure";
 
 import Interacciones20221 from "./2022-1/Interacciones20221";
-import Interacciones20211 from './2021/Interacciones20212';
+import GeneralActividades from './General/Preguntas/General';
+import Interacciones20222 from './2022-2/Interacciones20222';
+import Interacciones20212 from './2021/Interacciones20212';
 
 
 
@@ -15,13 +17,22 @@ var index = 0;
 
 [
     {
-        title: "Interacciones 2021-1",
-        values: Interacciones20211
+        title: "General",
+        values: GeneralActividades
+    },
+
+    {
+        title: "Interacciones 2021-2",
+        values: Interacciones20212
     }
     ,
     {
         title: "Interacciones 2022-1",
         values: Interacciones20221
+    }
+    , {
+        title: "Interacciones 2022-2",
+        values: Interacciones20222
     }
 
 ].forEach(({ title, values }, i) => {

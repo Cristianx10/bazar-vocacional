@@ -1,16 +1,11 @@
 import "./index.scss";
 import { ResultadosContextProvider } from './ResultadosContext';
-import DBRoutes from '../../constants/firebase/database/DBRoutes';
-import Database from '../../constants/firebase/database/index';
+
 import ResultadosContext from './ResultadosContext';
 import { useState, useEffect } from 'react';
 import { UserResult } from '../../components/ViewResultados/ResultadosFormat';
-import { ResultadoInteraction, ResultadoPuntuacion } from '../../constants/resultados/types';
-import { IUsuario } from '../../constants/firebase/user/Usuario';
-import { getAllUserPruebas } from './config';
-import { IPropsState } from '../../components/Context/Context';
-import { CheckListSelect, CheckBoxListContextProvider } from '../../components/CheckBoxList/index';
-import CheckBoxList from '../../components/CheckBoxList/index';
+import { ResultadoPuntuacion } from '../../constants/resultados/types';
+
 import ListaPersonas from './ListaPersonas';
 import ListGeneral from '../../constants/simulations/ListGeneral';
 import Header from "../../components/Header/Header";
@@ -75,7 +70,6 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
 
     useEffect(() => {
 
-
         setName(registro.usuario.nombre);
 
         var resultadosArray: { name: string, resultado: number, maximo: number, porcentaje: number }[] = [];
@@ -126,26 +120,33 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
         var interacciones = [] as IRegistroItemInteraccion[];
 
         registro.interacciones.forEach((dato) => {
-           
-            const { UIDActivity, resultados, data , UID} = dato;
+
+            const { UIDActivity, data, UID } = dato;
+
+            const resultados = dato.resultados ? dato.resultados : []
 
             var props = [] as { key: string, value: string | number | boolean }[];
 
-            data.estados.forEach(({ key, values }) => {
-                var valueO = values[values.length - 1];
-                var value: string | number | boolean = "#VALOR NULL";
-                if (valueO) {
-                    value = valueO.value
-                }
-                props.push({ key, value })
-            })
+
+            if (data.estados) {
+                data.estados.forEach(({ key, values }) => {
+                    var valueO = values[values.length - 1];
+                    var value: string | number | boolean = "#VALOR NULL";
+                    if (valueO) {
+                        value = valueO.value
+                    }
+                    props.push({ key, value })
+                })
+
+            }
+
 
             const interaccion = ListGeneral.get(UIDActivity);
             if (interaccion) {
                 const { title, image } = interaccion;
 
                 const datoObj: IRegistroItemInteraccion = {
-                    key:UID,
+                    key: UID,
                     title,
                     resultados,
                     props,
@@ -177,7 +178,7 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
                 </li>
                 {carreras.map((carrera, i) => {
                     const { name, maximo, porcentaje, resultado } = carrera;
-                    return <li className="ResultadosUnity__carreras__list__item">
+                    return <li key={i} className="ResultadosUnity__carreras__list__item">
                         <p className="large">{name}</p>
                         <p className="small center">{porcentaje}%</p>
                         <p className="small center">{resultado}</p>

@@ -21,6 +21,9 @@ class ActividadTS {
     constructor(info: InteractionStructure) {
         this.info = info;
         this.actividad = new ActividadTSLite(this);
+        if (this.info.config) {
+            this.actividad.setConfig(this.info.config)
+        }
     }
 
     initIframe(HTMLIframe: HTMLIFrameElement) {
@@ -47,7 +50,7 @@ class ActividadTS {
 
                     if (data.type === "FINISH_ACTIVITY") {
                         const objeto = data.data as ActivityLiteResult;
-                        
+
                         this.actividad.loadData(objeto)
 
                         this.actividad.isFinalizado = false;
@@ -96,8 +99,8 @@ class ActividadTS {
         const data = this.actividad.medicion.toJSON();
         const informacion = this.actividad.informacion;
 
-        const porcentajes = calculatePorcentaje(resultados,maximos);
-        
+        const porcentajes = calculatePorcentaje(resultados, maximos);
+
 
         var result: ResultadoInteraction = {
             UID,

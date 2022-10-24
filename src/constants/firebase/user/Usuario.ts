@@ -24,6 +24,7 @@ export interface IUsuario {
     preferencias: string[];
     informacion: IUserInformation[];
     resultados: IDataResult;
+    activitysRegister: string[];
 }
 
 interface IDataResult {
@@ -52,6 +53,8 @@ class Usuario implements IUsuario {
     interacciones: ResultadoInteractionSimple[];
     resultados: IDataResult;
 
+    activitysRegister: string[];
+
     constructor(user: IUsuario) {
         this.UID = user.UID;
         this.nombre = user.nombre;
@@ -59,14 +62,21 @@ class Usuario implements IUsuario {
         this.role = user.role;
         this.date = user.date;
         this.preferencias = user.preferencias ? user.preferencias : [];
-        this.resultados = user.resultados;
+        this.resultados = user.resultados ? user.resultados : {
+            fecha: { inicio: 0, fin: 0 },
+            result: {
+                global: [],
+                maximo: [],
+                porcentaje: [],
+            }
+        };
         this.informacion = user.informacion ? user.informacion : [];
         this.identificacion = user.identificacion;
         this.genero = user.genero;
         this.prueba = user.prueba;
         this.interacciones = [];
 
-
+        this.activitysRegister = user.activitysRegister ? user.activitysRegister : [];
     }
 
     addInteraction(interaction: ResultadoInteraction, onAdded: () => void) {
@@ -257,7 +267,7 @@ class Usuario implements IUsuario {
             })
         })
 
-       // console.log(interaccionesMap, interaccionesArray)
+        // console.log(interaccionesMap, interaccionesArray)
 
         interaccionesMap.forEach((interacciones, key) => {
             interacciones.sort((a, b) => {
@@ -294,7 +304,7 @@ class Usuario implements IUsuario {
 
         })
 
-       // console.log(interaccionesMap, interaccionesArray)
+        // console.log(interaccionesMap, interaccionesArray)
 
 
         return interaccionesArray;
@@ -314,6 +324,46 @@ class Usuario implements IUsuario {
             this.UID,
             "preferencias"
         ], preferencias, load)
+    }
+
+    getInformation() {
+        return this.informacion;
+    }
+
+    setInformacion(informacion: IUserInformation[], load?: () => void) {
+        const RU = DBRoutes.USER;
+        this.informacion = informacion;
+        Database.writeDatabase([
+            RU._THIS,
+            RU.INFORMATION,
+            this.UID,
+            "informacion"
+        ], informacion, load)
+    }
+
+    getActivitysRegister() {
+        return this.activitysRegister;
+    }
+
+    setActivitysRegisters(activitysRegister: string[], load?: () => void) {
+        const RU = DBRoutes.USER;
+        this.activitysRegister = activitysRegister;
+        Database.writeDatabase([
+            RU._THIS,
+            RU.INFORMATION,
+            this.UID,
+            "activitysRegister"
+        ], activitysRegister, load)
+    }
+
+    getActivitysRegisterId(id: string) {
+        let encontro =false;
+        this.activitysRegister.forEach(a=>{
+            if(id === a){
+                encontro = true;
+            }
+        })
+        return encontro;
     }
 
 

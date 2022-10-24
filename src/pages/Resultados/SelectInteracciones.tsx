@@ -57,7 +57,7 @@ const ResultadosItemDescarga = ({ registros }: { registros: UserResultCheck[] })
 
 
         registros.forEach((model) => {
-            
+
             model.interacciones.forEach((dato) => {
                 const UIDActivity = dato.UIDActivity;
 
@@ -70,14 +70,17 @@ const ResultadosItemDescarga = ({ registros }: { registros: UserResultCheck[] })
 
                         var props = [] as { key: string, value: string | number | boolean, check: boolean }[];
 
-                        dato.data.estados.forEach(({ key, values }) => {
-                            var valueO = values[values.length - 1];
-                            var value: string | number | boolean = "#VALOR NULL";
-                            if (valueO) {
-                                value = valueO.value
-                            }
-                            props.push({ key, value, check: true })
-                        })
+                        if (dato.data.estados) {
+
+                            dato.data.estados.forEach(({ key, values }) => {
+                                var valueO = values[values.length - 1];
+                                var value: string | number | boolean = "#VALOR NULL";
+                                if (valueO) {
+                                    value = valueO.value
+                                }
+                                props.push({ key, value, check: true })
+                            })
+                        }
 
                         const interaccionMap: IResultadoInteracciones = {
                             UIDActivity,

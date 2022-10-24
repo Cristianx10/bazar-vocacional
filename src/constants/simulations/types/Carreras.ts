@@ -17,7 +17,9 @@ const CARRERAS = {
     INGENIERIA_SISTEMAS: "INGENIERIA_SISTEMAS",
     DISENO_INDUSTRIAL: "DISENO_INDUSTRIAL",
     QUIMICA: "QUIMICA",
+    QUIMICA_FARMACEUTICA: "QUIMICA_FARMACEUTICA",
     DISENO_MODAS: "DISENO_MODAS",
+    ADMINISTRACION_EMPRESA: "ADMINISTRACION_EMPRESA",
     DISENO_MEDIOS_INTERACTIVOS: "DISENO_MEDIOS_INTERACTIVOS",
 }
 
@@ -40,7 +42,9 @@ export const CARRERAS_NAME = {
     INGENIERIA_SISTEMAS: "INGENIERÍA SISTEMAS",
     DISENO_INDUSTRIAL: "DISEÑO INDUSTRIAL",
     QUIMICA: "QUÍMICA",
+    QUIMICA_FARMACEUTICA: "QUÍMICA FARMACÉUTICA",
     DISENO_MODAS: "DISEÑO MODAS",
+    ADMINISTRACION_EMPRESA: "ADMINISTRACIÓN DE EMPRESAS",
     DISENO_MEDIOS_INTERACTIVOS: "DISEÑO DE MEDIOS INTERACTIVOS",
 }
 
@@ -61,7 +65,7 @@ const formatCarrera = getNamesCarrerasMap();
 
 export const formatCarreraString = (name: string) => {
     var carrera: string = formatCarrera.get(name);
- 
+
     var result = "";
     if (carrera) {
         var cadena = carrera.toLowerCase().split(' ');

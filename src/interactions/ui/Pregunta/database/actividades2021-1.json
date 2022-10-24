@@ -1,0 +1,21 @@
+[
+    {"id":"medicina","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"musica","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"job","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"3d","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"quimica_carbono","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"ballsort","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+
+    {"id":"moda","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"pokemon","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"licenciatura","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"psicologia","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+
+    {"id":"sumaflow","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"bongorush","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"counceling","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"diagnosticalo","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"madlab","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]},
+    {"id":"biologiaanimal","titular":"¿Qué tan satisfecho me sentí con mi desempeñó en la anterior interacción?","min":"Poco satisfecho","max":"Muy satisfecho","opciones":[{"titular":"1","resultados":[]},{"titular":"2","resultados":[]},{"titular":"3","resultados":[]}]}
+
+]

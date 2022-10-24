@@ -43,6 +43,8 @@ const InteraccionLoad = ({ onFinish }: { onFinish: (actividad: ActividadTS) => v
             onFinish(interaccion)
         })
 
+        
+        
 
     }, [])
 

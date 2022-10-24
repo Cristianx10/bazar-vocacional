@@ -30,6 +30,8 @@ class ActividadTSLite {
     fInit?: () => void;
     initEjecutado;
 
+    config?: Object;
+
     private fOnFinish?: (result: ActivityLiteResult) => void;
 
     constructor(actividad?: ActividadTS) {
@@ -193,7 +195,7 @@ class ActividadTSLite {
         var maximos = this.maximos;
         const informacion = this.informacion;
         const isFinalizado = this.isFinalizado;
-        
+
 
         if (maximos.length === 0 && this.actividad) {
             var info = ListGeneral.get(this.actividad.info.UID);
@@ -228,6 +230,16 @@ class ActividadTSLite {
     redirect(url: string) {
         this.onSaveData();
         window.location.href = url;
+    }
+
+    setConfig(config: Object) {
+        this.config = config;
+    }
+
+    onGetConfig(load: (config: Object) => void) {
+        if (this.config) {
+            load(this.config) 
+        }
     }
 
 }
