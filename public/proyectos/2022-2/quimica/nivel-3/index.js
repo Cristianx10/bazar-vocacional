@@ -114,7 +114,7 @@ function countdown(minutes, seconds) {
         }
 
         
-        if(minutes == 0 && seconds == -1){acuerdo
+        if(minutes <= 0 && seconds <= 0){
             timer = true;     
             saveScore(points);
             changeLevelScore();

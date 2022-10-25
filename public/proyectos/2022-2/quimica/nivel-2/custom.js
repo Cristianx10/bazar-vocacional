@@ -28,7 +28,7 @@ var currentAmount = 0;
 
 let score = 0;
 score = oActivity.getState("score")[0]();
-
+updateDisplayedScore()
 console.log("puntaje: ", score)
 
 let timer = 0;
@@ -47,7 +47,6 @@ function saveScore(score) {
 
 
 function updateDisplayedScore() {
-    scoreContainer.innerHTML = "";
     scoreContainer.innerHTML = '' + score;
 }
 
@@ -116,11 +115,10 @@ function countdown(minutes, seconds) {
         }
 
 
-        if (minutes == 0 && seconds == -1) {
+        if (minutes <= 0 && seconds <= 0) {
             timer = true;
             saveScore(score);
             changeLevel3();
-
         }
     }
     tick();
