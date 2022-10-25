@@ -1,6 +1,6 @@
 let bg;
 //let score = parseInt(localStorage.getItem("score")) ;
-let score = oActivity.getState("score");
+let score = oActivity.getState("score")[0]();
 
 
 function setup() {
@@ -33,9 +33,9 @@ function mousePressed() {
         //  let tiempo2 = localStorage.getItem('time2')
         //  let tiempo3 = localStorage.getItem('time3')
 
-        let tiempo1 = oActivity.getState('time1')
-        let tiempo2 = oActivity.getState('time2')
-        let tiempo3 = oActivity.getState('time3')
+        let tiempo1 = oActivity.getState('time1')[0]()
+        let tiempo2 = oActivity.getState('time2')[0]()
+        let tiempo3 = oActivity.getState('time3')[0]()
 
         oActivity.addState("Tiempo Nivel 1", tiempo1);
         oActivity.addState("Tiempo Nivel 2", tiempo2);
