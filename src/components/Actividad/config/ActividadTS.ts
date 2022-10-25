@@ -101,19 +101,44 @@ class ActividadTS {
 
         const porcentajes = calculatePorcentaje(resultados, maximos);
 
+        const uniqueUID = this.info.uniqueUID ? this.info.uniqueUID : undefined;
 
-        var result: ResultadoInteraction = {
-            UID,
-            UIDUser,
-            UIDActivity,
-            fecha,
-            estado,
-            resultados,
-            maximos,
-            data,
-            informacion,
-            porcentajes
+
+        if (uniqueUID !== undefined) {
+
+            var result: ResultadoInteraction = {
+                UID, 
+                UIDUser,
+                UIDActivity,
+                fecha,
+                estado,
+                resultados,
+                maximos,
+                data,
+                informacion,
+                porcentajes,
+                uniqueUID
+            }
+
+        } else {
+
+            var result: ResultadoInteraction = {
+                UID,
+                UIDUser,
+                UIDActivity,
+                fecha,
+                estado,
+                resultados,
+                maximos,
+                data,
+                informacion,
+                porcentajes
+            }
+
         }
+
+
+
 
         return result;
     }

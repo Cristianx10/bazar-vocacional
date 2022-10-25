@@ -9,6 +9,11 @@ import { ResultadoPuntuacion } from '../../constants/resultados/types';
 import ListaPersonas from './ListaPersonas';
 import ListGeneral from '../../constants/simulations/ListGeneral';
 import Header from "../../components/Header/Header";
+import UserFirebase from '../../constants/firebase/user/index';
+import BtnSure from "../../components/BtnSure";
+import Database from '../../constants/firebase/database/index';
+import DBRoutes from '../../constants/firebase/database/DBRoutes';
+import Usuario from '../../constants/firebase/user/Usuario';
 
 export type UserResultCheck = UserResult & { check: boolean };
 
@@ -51,6 +56,7 @@ interface IRegistroItemInteraccion {
     resultados: ResultadoPuntuacion[];
     props: { key: string, value: string | number | boolean }[]
     image: string;
+    uniqueUID?: string;
 }
 
 
@@ -140,6 +146,9 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
 
             }
 
+            const uniqueUID = dato.uniqueUID;
+
+
 
             const interaccion = ListGeneral.get(UIDActivity);
             if (interaccion) {
@@ -150,7 +159,8 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
                     title,
                     resultados,
                     props,
-                    image
+                    image,
+                    uniqueUID
                 }
 
                 interacciones.push(datoObj)
@@ -163,6 +173,59 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
 
 
     }, [])
+
+    const onDeleteInteraction = (interaction: string, load: () => void, uniqueUID?: string) => {
+
+        const usuario = registro.usuario
+        const DR = DBRoutes.RESULTADOS;
+        const DU = DBRoutes.USER;
+        const UID = usuario.UID;
+        const UIDInteraction = interaction;
+
+        Database.writeDatabase([
+            DR._THIS,
+            DR.PUNTAJE,
+            UID,
+            UIDInteraction
+        ], {}, () => {
+            Database.writeDatabase([
+                DR._THIS,
+                DR.DATA,
+                UID,
+                UIDInteraction
+            ], {}, () => {
+
+                if (uniqueUID) {
+                    const findA = Usuario.getActivitysRegisterId(usuario.activitysRegister, uniqueUID)
+                    if (findA) {
+
+                        var updateActivityRegister = [] as string[]
+                        usuario.activitysRegister.forEach(a => {
+                            if (a !== uniqueUID) {
+                                updateActivityRegister.push(a);
+                            }
+                        })
+
+                        usuario.activitysRegister = updateActivityRegister;
+
+                        Database.writeDatabase([
+                            DU._THIS,
+                            DR.INFORMATION,
+                            UID,
+                            "activitysRegister"
+                        ], updateActivityRegister, () => {
+                            load()
+                        });
+                    }
+
+                } else {
+                    load()
+                }
+
+            })
+        })
+
+    }
 
 
     return <div className="ResultadosUnity">
@@ -189,12 +252,26 @@ const ResultadoRegistroItem = ({ registro }: { registro: UserResultCheck }) => {
         </div>
         <div className="ResultadosUnity__interacciones">
             <ol className="ResultadosUnity__interacciones__list">
-                {interacciones.map(({ key, title, resultados, props, image }) => {
+                {interacciones.map((info) => {
+                    const { key, title, resultados, props, image } = info;
                     return <li className="ResultadosUnity__interacciones__list__item" key={key}>
                         <div className="ResultadosUnity__interacciones__list__item__info">
                             <p><strong>Nombre:</strong></p>
                             <h4>{title}</h4>
                             <img src={image} alt="" />
+                            {(UserFirebase.usuario ? UserFirebase.usuario.role === "ADMINISTRADOR" : false) ?
+                                <BtnSure onClick={() => onDeleteInteraction(key, () => {
+                                    setInteracciones(interacciones.filter(i => {
+                                        if (i.key !== key) {
+                                            return i;
+                                        }
+                                    }))
+                                }, info.uniqueUID)} />
+
+                                :
+                                <></>
+                            }
+
                         </div>
 
                         <div className="ResultadosUnity__interacciones__list__item__result">

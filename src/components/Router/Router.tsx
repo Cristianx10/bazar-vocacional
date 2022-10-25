@@ -14,6 +14,7 @@ import { Navigate } from "react-router";
 import UserFirebase from '../../constants/firebase/user/index';
 import Resultados from '../../pages/Resultados/index';
 import InteractionComponent from '../InteractionComponent';
+import ManagerInteractions from '../../pages/ManagerInteractions/index';
 
 
 
@@ -42,6 +43,7 @@ const Router = () => {
                             <Route path={LINK.INDEX} element={<Home />} />
                             <Route path={LINK.PERFIL} element={<Perfil />} />
                             <Route path={LINK.RESULTADOS} element={<Resultados />} />
+                            <Route path={LINK.MANAGER_INTERACTIONS} element={<ManagerInteractions />} />
                         </>
                         : <>
                             <Route path={LINK.INDEX} element={<Index />} />

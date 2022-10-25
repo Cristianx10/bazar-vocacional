@@ -224,6 +224,10 @@
 
                     &__info{
                         margin-right: 20px;
+
+                        .delete{
+                            margin: 10px;
+                        }
                     }
 
                     &__result{

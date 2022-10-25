@@ -189,9 +189,20 @@ class Usuario implements IUsuario {
 
             var datos = new Map<string, ResultadoInteractionSimple>();
 
+            // var lastFecha = 0;
             Object.entries<string>(sResult).forEach(([key, result]) => {
-                datos.set(key, JSON.parse(result));
+
+                const resultToObject: ResultadoInteractionSimple = JSON.parse(result);
+                datos.set(key, resultToObject);
+
+                /*
+                if(lastFecha === 0){
+                    lastFecha = resultToObject.fecha.fin;
+                }
+                */
             });
+
+
 
 
             var resultados = Registro.calculatePonderado(datos);
@@ -221,7 +232,7 @@ class Usuario implements IUsuario {
         })
     }
 
-    getAllInteracciones(load: () => void) {
+    getAllInteracciones(load: (interacciones: ResultadoInteractionSimple[]) => void) {
         //Codigo pendiente
         const DR = DBRoutes.RESULTADOS;
         const UID = this.UID;
@@ -239,19 +250,20 @@ class Usuario implements IUsuario {
 
 
 
-            load();
+            load(this.interacciones);
         })
 
-        return this.interacciones;
     }
 
     getOrdenInteracciones(): ResultadoInteractionSimple[][] {
 
         var interaccionesArray: ResultadoInteractionSimple[][] = [];
         var interaccionesMap = new Map<string, ResultadoInteractionSimple[]>()
+
+
         this.interacciones.forEach((interaccion) => {
 
-            interaccion.resultados.forEach((result) => {
+            interaccion.maximos.forEach((result) => {
                 var actividad = interaccionesMap.get(result.id);
                 if (actividad === undefined) {
                     interaccionesMap.set(result.id, []);
@@ -357,14 +369,37 @@ class Usuario implements IUsuario {
     }
 
     getActivitysRegisterId(id: string) {
-        let encontro =false;
-        this.activitysRegister.forEach(a=>{
-            if(id === a){
+        let encontro = false;
+        this.activitysRegister.forEach(a => {
+            if (id === a) {
                 encontro = true;
             }
         })
         return encontro;
     }
+
+    static getActivitysRegisterId(activitysRegister: string[], id: string) {
+        let encontro = false;
+        activitysRegister.forEach(a => {
+            if (id === a) {
+                encontro = true;
+            }
+        })
+        return encontro;
+    }
+
+    static setActivitysRegisters(UID: string, activitysRegister: string[], load?: () => void) {
+        const RU = DBRoutes.USER;
+
+        Database.writeDatabase([
+            RU._THIS,
+            RU.INFORMATION,
+            UID,
+            "activitysRegister"
+        ], activitysRegister, load)
+    }
+
+
 
 
 

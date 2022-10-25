@@ -10,6 +10,7 @@ const LINK = {
 
     CREATION: "/crear",
     RESULTADOS: "/resultados",
+    MANAGER_INTERACTIONS: "/administrador-interacciones",
     USERS:"/usuarios"
 }
 

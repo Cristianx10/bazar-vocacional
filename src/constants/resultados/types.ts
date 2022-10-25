@@ -23,9 +23,10 @@ export interface ResultadoInteractionSimple {
 }
 
 
-export interface ResultadoInteraction extends ResultadoInteractionSimple{
+export interface ResultadoInteraction extends ResultadoInteractionSimple {
     data: IMedicionUnity;
     informacion: ResultadoUser[];
+    uniqueUID?: string;
 }
 
 

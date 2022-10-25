@@ -21,7 +21,7 @@ const Perfil = () => {
 
             usuario.getAllInteracciones(() => {
                 const actividades = usuario.getOrdenInteracciones()
-          //      console.log(actividades)
+                console.log("Mis actividades",actividades)
                 setInteracciones(actividades)
             })
 
