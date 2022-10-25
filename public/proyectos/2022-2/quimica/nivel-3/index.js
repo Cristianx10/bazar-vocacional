@@ -24,7 +24,7 @@ let points = 0;
 
 
     points = oActivity.getState("score")[0]();
-
+    oActivity.addState("page", 'nivel3')
 
 updatePoints();
 let selectedWord = "";
@@ -114,7 +114,7 @@ function countdown(minutes, seconds) {
         }
 
         
-        if(minutes == 0 && seconds == -1){acuerdo
+        if(minutes <= 0 && seconds <= 0){
             timer = true;     
             saveScore(points);
             changeLevelScore();
