@@ -25,7 +25,7 @@ answerList = [];
   let timer;
 
 function changeLevel2() {
-    window.location.href = '/nivel-2';
+    oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
 }
 
 function saveScore(score) {
