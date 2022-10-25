@@ -17,6 +17,7 @@ const words = [
     {word: 'carbono', img: './images/image3.png'},
     {word: 'glicerina', img: './images/image4.png'}
 ];
+
 let points = parseInt(localStorage.getItem("score")) ;
 
 updatePoints();
@@ -32,12 +33,11 @@ let tiempo = 0;
 
 function changeLevelScore() {
     localStorage.setItem("time3", tiempo);
-    window.location.href = '/nivel-score';
+    oActivity.redirect('/proyectos/2022-2/quimica/nivel-score/index.html')
 }
 
 function saveScore(score) {
     localStorage.setItem("score", score);
-    
 }
 
 
@@ -139,8 +139,6 @@ function selectWord(index) {
 function updatePoints() {
     pointsContainer.innerHTML = "";
     pointsContainer.innerHTML = "" + points + " puntos";
-    
-    
 }
 
 //Todas las letras

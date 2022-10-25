@@ -26,8 +26,7 @@ let timer = 0;
 //cambiar nivel
 function changeLevel3() {
     localStorage.setItem("time2", timer);
-
-    window.location.href = '/nivel-3';
+    oActivity.redirect('/proyectos/2022-2/quimica/nivel-3/index.html')
 }
 
 function saveScore(score) {
@@ -156,7 +155,6 @@ function generateElements() {
                     } else {
                         saveScore(score);
                         changeLevel3();
-                        
                     }
                 }
 
