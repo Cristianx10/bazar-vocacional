@@ -24,7 +24,7 @@ var currentAmount = 0;
 
 //let score = parseInt(localStorage.getItem("score"));
 
-let score = oActivity.getState("score");
+let score = oActivity.getState("score")[0]();
 
 let timer = 0;
 
