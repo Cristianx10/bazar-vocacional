@@ -143,6 +143,7 @@ function generateElements() {
     element.style.setProperty('font-size', `${value / 10}px`);
     element.classList.add("element", colorClasses[selectedCompound]);
     elements.appendChild(element);
+
     var fallInterval = setInterval(fallDownElement, 25)
 
 
@@ -184,6 +185,7 @@ function generateElements() {
         if (element.getBoundingClientRect().top > bottomLimit) {
             elements.removeChild(element);
             clearInterval(fallInterval);
+            
         }
     }
 

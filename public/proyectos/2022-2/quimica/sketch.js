@@ -31,6 +31,8 @@ oActivity.setInit(()=>{
 oActivity.addState("time1", 0)
 oActivity.addState("time2", 0)
 oActivity.addState("time3", 0)
+
+oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
 })
 
 function changeLevel2() {
