@@ -11,6 +11,7 @@ import ChooseCarreras from "../ChooseCarreras";
 import AppContext from '../../components/App/AppContext';
 import { useNavigate } from 'react-router';
 import LINK from '../../components/Router/Routes';
+import InteractionStructure from '../../constants/simulations/types/InteractionStructure';
 
 const Home = () => {
 
@@ -59,7 +60,33 @@ const PageHome = () => {
         const usuario = UserFirebase.usuario;
         if (usuario) {
 
-            ListGeneral.forEach(({ UID, image, title, tags }) => {
+         
+            var actividadesSelectMap = new Map<string, InteractionStructure>()
+            var actividadesSelectMapTemp = new Map<string, InteractionStructure>()
+
+            ListGeneral.forEach((actividad) => {
+
+                const { date, tags } = actividad;
+
+                if (tags.length > 0) {
+                    var selectActividad = actividadesSelectMap.get(tags[0]);
+                    if (selectActividad === undefined) {
+                        actividadesSelectMap.set(tags[0], actividad);
+                        selectActividad = actividad;
+                    } else {
+
+                        if (selectActividad.date < actividad.date) {
+                            actividadesSelectMap.set(tags[0], actividad);
+                        }
+                    }
+                }
+            })
+
+            actividadesSelectMap.forEach(a => {
+                actividadesSelectMapTemp.set(a.UID, a)
+            })
+
+            actividadesSelectMapTemp.forEach(({ UID, image, title, tags }) => {
                 let encontro = false;
                 usuario.preferencias.forEach((p) => {
                     tags.forEach(t => {

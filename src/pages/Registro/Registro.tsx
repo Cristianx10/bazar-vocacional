@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import LINK from '../../components/Router/Routes';
 
 const Registro = () => {
+    
 
     const nav = useNavigate()
 
