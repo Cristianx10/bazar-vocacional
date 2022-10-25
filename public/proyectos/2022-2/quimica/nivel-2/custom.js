@@ -25,7 +25,7 @@ var currentAmount = 0;
 //let score = parseInt(localStorage.getItem("score"));
 
 let score = oActivity.getState("score");
-
+console.log('puntaje: ',score);
 let timer = 0;
 
 //cambiar nivel

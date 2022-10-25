@@ -19,7 +19,7 @@ let matraz;
 
 answerList = [];
 
-oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
+
 
 let sec = 0;
 let min = 5;
@@ -29,7 +29,10 @@ oActivity.addState("score", 0)
 oActivity.addState("time1", 0)
 oActivity.addState("time2", 0)
 oActivity.addState("time3", 0)
+oActivity.setInit(()=>{
+    oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
 
+})
 
 function changeLevel2() {
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
