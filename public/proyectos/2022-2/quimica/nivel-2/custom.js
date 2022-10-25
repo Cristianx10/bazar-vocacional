@@ -35,13 +35,13 @@ let timer = 0;
 
 //cambiar nivel
 function changeLevel3() {
-    oActivity.setState("time2", timer)
+    oActivity.addState("time2", timer)
    // localStorage.setItem("time2", timer);
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-3/index.html')
 }
 
 function saveScore(score) {
-    oActivity.setState("score", parseInt(score))
+    oActivity.addState("score", parseInt(score))
    // localStorage.setItem("score", score);
 }
 
