@@ -464,17 +464,17 @@ let enemiesKilled = 0;
 
 function preload() {
 	font = loadFont('upheavtt.ttf')
-	enemyBulletImg = loadImage('enemy-bullet.png')
-	playerBulletImg = loadImage('player-bullet.png')
-	playerBombImg = loadImage('missile.png')
-	playerImg = loadImage('player2.png')
-	playerImgHeavy = loadImage('heavyShip.png')
-	enemyImg = loadImage('enemy2.png')
-	enemyDestroyedImg = loadImage('destroyedEnemy.png')
-	heart = loadImage('live.png')
-	playerShieldImg = loadImage('shield.png')
+	enemyBulletImg = loadImage('./enemy-bullet.png')
+	playerBulletImg = loadImage('./player-bullet.png')
+	playerBombImg = loadImage('./missile.png')
+	playerImg = loadImage('./player2.png')
+	playerImgHeavy = loadImage('./heavyShip.png')
+	enemyImg = loadImage('./enemy2.png')
+	enemyDestroyedImg = loadImage('./destroyedEnemy.png')
+	heart = loadImage('./live.png')
+	playerShieldImg = loadImage('./shield.png')
 	for( let i = 0; i < 5; i++){
-		armyManRun[i] = loadImage('run' + i + '.png');
+		armyManRun[i] = loadImage('./run' + i + '.png');
 	}
 }
 
