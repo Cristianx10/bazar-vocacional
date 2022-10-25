@@ -1,0 +1,24 @@
+.PagePsicologia {
+    .button {
+        font-family: "Montserrat";
+        width: 154px;
+        height: 41px;
+        border: none;
+        background: $amarillo;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 15px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        color: $azulboton;
+        text-decoration: none;
+    }
+
+    .button:hover {
+        background: #fff27c;
+    }
+
+    .button__t {
+        color: $azulboton;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,48 @@
+.PagePsicologia {
+    .resul {
+        display: none;
+
+        &--mostrar {
+            display: block;
+            position: absolute;
+            top: 0;
+            background-color: $azulmedio;
+            height: 720px;
+            width: 1280px;
+            flex-direction: column;
+        }
+
+        .resul__cont {
+            color: white;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .resul__t1 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 36, 57px;
+
+            text-align: center;
+            padding-top: 122px;
+        }
+
+        .resul__t3 {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 28px;
+            line-height: 34, 13px;
+
+            margin-top: 190px;
+            margin-bottom: 154px;
+
+            text-align: center;
+        }
+
+        .resul__cont a {
+            margin-left: 570px;
+        }
+    }
+}

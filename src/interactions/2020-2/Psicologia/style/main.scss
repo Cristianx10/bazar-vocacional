@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+
+//Colores
+$amarillo : #FFE606;
+$azulmedio: #568C94;
+$azulclaro: #A3C2C7;
+$azulboton: #37595F;
+
+//Fuentes
+$fuente: "Montserrat";
+$color: #333333;
+
+@import './juego';
+@import './botones';
+@import './emo';
+@import './info';
+@import './inicio';
+@import './instru';
+@import './resultados';
+//@import './reset';
+
+.PagePsicologia{
+    font-family: $fuente;
+    color: $color;
+}

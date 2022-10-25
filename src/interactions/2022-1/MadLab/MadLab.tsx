@@ -25,9 +25,7 @@ const ActividadLoad = () => {
         if (actividad) {
 
             nav.addPROCESSING(new MadLab(actividad));
-            setTimeout(() => {
-                actividad.finish()
-            }, 1000)
+         
         }
 
     }, [])

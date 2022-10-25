@@ -170,10 +170,10 @@ export class Actividad implements IProcessingActividad {
         this.separador = [];
         this.separador2 = [];
 
-        
+
     }
 
-    setup(){
+    setup() {
         this.startins()
     }
 
@@ -367,10 +367,10 @@ export class Actividad implements IProcessingActividad {
 
         }
 
-        if (this.tiempo <= 0) {
+        if (this.tiempo <= 0 || this.vidas <= 0) {
             this.stop();
             this.oActivity.addResult([
-                { id: CARRERAS.CIENCIAS_NATURALES, value: this.puntaje <= 200 ? this.puntaje : 200 }
+                { id: CARRERAS.CIENCIAS_NATURALES, value: this.puntaje <= 200 ? (this.puntaje < 0 ? 0 : this.puntaje) : 200 }
             ])
             this.oActivity.finish();
         }

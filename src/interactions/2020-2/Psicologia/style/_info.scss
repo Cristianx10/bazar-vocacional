@@ -1,0 +1,67 @@
+.PagePsicologia {
+    .info {
+        background-color: $azulclaro;
+        height: 720px;
+        width: 1280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info__cont {
+        width: 1092px;
+        height: 594px;
+        left: 234px;
+        top: 63px;
+
+        background-color: white;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info__t {
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 44px;
+        color: #457178;
+    }
+
+    .info__imagenes {
+        padding: 82px;
+        cursor: pointer;
+    }
+
+    .info__iconof {
+        margin: 0px 5px;
+    }
+
+    .info__iconot {
+        margin: 0px 5px;
+    }
+
+    .info__iconoi {
+        margin: 0px 5px;
+    }
+
+    .info__iconoa {
+        margin: 0px 5px;
+    }
+
+    .info__iconos {
+        margin: 0px 5px;
+    }
+
+    .info__iconom {
+        margin: 0px 5px;
+    }
+
+    .info__iconod {
+        margin: 0px 5px;
+    }
+}

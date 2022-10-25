@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap");
+
+$RPath: "/img/2021-1/quimica/";
+
+.QuimicaCarbono {
+    position: relative;
+
+    .Processing {
+        position: absolute;
+    }
+
+    .body {
+        width: 1280px;
+        height: 720px;
+        background-color: #090d46;
+    }
+    .container {
+    }
+
+    button {
+        background: none;
+        color: white;
+        border-color: unset;
+        font-family: "Jost";
+        font-size: 28px;
+    }
+
+    button:focus {
+        border: none;
+        outline: none;
+    }
+
+    .container .btnPlay1 {
+        position: absolute;
+        left: 61.33%;
+        right: 20.16%;
+        top: 64.31%;
+        bottom: 28.19%;
+        border-radius: 5px;
+        width: 237px;
+        height: 54px;
+    }
+
+    .container .btnPlay2 {
+        position: absolute;
+        left: 39.09%;
+        right: 31.09%;
+        top: 58.33%;
+        bottom: 9.17%;
+        border-radius: 5px;
+        width: 284px;
+        height: 54px;
+    }
+    .container .btnPlay3 {
+        position: absolute;
+        width: 484px;
+        height: 54px;
+        left: 405px;
+        top: 796px;
+        border-radius: 5px;
+    }
+
+    .container .btnNext2 {
+        position: absolute;
+        width: 284px;
+        height: 54px;
+        left: 440px;
+        top: 575px;
+        border-radius: 5px;
+    }
+
+    .container .btnNext3 {
+        position: absolute;
+        left: 39.09%;
+        right: 31.09%;
+        top: 69.33%;
+        bottom: 9.17%;
+        border-radius: 5px;
+        width: 284px;
+        height: 54px;
+    }
+
+    .btnContainer {
+        position: absolute;
+        width: 498px;
+        height: 54px;
+        left: 380px;
+        top: 596px;
+       
+    }
+
+    .btnSecundary {
+        height: 54px;
+        width: 243px;
+        left: 384px;
+        top: 596px;
+        border-radius: 5px;
+        background-color: white;
+        border: 3px solid #090d46;
+        box-sizing: border-box;
+        border-radius: 5px;
+        color: #090d46;
+    }
+
+    .btnMain {
+        height: 54px;
+        width: 243px;
+        left: 639px;
+        top: 596px;
+        border-radius: 5px;
+    }
+
+    .body {
+        height: 100%;
+        background-color: #f1f1f1;
+    }
+
+    .body {
+        display: flex;
+
+        /* This centers our sketch horizontally. */
+        //  justify-content: center;
+
+        /* This centers our sketch vertically. */
+        align-items: center;
+    }
+
+    button {
+        text-decoration: none;
+        border: none;
+        outline: 0 !important;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .btnCombinar {
+        position: absolute;
+        left: 47.36%;
+        right: 43.44%;
+        top: 72.08%;
+        bottom: 20.42%;
+
+        background: #fb2d5d;
+        border-radius: 5px;
+
+        width: 169px;
+        height: 54px;
+        color: white;
+        border: none;
+
+        font-family: "Jost";
+        font-size: 28px;
+    }
+
+    .btnClose {
+        position: absolute;
+        top: 210px;
+        left: 810px;
+        background: none;
+        display: none;
+    }
+
+    .--view {
+        position: absolute;
+        top: 210px;
+        left: 930px;
+        background: none;
+        display: flex;
+    }
+
+    .btn- {
+       // background: url($RPath + "data/btn-.png");
+        height: 31px;
+        width: 31px;
+    }
+
+    .btnM {
+       // background: url($RPath + "data/btn+.png");
+        width: 31px;
+        height: 30px;
+    }
+
+    .btn-:focus {
+       // background: url($RPath + "data/btn-focus.png");
+    }
+
+    .btnM:focus {
+       // background: url($RPath + "data/btn+focus.png");
+    }
+
+    .btn-2:focus {
+      //  background: url($RPath + "data/btn-focus.png");
+    }
+    .btnM2:focus {
+      //  background: url($RPath + "data/btn+focus.png");
+    }
+
+    .btn-2 {
+     //   background: url($RPath + "data/btn-.png");
+        height: 31px;
+        width: 31px;
+    }
+
+    .btnM2 {
+      //  background: url($RPath + "data/btn+.png");
+        width: 31px;
+        height: 30px;
+    }
+
+    .btnContainer {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 56px;
+        left: 380px;
+        top: -224px;
+    }
+
+    .btnContainer2 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 56px;
+        left: 480px;
+        top: -224px;
+    }
+
+    .btnpista {
+       // background: url($RPath + "data/pista.png");
+        background-size: cover;
+        position: relative;
+        width: 50px;
+        height: 50px;
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .btnContinuar {
+        position: absolute;
+        top: 500px;
+        left: 800px;
+        display: none;
+    }
+
+    button{
+        background: #fb2d5d;
+    }
+    .btnCon {
+   
+        position: absolute;
+        top: 647px;
+        left: 530px;
+        display: flex;
+        background: none;
+    }
+
+    .pistacontainer {
+        display: flex;
+        position: relative;
+        height: auto;
+       
+        top: 240px;
+        width: 32px;
+    }
+    .pistadesign {
+        display: flex;
+        position: relative;
+        height: 250px;
+        width: 250;
+        background-color: aliceblue;
+    }
+
+    .guia2{
+        left: 533px;
+        top: -148px;
+    }
+}

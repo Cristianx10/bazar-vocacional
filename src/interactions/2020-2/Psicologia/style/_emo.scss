@@ -1,0 +1,513 @@
+.PagePsicologia {
+    //FELICIDAD
+    .f {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .f__felicidad {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .felicidad__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .felicidad__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                background-size: cover;
+            }
+
+            .felicidad__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .felicidad__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .felicidad__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .felicidad__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    //TRISTEZA
+    .t {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .t__tristeza {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .tristeza__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .tristeza__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .tristeza__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .tristeza__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .tristeza__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .tristeza__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    //ASCO
+    .a {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .a__asco {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .asco__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .asco__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .asco__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .asco__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .asco__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .asco__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    //SORPRESA
+    .s {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .s__sorpresa {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .sorpresa__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .sorpresa__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .sorpresa__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .sorpresa__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .sorpresa__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .sorpresa__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    //IRA
+    .i {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .i__ira {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .ira__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .ira__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .ira__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .ira__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .ira__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .ira__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    //MIEDO
+    .m {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .m__miedo {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .miedo__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .miedo__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .miedo__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .miedo__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .miedo__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .miedo__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    //DESPRECIO
+    .d {
+        display: none;
+
+        &--mostrar {
+            position: absolute;
+            top: 0;
+            display: block;
+            background-color: $azulclaro;
+            height: 720px;
+            width: 1280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .d__desprecio {
+                background-color: $azulmedio;
+                width: 909px;
+                height: 640px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            .desprecio__cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin: 40px;
+            }
+
+            .desprecio__icono {
+                width: 388px;
+                height: 511px;
+                border-radius: 40px;
+                box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .desprecio__cerrar {
+                width: 60px;
+                position: absolute;
+                right: 26px;
+                top: 26px;
+                cursor: pointer;
+            }
+
+            .desprecio__info {
+                color: white;
+                margin: 42px;
+            }
+
+            .desprecio__t {
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+            }
+
+            .desprecio__p {
+                margin: 31px 0px;
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+}
