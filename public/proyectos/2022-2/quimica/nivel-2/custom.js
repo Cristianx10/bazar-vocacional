@@ -30,12 +30,14 @@ let score = 0;
 score = oActivity.getState("score")[0]();
 updateDisplayedScore()
 console.log("puntaje: ", score)
+oActivity.addState("page", 'nivel2')
 
 let timer = 0;
 
 //cambiar nivel
 function changeLevel3() {
     oActivity.addState("time2", timer)
+    
    // localStorage.setItem("time2", timer);
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-3/index.html')
 }

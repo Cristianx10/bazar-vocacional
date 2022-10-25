@@ -2,8 +2,11 @@ let bg;
 //let score = parseInt(localStorage.getItem("score")) ;
 let score = 0;
 
+
+
 oActivity.setInit(()=>{
     score = oActivity.getState("score")[0]();
+    oActivity.addState("page", 'resultados')
 })
 
 

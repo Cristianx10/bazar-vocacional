@@ -31,6 +31,7 @@ oActivity.setInit(()=>{
 oActivity.addState("time1", 0)
 oActivity.addState("time2", 0)
 oActivity.addState("time3", 0)
+oActivity.addState("page", 'instrucciones')
 })
 
 function changeLevel2() {

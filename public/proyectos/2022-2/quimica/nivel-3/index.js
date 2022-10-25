@@ -24,7 +24,7 @@ let points = 0;
 
 
     points = oActivity.getState("score")[0]();
-
+    oActivity.addState("page", 'nivel3')
 
 updatePoints();
 let selectedWord = "";
