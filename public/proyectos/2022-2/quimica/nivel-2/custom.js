@@ -20,17 +20,24 @@ const colorClasses = {
 }
 var currentCompound = 0;
 var currentAmount = 0;
-let score = parseInt(localStorage.getItem("score"));
+
+
+//let score = parseInt(localStorage.getItem("score"));
+
+let score = oActivity.getState("score");
+
 let timer = 0;
 
 //cambiar nivel
 function changeLevel3() {
-    localStorage.setItem("time2", timer);
+    oActivity.setState("time2", timer)
+   // localStorage.setItem("time2", timer);
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-3/index.html')
 }
 
 function saveScore(score) {
-    localStorage.setItem("score", score);
+    oActivity.setState("score", score)
+   // localStorage.setItem("score", score);
 }
 
 
@@ -108,7 +115,7 @@ function countdown(minutes, seconds) {
             timer = true;
             saveScore(score);
             changeLevel3();
-            
+
         }
     }
     tick();

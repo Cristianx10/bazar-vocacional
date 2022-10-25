@@ -18,7 +18,8 @@ const words = [
     {word: 'glicerina', img: './images/image4.png'}
 ];
 
-let points = parseInt(localStorage.getItem("score")) ;
+//let points = parseInt(localStorage.getItem("score")) ;
+let points = oActivity.getState("score") ;
 
 updatePoints();
 let selectedWord = "";
@@ -32,12 +33,14 @@ let tiempo = 0;
 //cambiar de nivel
 
 function changeLevelScore() {
-    localStorage.setItem("time3", tiempo);
+    oActivity.setState("time3", tiempo)
+    //localStorage.setItem("time3", tiempo);
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-score/index.html')
 }
 
 function saveScore(score) {
-    localStorage.setItem("score", score);
+    oActivity.setState("score", score)
+   // localStorage.setItem("score", score);
 }
 
 

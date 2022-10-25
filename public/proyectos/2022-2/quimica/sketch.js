@@ -20,20 +20,22 @@ let matraz;
 answerList = [];
 
 
-  let sec = 0;
-  let min = 5;
-  let timer;
+let sec = 0;
+let min = 5;
+let timer;
 
 function changeLevel2() {
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
 }
 
 function saveScore(score) {
-    localStorage.setItem("score", score);
+    oActivity.addState("score", score)
+  //  localStorage.setItem("score", score);
 }
 
 function saveTime(time) {
-    localStorage.setItem("time1", time);
+    oActivity.addState("time1", score)
+   // localStorage.setItem("time1", time);
 }
 
 function setup() {
@@ -72,10 +74,10 @@ function setup() {
 
 function draw() {
 
-    if (level >0){
+    if (level > 0) {
         time();
     }
-    
+
 
     switch (pantalla) {
 
@@ -104,7 +106,7 @@ function draw() {
 
             imageMode(CORNER);
             background(instructions2);
-    
+
             break;
 
         case 5:
@@ -113,10 +115,10 @@ function draw() {
             imageMode(CORNER);
             background(bgCompound1);
             //if(answerList.length > 0){
-                fill(0);
-                textStyle(BOLD);
-                textSize(14);
-                text((getFormattedValue(answerList)), 400, 695);
+            fill(0);
+            textStyle(BOLD);
+            textSize(14);
+            text((getFormattedValue(answerList)), 400, 695);
 
 
             break;
@@ -170,20 +172,20 @@ function draw() {
             break;
 
         case 10:
-                imageMode(CORNER);
-                //background(bgCompound5);
-                notebook.resize(1214, 683);
-                image(notebook, 100, 50);
-                
-    
-                //fill(0);
-                //text((getFormattedValue(answerList)), 246, 695);
-    
-        break;
+            imageMode(CORNER);
+            //background(bgCompound5);
+            notebook.resize(1214, 683);
+            image(notebook, 100, 50);
+
+
+            //fill(0);
+            //text((getFormattedValue(answerList)), 246, 695);
+
+            break;
 
     }
 
-    fill(255,255,255);
+    fill(255, 255, 255);
     textSize(18);
     text(timer, 105, 50);
 
@@ -211,7 +213,7 @@ function time() {
     if (min == 0 && sec == 1) {
         //pantalla = 11;
         changeLevel2();
-    } 
+    }
 }
 
 
@@ -224,11 +226,11 @@ function mousePressed() {
     //changeLevel();
 
 
-    
+
 
     switch (pantalla) {
 
-        
+
 
         case 1:
 
@@ -236,7 +238,7 @@ function mousePressed() {
             if (mouseX > 643 && mouseX < 887 && mouseY > 600 && mouseY < 655) {
                 pantalla++;
             }
-            
+
 
             break;
 
@@ -256,13 +258,13 @@ function mousePressed() {
             }
 
             break;
-        
+
         case 4:
-                console.log(mouseX + "," + mouseY)
-                if (mouseX > 1035 && mouseX < 1268 && mouseY > 558 && mouseY < 627) {
-                    pantalla++;
-                }
-    
+            console.log(mouseX + "," + mouseY)
+            if (mouseX > 1035 && mouseX < 1268 && mouseY > 558 && mouseY < 627) {
+                pantalla++;
+            }
+
             break;
 
 
@@ -289,13 +291,13 @@ function mousePressed() {
                 //console.log("borrar");
                 clearAnswerList();
             }
-        
+
             if (mouseX > 1188 && mouseX < 1385 && mouseY > 384 && mouseY < 685) {
                 checkUserAnswer();
                 console.log(puntaje);
-        
+
             }
-        
+
             if (mouseX > 1267 && mouseX < 1381 && mouseY > 67 && mouseY < 160) {
                 pantalla = 10;
             }
@@ -320,13 +322,13 @@ function mousePressed() {
                 //console.log("borrar");
                 clearAnswerList();
             }
-        
+
             if (mouseX > 1188 && mouseX < 1385 && mouseY > 384 && mouseY < 685) {
                 checkUserAnswer();
                 console.log(puntaje);
-        
+
             }
-        
+
             if (mouseX > 1267 && mouseX < 1381 && mouseY > 67 && mouseY < 160) {
                 pantalla = 10;
             }
@@ -352,13 +354,13 @@ function mousePressed() {
                 //console.log("borrar");
                 clearAnswerList();
             }
-        
+
             if (mouseX > 1188 && mouseX < 1385 && mouseY > 384 && mouseY < 685) {
                 checkUserAnswer();
                 console.log(puntaje);
-        
+
             }
-        
+
             if (mouseX > 1267 && mouseX < 1381 && mouseY > 67 && mouseY < 160) {
                 pantalla = 10;
             }
@@ -384,13 +386,13 @@ function mousePressed() {
                 //console.log("borrar");
                 clearAnswerList();
             }
-        
+
             if (mouseX > 1188 && mouseX < 1385 && mouseY > 384 && mouseY < 685) {
                 checkUserAnswer();
                 console.log(puntaje);
-        
+
             }
-        
+
             if (mouseX > 1267 && mouseX < 1381 && mouseY > 67 && mouseY < 160) {
                 pantalla = 10;
             }
@@ -416,27 +418,27 @@ function mousePressed() {
                 //console.log("borrar");
                 clearAnswerList();
             }
-        
+
             if (mouseX > 1188 && mouseX < 1385 && mouseY > 384 && mouseY < 685) {
                 checkUserAnswer();
                 console.log(puntaje);
-        
+
             }
-        
+
             if (mouseX > 1267 && mouseX < 1381 && mouseY > 67 && mouseY < 160) {
                 pantalla = 10;
             }
 
             break;
 
-            case 10:
-                console.log(mouseX + "," + mouseY)
+        case 10:
+            console.log(mouseX + "," + mouseY)
             if (mouseX > 196 && mouseX < 240 && mouseY > 117 && mouseY < 159) {
                 //answerList.push('C');
-                pantalla = level+4;
+                pantalla = level + 4;
                 puntaje -= 5;
             }
-            
+
             break;
 
 
