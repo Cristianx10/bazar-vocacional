@@ -85,9 +85,9 @@ const ActividadLoad = ({ interaccion }: { interaccion?: boolean }) => {
         }
     }
 
-    const onClick = (value: string) => {
+    const onClick = (value: string, index: number) => {
         setDisable(false);
-        setSelect(parseInt(value));
+        setSelect(index);
 
         if (actividad) {
             actividad.addState("respuesta", value)
@@ -175,7 +175,7 @@ const ActividadLoad = ({ interaccion }: { interaccion?: boolean }) => {
                         <ul className="Pregunta__opciones__likert__items">
                             {opciones.map((o, i) => {
                                 return <label className="Pregunta__opciones__likert__items__item">
-                                    <input key={i} type="radio" name="opciones" value={o.titular} onClick={() => onClick(o.titular)} />
+                                    <input key={i} type="radio" name="opciones" value={o.titular} onClick={() => onClick(o.titular,i)} />
                                     <p>{o.titular}</p>
                                 </label>
                             })}
