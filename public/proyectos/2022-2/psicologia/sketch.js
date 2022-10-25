@@ -120,14 +120,14 @@ function preload() {
 
   tipados.forEach((e) => {
 
-      personalidadImagenes.push(loadImage(`./public/images/personalidades/${e.personalidad}.png`))
-    }
+    personalidadImagenes.push(loadImage(`./public/images/personalidades/${e.personalidad}.png`))
+  }
 
   );
-  
-    for (let index = 1; index < 4; index++) {
-      botonConfirmar.push(loadImage(`./public/images/botonConfirmar (${index}).png`))
-    }
+
+  for (let index = 1; index < 4; index++) {
+    botonConfirmar.push(loadImage(`./public/images/botonConfirmar (${index}).png`))
+  }
 
   placeholder = loadImage('./public/images/elplaceholder.jpg');
   buttonImg = [loadImage('./public/images/botonplay_1.png'), loadImage('./public/images/botonplay_2.png')];
@@ -138,7 +138,7 @@ function preload() {
   tv = loadImage('./public/images/tv.png');
   imgfinal = loadImage('./public/images/BGround/FINAL.png');
   buttonEscape = [loadImage('./public/images/botonX (1).png'), loadImage('./public/images/botonX (2).png')];
-  
+
   Lit_elCumblast = loadImage('./public/images/personajes/LitElCumblast.png')
 
   cruella = loadImage('./public/images/personajes/Cruella.png')
@@ -172,11 +172,11 @@ function setup() {
   tipados.forEach((e) => {
 
 
-      personalidadesList.push(new personalidad(personalidadImagenes[tipados.indexOf(e)], e.personalidad, e.etiqueta, "any", 1600, 300))
+    personalidadesList.push(new personalidad(personalidadImagenes[tipados.indexOf(e)], e.personalidad, e.etiqueta, "any", 1600, 300))
 
 
 
-    }
+  }
 
 
   );
@@ -214,16 +214,17 @@ function draw() {
         vidElement.pause();
         vidended = true;
 
-        
-      }
-      
-      if (frameCount % 130 === 0 && vidended) {
-          screen += 1
 
-          setupForScreen();
-          checkNewScreen();
-        }
+      }
+
+      if (frameCount % 130 === 0 && vidended) {
+        screen += 1
+
+        setupForScreen();
+        checkNewScreen();
+      }
       elVideo = vidElement.get();
+
       image(elVideo, 0, 0);
       break;
 
@@ -305,7 +306,7 @@ function draw() {
         validarRespuestas(correctas[1])
       }
 
-      
+
 
       if (posOcupada[0] === true && posOcupada[1] === true) {
         botonContinue = true
@@ -484,33 +485,33 @@ function draw() {
       break;
 
 
-      case 11:
+    case 11:
 
-      image(imgfinal,0,0);
+      image(imgfinal, 0, 0);
       textSize(80);
-  
+
       textAlign(CENTER, CENTER);
-      text(puntaje, 1920/2,1080/2); 
-      
+      text(puntaje, 1920 / 2, 1080 / 2);
+
       break;
 
 
   }
 
   if (screen > 4 && screen < 11) {
-  image(tv,0,0)
+    image(tv, 0, 0)
 
   }
 
-  if(consejo === true){
+  if (consejo === true) {
 
-    
+
     image(pantallaTutorial2, 0, 0);
 
-    if (dist(mouseX, mouseY, 165,185) < 80 ) {
+    if (dist(mouseX, mouseY, 165, 185) < 80) {
       buttonStatus = 1;
-    } else {buttonStatus = 0}
-    image(buttonEscape[buttonStatus],112,136);
+    } else { buttonStatus = 0 }
+    image(buttonEscape[buttonStatus], 112, 136);
     vidElement.pause();
   }
 
@@ -536,33 +537,33 @@ function validarCasillas() {
 
   for (let i = 0; i < personalidadesList.length; i++) {
     if (dist(
-        personalidadesList[i].getPosX(),
-        personalidadesList[i].getPosY(),
-        312 + (420 * 0),
-        950
-      ) < 60 && posOcupada[0] === false) {
+      personalidadesList[i].getPosX(),
+      personalidadesList[i].getPosY(),
+      312 + (420 * 0),
+      950
+    ) < 60 && posOcupada[0] === false) {
       posOcupada[0] = true;
     }
 
     if (dist(
-        personalidadesList[i].getPosX(),
-        personalidadesList[i].getPosY(),
+      personalidadesList[i].getPosX(),
+      personalidadesList[i].getPosY(),
 
-        // posiciones para dejarlo
-        312 + (420 * 1),
-        950
-      ) < 60 && posOcupada[1] === false) {
+      // posiciones para dejarlo
+      312 + (420 * 1),
+      950
+    ) < 60 && posOcupada[1] === false) {
       posOcupada[1] = true;
     }
 
     if (dist(
-        personalidadesList[i].getPosX(),
-        personalidadesList[i].getPosY(),
+      personalidadesList[i].getPosX(),
+      personalidadesList[i].getPosY(),
 
-        // posiciones para dejarlo
-        312 + (420 * 2),
-        950
-      ) < 60 && posOcupada[2] === false) {
+      // posiciones para dejarlo
+      312 + (420 * 2),
+      950
+    ) < 60 && posOcupada[2] === false) {
       posOcupada[2] = true;
     }
   }
@@ -576,8 +577,8 @@ function validarRespuestas(resp) {
       puntaje += 14;
     }
   }
-  
-  if (puntaje === 196){
+
+  if (puntaje === 196) {
     puntaje === 200
   }
   /* for (let i = 0; i < personalidadesList.length; i++) {
@@ -664,24 +665,24 @@ function checkButton() {
     } /**/
   }
 }
-  
 
 
-function BotonConfirmar () {
 
-  
-if (botonContinue) {
-  B_ConfirmarStatus = 1
-}
-
-if (botonContinue && mouseX > 1540 && mouseX < 1550+ 240 && mouseY > 900 && mouseY < 910 + 60) {
-  B_ConfirmarStatus = 2
-}
+function BotonConfirmar() {
 
 
-    if (screen > 4 && screen < 11 ) {
-      image(botonConfirmar[B_ConfirmarStatus],1550,920);
-}
+  if (botonContinue) {
+    B_ConfirmarStatus = 1
+  }
+
+  if (botonContinue && mouseX > 1540 && mouseX < 1550 + 240 && mouseY > 900 && mouseY < 910 + 60) {
+    B_ConfirmarStatus = 2
+  }
+
+
+  if (screen > 4 && screen < 11) {
+    image(botonConfirmar[B_ConfirmarStatus], 1550, 920);
+  }
 }
 
 
@@ -739,7 +740,9 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Pantalla Tutorial.mp4"
       );
+      vidElement.size(1920, 1080)
       break;
+
 
     case 5:
 
@@ -750,6 +753,7 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Niveles/ENTJ e ISFJ.mp4"
       );
+      vidElement.size(1280, 720)
 
       break;
 
@@ -761,7 +765,7 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Niveles/ESFP y ESFJ.mp4"
       );
-
+      vidElement.size(1280, 720)
       break;
 
     case 7:
@@ -772,6 +776,7 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Niveles/INFP e ESTJ.mp4"
       );
+      vidElement.size(1280, 720)
       break;
 
 
@@ -783,6 +788,7 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Niveles/INFP e ISTJ.mp4"
       );
+      vidElement.size(1280, 720)
       break;
 
     case 9:
@@ -793,6 +799,7 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Niveles/ENTP, ENFP e ISTP.mp4"
       );
+      vidElement.size(1280, 720)
       break;
 
     case 10:
@@ -803,10 +810,11 @@ function setupForScreen() {
       vidElement = createVideo(
         "./public/video/Niveles/ISTP, ESFP y ESFJ.mp4"
       );
+      vidElement.size(1280, 720)
       break;
 
 
-      //final
+    //final
     case 11:
       reset = false;
       vidElement.noLoop();
@@ -858,17 +866,17 @@ function mousePressed() {
   // esto se borra despues de hacer los cambios de pantalla correctamente
 
 
-  if(dist(mouseX,mouseY,1769,49)<80){
-    consejo = true; 
+  if (dist(mouseX, mouseY, 1769, 49) < 80) {
+    consejo = true;
     playBtn.hide();
   }
-  if(dist(mouseX,mouseY,185,165)<80){
-    consejo = false; 
+  if (dist(mouseX, mouseY, 185, 165) < 80) {
+    consejo = false;
     playBtn.show();
   }
 
 
-  if (mouseX > 1540 && mouseX < 1550+ 240 && mouseY > 900 && mouseY < 910 + 60 && botonContinue ) {
+  if (mouseX > 1540 && mouseX < 1550 + 240 && mouseY > 900 && mouseY < 910 + 60 && botonContinue) {
 
     validarlas = true;
 
@@ -879,20 +887,20 @@ function mousePressed() {
 
   for (let i = 0; i < personalidadesList.length; i++) {
     if (dist(
-        personalidadesList[i].getPosX(),
-        personalidadesList[i].getPosY(),
-        mouseX,
-        mouseY
-      ) < 80 && personalidadesList[i].getLock() === false) {
+      personalidadesList[i].getPosX(),
+      personalidadesList[i].getPosY(),
+      mouseX,
+      mouseY
+    ) < 80 && personalidadesList[i].getLock() === false) {
       personalidadesList[i].setDragging();
     }
 
     if (dist(
-        personalidadesList[i].getPosX(),
-        personalidadesList[i].getPosY(),
-        mouseX,
-        mouseY
-      ) < 80 && personalidadesList[i].getLock() === true) {
+      personalidadesList[i].getPosX(),
+      personalidadesList[i].getPosY(),
+      mouseX,
+      mouseY
+    ) < 80 && personalidadesList[i].getLock() === true) {
 
       personalidadesList[i].setUnlock();
       posOcupada[personalidadesList[i].getCasilla()] = false;
@@ -903,7 +911,7 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-  if (dificultad === 1) {}
+  if (dificultad === 1) { }
   if (screen > 3) {
     for (let i = 0; i < personalidadesList.length; i++) {
 
@@ -911,13 +919,13 @@ function mouseReleased() {
 
 
       if (dist(
-          personalidadesList[i].getPosX(),
-          personalidadesList[i].getPosY(),
+        personalidadesList[i].getPosX(),
+        personalidadesList[i].getPosY(),
 
-          // posiciones para dejarlo
-          312 + (420 * 0),
-          950
-        ) < 60 && posOcupada[0] === false) {
+        // posiciones para dejarlo
+        312 + (420 * 0),
+        950
+      ) < 60 && posOcupada[0] === false) {
 
         personalidadesList[i].setOrigin(312 + (420 * 0),
           950);
@@ -929,13 +937,13 @@ function mouseReleased() {
       }
 
       if (dist(
-          personalidadesList[i].getPosX(),
-          personalidadesList[i].getPosY(),
+        personalidadesList[i].getPosX(),
+        personalidadesList[i].getPosY(),
 
-          // posiciones para dejarlo
-          312 + (420 * 1),
-          950
-        ) < 60 && !posOcupada[1]) {
+        // posiciones para dejarlo
+        312 + (420 * 1),
+        950
+      ) < 60 && !posOcupada[1]) {
 
         personalidadesList[i].setOrigin(312 + (420 * 1),
           950);
@@ -947,13 +955,13 @@ function mouseReleased() {
       }
 
       if (dist(
-          personalidadesList[i].getPosX(),
-          personalidadesList[i].getPosY(),
+        personalidadesList[i].getPosX(),
+        personalidadesList[i].getPosY(),
 
-          // posiciones para dejarlo
-          312 + (420 * 2),
-          950
-        ) < 60 && !posOcupada[2]) {
+        // posiciones para dejarlo
+        312 + (420 * 2),
+        950
+      ) < 60 && !posOcupada[2]) {
 
         personalidadesList[i].setOrigin(312 + (420 * 2),
           950);
@@ -970,10 +978,10 @@ function mouseReleased() {
 }
 
 
-function final(){
+function final() {
 
-  if (mouseIsPressed && dist(mouseX, mouseY, 1920/2 ,1300)) {
-    oActivity.addResult([{ id: CARRERAS.PSICOLOGIA, value: puntaje}]);
+  if (mouseIsPressed && dist(mouseX, mouseY, 1920 / 2, 1300)) {
+    oActivity.addResult([{ id: CARRERAS.PSICOLOGIA, value: puntaje }]);
     oActivity.finish()
   }
 
