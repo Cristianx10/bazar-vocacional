@@ -1,5 +1,6 @@
 //Emmet
-const wordE1 = document.getElementById('word');
+oActivity.setInit(()=>{
+    const wordE1 = document.getElementById('word');
 const wrongLettersE1 = document.getElementById('wrong-letters');
 const pointsContainer = document.querySelector('.score');
 const playAgainBtn = document.getElementById('play-button');
@@ -19,7 +20,11 @@ const words = [
 ];
 
 //let points = parseInt(localStorage.getItem("score")) ;
-let points = oActivity.getState("score") ;
+let points = 0;
+
+
+    points = oActivity.getState("score")[0]();
+
 
 updatePoints();
 let selectedWord = "";
@@ -109,7 +114,7 @@ function countdown(minutes, seconds) {
         }
 
         
-        if(minutes == 0 && seconds == -1){
+        if(minutes == 0 && seconds == -1){acuerdo
             timer = true;     
             saveScore(points);
             changeLevelScore();
@@ -183,3 +188,4 @@ playAgainBtn.addEventListener('click', () => {
 });
 
 displayWord();
+})

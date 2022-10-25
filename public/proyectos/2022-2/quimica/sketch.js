@@ -25,11 +25,12 @@ let sec = 0;
 let min = 5;
 let timer;
 
-oActivity.addState("score", 0)
+
+oActivity.setInit(()=>{
+    oActivity.addState("score", 0)
 oActivity.addState("time1", 0)
 oActivity.addState("time2", 0)
 oActivity.addState("time3", 0)
-oActivity.setInit(()=>{
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-2/index.html')
 
 })

@@ -24,7 +24,12 @@ var currentAmount = 0;
 
 //let score = parseInt(localStorage.getItem("score"));
 
-let score = oActivity.getState("score")[0]();
+let score = 0;
+
+oActivity.setInit(()=>{
+    score = oActivity.getState("score")[0]();
+})
+console.log("puntaje: ", score)
 
 let timer = 0;
 

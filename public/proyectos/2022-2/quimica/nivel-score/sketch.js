@@ -1,6 +1,10 @@
 let bg;
 //let score = parseInt(localStorage.getItem("score")) ;
-let score = oActivity.getState("score")[0]();
+let score = 0;
+
+oActivity.setInit(()=>{
+    score = oActivity.getState("score")[0]();
+})
 
 
 function setup() {
