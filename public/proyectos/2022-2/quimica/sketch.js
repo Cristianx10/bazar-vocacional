@@ -29,7 +29,7 @@ function changeLevel2() {
 }
 
 function saveScore(score) {
-    oActivity.addState("score", score)
+    oActivity.addState("score", parseInt(score))
   //  localStorage.setItem("score", score);
 }
 
