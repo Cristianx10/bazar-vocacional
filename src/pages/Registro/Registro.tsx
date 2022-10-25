@@ -1,8 +1,12 @@
 import "./index.scss";
 import UserFirebase from '../../constants/firebase/user/index';
 import { DEFAULT_PASS } from '../../constants/firebase/user/index';
+import { useNavigate } from 'react-router';
+import LINK from '../../components/Router/Routes';
 
 const Registro = () => {
+
+    const nav = useNavigate()
 
 
     const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +32,9 @@ const Registro = () => {
         }
 
 
-        UserFirebase.register(correo, DEFAULT_PASS, data);
+        UserFirebase.register(correo, DEFAULT_PASS, data, ()=>{
+            nav(LINK.INDEX)
+        });
     }
 
     return <div className="Registro backgroundImage" style={{ backgroundImage: "url('/includes/backgrounds/fondo-principal-persona.png')" }}>
