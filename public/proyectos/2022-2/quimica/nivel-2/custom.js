@@ -1,3 +1,5 @@
+
+oActivity.setInit(()=>{
 var game = document.querySelector(".game");
 var basket = document.querySelector(".basket");
 var elements = document.querySelector(".elements");
@@ -25,10 +27,8 @@ var currentAmount = 0;
 //let score = parseInt(localStorage.getItem("score"));
 
 let score = 0;
+score = oActivity.getState("score")[0]();
 
-oActivity.setInit(()=>{
-    score = oActivity.getState("score")[0]();
-})
 console.log("puntaje: ", score)
 
 let timer = 0;
@@ -193,3 +193,4 @@ function generateElements() {
 generateElements();
 
 document.addEventListener("keydown", control);
+})
