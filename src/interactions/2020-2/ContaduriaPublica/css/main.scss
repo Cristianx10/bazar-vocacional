@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+.Loros {
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container{
+        position: relative;
+        width: 1280px;
+        height: 720px;
+    }
+
+    * {
+        margin: 0;
+    }
+
+    img:nth-of-type(2) {
+        cursor: pointer;
+    }
+
+    input {
+        font-size: 30px;
+        border-style: solid;
+        border-color: gray;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    button {
+        font-family: "Montserrat";
+        width: 185px;
+        height: 41px;
+        border: none;
+        background: #faa68e;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 25px;
+        color: white;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .btn--active {
+        background: #f98e70;
+    }
+}

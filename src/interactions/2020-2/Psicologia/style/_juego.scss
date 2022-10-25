@@ -1,0 +1,73 @@
+.PagePsicologia {
+    .juego {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #37595f;
+        justify-content: center;
+    }
+
+    .juego__fondo {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        background-color: $azulclaro;
+        width: 92%;
+        height: 92%;
+        border-radius: 40px;
+        align-items: center;
+        justify-content: space-evenly;
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .juego__contenedor {
+        width: 35%;
+        margin-right: 75px;
+    }
+
+    .juego__btn {
+        width: 70px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(248, 252, 6, 0.281);
+            border-radius: 10px;
+            width: 75px;
+        }
+    }
+
+    .juego__selec {
+        position: relative;
+        height: 272px;
+        width: 381px;
+        background-color: white;
+        padding: 10px 30px;
+        border-radius: 40px;
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: space-evenly;
+    }
+
+    .juego__imagen {
+        width: 100%;
+        filter: grayscale(100%) brightness(90%);
+        border-radius: 40px;
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .juego__contador {
+        color: #37595f;
+        font-size: 36px;
+        position: absolute;
+        right: 248px;
+        background-color: $amarillo;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
+}

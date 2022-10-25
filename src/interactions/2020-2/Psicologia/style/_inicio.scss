@@ -1,0 +1,42 @@
+.PagePsicologia {
+    .inicio {
+        //background-image: url("/img/2020-2/psicologia-expresiones/fondoInicio.jpg");
+        height: 720px;
+        width: 1280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inicio__cont {
+        width: 812px;
+        height: 594px;
+        left: 234px;
+        top: 63px;
+
+        background: rgba(255, 255, 255, 0.81);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inicio__t {
+        font-weight: 500;
+        font-size: 41px;
+        line-height: 114px;
+        height: 186px;
+    }
+
+    .inicio__p {
+        width: 718px;
+        height: 223px;
+        font-size: 17px;
+        line-height: 24px;
+        text-align: center;
+    }
+}

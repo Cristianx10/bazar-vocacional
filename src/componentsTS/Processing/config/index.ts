@@ -30,6 +30,7 @@ class Processing implements INavegacionAction {
 
     constructor() {
         this.app = new p5(() => { });
+        
         this.container = document.createElement("div");
         this.container.classList.add("Processing");
     }

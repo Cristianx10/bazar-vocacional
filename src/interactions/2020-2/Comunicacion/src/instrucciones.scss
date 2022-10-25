@@ -1,0 +1,49 @@
+.instrucciones {
+    display: flex;
+    position: relative;
+
+    #fondo {
+        position: relative;
+    }
+    #boton {
+        position: absolute;
+
+        left: 720px;
+        bottom: 50px;
+    }
+  
+    #gif1{
+
+        position: absolute;
+        width: 570px;
+        height: 322px;
+        left: 680px;
+        bottom: 200px;
+        border-radius: 14px;
+    }
+
+    #gif2{
+
+        position: absolute;
+        
+        width: 570px;
+        height: 322px;
+        left: 680px;
+        bottom: 190px;
+        border-radius: 14px;
+    }
+
+
+    #gif3{
+
+        position: absolute;
+        
+        width: 550px;
+        height: 302px;
+        left: 520px;
+        bottom: 205px;
+        border-radius: 14px;
+    }
+
+   
+}
