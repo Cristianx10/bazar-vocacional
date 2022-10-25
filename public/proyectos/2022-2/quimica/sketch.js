@@ -34,7 +34,7 @@ function saveScore(score) {
 }
 
 function saveTime(time) {
-    oActivity.addState("time1", score)
+    oActivity.addState("time1", time)
    // localStorage.setItem("time1", time);
 }
 
