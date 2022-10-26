@@ -435,6 +435,18 @@ function subirFinal() {
 		oActivity.finish();
 }
 
+function subirFinalMal() {
+	let result = p.shieldLeft + enemiesKilled
+	let final = result*200 / 90	
+	oActivity.addState("balas", p.singleLeft);
+		oActivity.addState("bombas", p.bombLeft);
+		oActivity.addState("escudos", p.shieldLeft);
+		oActivity.addState("vidas", p.lives);
+		oActivity.addState("enemigos", enemiesKilled);
+		oActivity.addResult([{ id: CARRERAS.ADMINISTRACION_EMPRESA, value: final}]);
+		oActivity.finish();
+}
+
 // displays the ending screen when player wins the game
 function winScreen() {
 	background(25, 25, 103)
@@ -617,6 +629,8 @@ function draw() {
 
 function mousePressed(){
 	if (p.lives < 0 || armyMan.lives < 0) {
+		subirFinalMal()
+	} else if(armyMan.x >= WIDTH - armyMan.w) {
 		subirFinal()
 	}
 	
