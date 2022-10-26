@@ -531,14 +531,16 @@ function draw() {
           textSize(70);
           image(finalScoreScreens[10], 0, 0)
           
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
-          text(finalScore + " %", width / 2 - 50, height / 2)
+          let pintarScore = finalScore / 2;
+
+          text( pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
+          text(pintarScore + " %", width / 2 - 50, height / 2)
           
         }
 

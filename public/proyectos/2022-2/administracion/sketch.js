@@ -418,6 +418,21 @@ function loseScreen() {
 	fill(255, 234, 0)
 	textAlign(CENTER, CENTER)
 	text('GAME OVER', WIDTH / 2, HEIGHT / 2 - 17)
+	let result = p.shieldLeft + enemiesKilled
+	let final = result*200 / 90
+	text(`TOTAL = $ ${final}`, WIDTH / 2, HEIGHT / 2 + 240)
+}
+
+function subirFinal() {
+	let result = p.singleLeft + p.bombLeft + p.shieldLeft + p.lives + enemiesKilled
+	let final = result*200 / 114	
+	oActivity.addState("balas", p.singleLeft);
+		oActivity.addState("bombas", p.bombLeft);
+		oActivity.addState("escudos", p.shieldLeft);
+		oActivity.addState("vidas", p.lives);
+		oActivity.addState("enemigos", enemiesKilled);
+		oActivity.addResult([{ id: CARRERAS.ADMINISTRACION_EMPRESA, value: final}]);
+		oActivity.finish();
 }
 
 // displays the ending screen when player wins the game
@@ -429,21 +444,16 @@ function winScreen() {
 	text('YOU WIN', WIDTH / 2, HEIGHT / 3)
 	textSize(36)
 	fill(222)
+	let result = p.singleLeft + p.bombLeft + p.shieldLeft + p.lives + enemiesKilled
+	let final = result*200 / 114
 	text(`Balas ...... ${p.singleLeft} =  $ ${p.singleLeft*1.5}`, WIDTH / 2, HEIGHT / 2)
 	text(`Bombas ...... ${p.bombLeft} =  $ ${p.bombLeft*25}`, WIDTH / 2, HEIGHT / 2 + 40)
 	text(`Escudos ...... ${p.shieldLeft} =  $ ${p.shieldLeft*55}`, WIDTH / 2, HEIGHT / 2 + 80)
 	text(`Vidas ...... ${p.lives} =  $ ${p.lives*110}`, WIDTH / 2, HEIGHT / 2 + 120)
 	text(`Aliens ...... ${enemiesKilled} =  $ ${enemiesKilled * 12}`, WIDTH / 2, HEIGHT / 2 + 160)
-	text(`TOTAL = $ ${p.singleLeft*1.5 + p.bombLeft*25 + p.shieldLeft*55 + p.lives*110 + enemiesKilled*12}`, WIDTH / 2, HEIGHT / 2 + 240)
-	 setTimeout(()=>{
-		oActivity.addState("balas", p.singleLeft);
-		oActivity.addState("bombas", p.bombLeft);
-		oActivity.addState("escudos", p.shieldLeft);
-		oActivity.addState("vidas", p.lives);
-		oActivity.addState("enemigos", enemiesKilled);
-		oActivity.addResult([{ id: CARRERAS.ADMINISTRACION_EMPRESA, value: p.singleLeft*1.5 + p.bombLeft*25 + p.shieldLeft*55 + p.lives*110 + enemiesKilled*12}]);
-	 },4000)
-	oActivity.finish();
+	text(`TOTAL = $ ${final}`, WIDTH / 2, HEIGHT / 2 + 240)
+
+	
 }
 
 // --------------------------------------------------------------- Game 
@@ -589,7 +599,8 @@ function draw() {
 	/* displays winning and losing screens where appropriate */
 	if (p.lives < 0 || armyMan.lives < 0) {
 		score = 20;
-		loseScreen()
+		
+		loseScreen();
 	} else if (armyMan.x >= WIDTH - armyMan.w) {
 		if(p.lives == 3){
 			score = 200
@@ -602,6 +613,13 @@ function draw() {
 		enemyBullets = [];
 		enemies = [];
 	}
+}
+
+function mousePressed(){
+	if (p.lives < 0 || armyMan.lives < 0) {
+		subirFinal()
+	}
+	
 }
 
 // --------------------------------------------------------------- Timing

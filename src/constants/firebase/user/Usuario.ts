@@ -3,6 +3,7 @@ import DBRoutes from '../database/DBRoutes';
 import Database from '../database/index';
 import { calculatePorcentaje } from '../../helpers/index';
 import Registro from '../../resultados/Registro';
+import { log } from 'console';
 type TRoles = "LOCAL" | "ADMINISTRADOR" | "EDITOR" | "VISOR" | "";
 
 export interface IUserInformation {
@@ -101,16 +102,21 @@ class Usuario implements IUsuario {
             UID,
             UIDInteraction
         ], JSON.stringify(resultados), () => {
+            
             Database.writeDatabase([
                 DR._THIS,
                 DR.DATA,
                 UID,
                 UIDInteraction
             ], interaction, () => {
-
+                
 
                 this.updatePrincipalResult(interaction.fecha, () => {
+                    console.log('antes');
+                    
                     onAdded()
+                    console.log('despues');
+                    
                 })
             })
         })
@@ -180,12 +186,12 @@ class Usuario implements IUsuario {
         const DR = DBRoutes.RESULTADOS;
         const DU = DBRoutes.USER;
         const UID = this.UID;
-
         Database.readBrachOnlyDatabaseVal([
             DR._THIS,
             DR.PUNTAJE,
             UID
         ], (sResult) => {
+
 
             var datos = new Map<string, ResultadoInteractionSimple>();
 
@@ -194,14 +200,15 @@ class Usuario implements IUsuario {
 
                 const resultToObject: ResultadoInteractionSimple = JSON.parse(result);
                 datos.set(key, resultToObject);
-
+                
                 /*
                 if(lastFecha === 0){
                     lastFecha = resultToObject.fecha.fin;
                 }
                 */
             });
-
+            //console.log('datos', datos);
+            
 
 
 
@@ -219,14 +226,21 @@ class Usuario implements IUsuario {
                 }
 
             }
-
+            console.log('update entro', [
+                DU._THIS,
+                DU.INFORMATION,
+                UID,
+                "resultados"
+            ], dataResult);
             Database.writeDatabase([
                 DU._THIS,
                 DU.INFORMATION,
                 UID,
                 "resultados"
             ], dataResult, () => {
+                
                 load();
+
             });
 
         })
