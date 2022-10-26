@@ -103,19 +103,20 @@ class Usuario implements IUsuario {
             UIDInteraction
         ], JSON.stringify(resultados), () => {
             
+            
             Database.writeDatabase([
                 DR._THIS,
                 DR.DATA,
                 UID,
                 UIDInteraction
             ], interaction, () => {
-                
+                console.log('entro');
 
                 this.updatePrincipalResult(interaction.fecha, () => {
-                    console.log('antes');
+                    
                     
                     onAdded()
-                    console.log('despues');
+                    
                     
                 })
             })
@@ -216,6 +217,9 @@ class Usuario implements IUsuario {
             var maximo = Registro.calculateMaximo(datos);
 
             const porcentaje = calculatePorcentaje(resultados, maximo);
+
+                  
+            
 
             const dataResult: IDataResult = {
                 fecha,

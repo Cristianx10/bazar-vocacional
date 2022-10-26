@@ -46,7 +46,7 @@ export const calculatePorcentaje = (resultadosData: ResultadoPuntuacion[], maxim
         const maximo = maximos.get(key);
 
         if (resultado !== undefined && maximo !== undefined) {
-            porcentajes.set(key, resultado / maximo)
+            porcentajes.set(key, maximo!=0 ? resultado / maximo : 0)
         }
     })
 

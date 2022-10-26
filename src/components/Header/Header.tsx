@@ -9,6 +9,7 @@ const Header = () => {
 
         const nav = useNavigate();
 
+        const isAdministrador = UserFirebase.usuario ? UserFirebase.usuario.role === "ADMINISTRADOR" : false;
         const isCelular = useMediaQuery({ query: '(max-width: 320px)' })
         const isTablet = useMediaQuery({ query: '(max-width: 768px)' })
 
@@ -37,11 +38,16 @@ const Header = () => {
                                         <li
                                                 onClick={() => nav(LINK.INDEX)}
                                                 className={"nav__lista__item" + selectClass(LINK.INDEX)}>Inicio</li>
+                                        {isAdministrador?<li
+                                                onClick={() => nav(LINK.RESULTADOS)}
+                                                className={"nav__lista__item" + selectClass(LINK.RESULTADOS)}>Resultados</li>:<></>}
                                         <li
                                                 onClick={() => nav(LINK.PERFIL)}
                                                 className={"nav__lista__item" + selectClass(LINK.PERFIL)}>Perfil</li>
                                         <li
                                                 className="nav__lista__item" onClick={loginOut}>Salir</li>
+
+
                                 </ul>
                         </nav>
                 </div>

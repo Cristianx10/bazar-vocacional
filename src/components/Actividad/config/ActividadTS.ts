@@ -100,7 +100,7 @@ class ActividadTS {
         const informacion = this.actividad.informacion;
 
         const porcentajes = calculatePorcentaje(resultados, maximos);
-
+        console.log('maximos',maximos,resultados,porcentajes);
         const uniqueUID = this.info.uniqueUID ? this.info.uniqueUID : undefined;
 
 
