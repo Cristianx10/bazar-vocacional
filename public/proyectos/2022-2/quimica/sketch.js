@@ -39,13 +39,13 @@ function changeLevel2() {
 }
 
 function saveScore(score) {
-    oActivity.addState("score", parseInt(score))
-    //  localStorage.setItem("score", score);
+    //oActivity.addState("score", parseInt(score))
+    localStorage.setItem("score", score);
 }
 
 function saveTime(time) {
-    oActivity.addState("time1", time)
-    // localStorage.setItem("time1", time);
+    //oActivity.addState("time1", time)
+    localStorage.setItem("time1", time);
 }
 
 function setup() {
@@ -446,7 +446,12 @@ function mousePressed() {
             if (mouseX > 196 && mouseX < 240 && mouseY > 117 && mouseY < 159) {
                 //answerList.push('C');
                 pantalla = level + 4;
-                puntaje -= 5;
+                if (puntaje <= 0) {
+                    puntaje = 0
+                } else {
+
+                    puntaje -= 2;
+                }
             }
 
             break;
@@ -464,7 +469,11 @@ function checkUserAnswer() {
                 puntaje += 10;
                 pantalla++;
             } else {
-                puntaje -= 5;
+                if (puntaje <= 0) {
+                    puntaje = 0;
+                } else {
+                    puntaje -= 2;
+                }
             }
             clearAnswerList();
 
@@ -475,7 +484,11 @@ function checkUserAnswer() {
                 puntaje += 10;
                 pantalla++;
             } else {
-                puntaje -= 5;
+                if (puntaje <= 0) {
+                    puntaje = 0;
+                } else {
+                    puntaje -= 2;
+                }
             }
             clearAnswerList();
 
@@ -487,7 +500,11 @@ function checkUserAnswer() {
                 puntaje += 10;
                 pantalla++;
             } else {
-                puntaje -= 5;
+                if (puntaje <= 0) {
+                    puntaje = 0;
+                } else {
+                    puntaje -= 2;
+                }
             }
             clearAnswerList();
 
@@ -499,7 +516,11 @@ function checkUserAnswer() {
                 puntaje += 10;
                 pantalla++;
             } else {
-                puntaje -= 5;
+                if (puntaje <= 0) {
+                    puntaje = 0;
+                } else {
+                    puntaje -= 2;
+                }
             }
             clearAnswerList();
 
@@ -515,7 +536,11 @@ function checkUserAnswer() {
 
 
             } else {
-                puntaje -= 5;
+                if (puntaje <= 0) {
+                    puntaje = 0;
+                } else {
+                    puntaje -= 2;
+                }
             }
             clearAnswerList();
 

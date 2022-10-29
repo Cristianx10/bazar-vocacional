@@ -6,14 +6,14 @@ class Player {
 		this.y = y
 		this.w = 60
 		this.h = 5
-		this.lives = 3
+		this.lives = 5
 		this.flickering = false
 		this.cooldown = 15
 		this.bullets = []
 
 		this.isShooting = false
 		this.direction='none';
-		this.speed = 2;
+		this.speed = 4;
 
 		this.bulletType = 'single'
 		this.cooldownSingle = 15;
@@ -22,10 +22,12 @@ class Player {
 		this.cooldownShield = 210;
 
 		this.bombLeft = 10;
-		this.singleLeft = 80;
+		this.singleLeft = 10;
 		this.snipeLeft = 20;
 		this.shieldLeft = 4
-		this.ammo = this.singleLeft;
+		this.ammo;
+		
+		this.shotCount = 0;
 	}
 	
 	// displays the player and lives 
@@ -39,9 +41,38 @@ class Player {
 		for ( let i = 0 ; i < this.lives ; i++){
 			image(heart, 70 + this.w * i / 1.3, 50 , 30 , 30)
 		}
-		text(`${this.bulletType} : ${this.ammo}`, WIDTH - 220, 50)
 
-		
+		rectMode(LEFT);
+		stroke(255, 234 , 0);
+		strokeWeight(8);
+		noFill();
+		switch(this.bulletType){
+			case 'single':
+				rect(WIDTH - 320 , 50 , 110 , 60 , 10);
+				break;
+			case 'bomb':
+				rect(WIDTH - 225 , 50 , 110 , 60 , 10);
+				break;
+			case 'shield':
+				rect(WIDTH - 120 , 50 , 110 , 60 , 10);
+				break;
+		}
+		noStroke();
+		fill(255);
+
+		image(playerBulletImg,WIDTH-350,50)
+		text(`: ${this.singleLeft}`, WIDTH - 320, 50)
+
+		image(playerBombImg,WIDTH-250,50)
+		text(`: ${this.bombLeft}`, WIDTH - 220, 50)
+
+		image(playerShieldImg,WIDTH-140,50, 45, 45)
+		text(`: ${this.shieldLeft}`, WIDTH - 100, 50)
+
+		imageMode(CENTER);
+		image(armyManRun[4], WIDTH/2 - 100 , 50 , 50 , 50 );
+		text(`${soldierSafeCount} / ${armyArray.length}`, WIDTH / 2 - 70, 50)
+
 
 		switch(this.bulletType){
 			case 'single':
@@ -134,14 +165,16 @@ class Player {
 
 // --------------------------------------------------------------- ARMY MAN - TIMER
 class ArmyMan{
-	constructor(){
-		this.x = -WIDTH;
-		this.y = HEIGHT - 30;
+	constructor(x,y){
+		this.x = x;
+		this.y = y;
 		this.w = 45;
 		this.h = 50;
-		this.speed = 0.25;
-		this.lives = 3;
+		this.speed = 0.7;
+		//this.speed = 5;
+		this.lives = 1;
 		this.isAlive = true;
+		this.isSafe = false;
 
 		this.animCounter = 0;
 		this.animImg = 0;
@@ -163,9 +196,6 @@ class ArmyMan{
 			}
 		}
 
-		textAlign(CENTER)
-		text(` DISTANCE : ${parseInt((WIDTH - armyMan.w) - armyMan.x)} mts`, WIDTH /2 , 50)
-
 	}
 
 	move(){
@@ -175,22 +205,22 @@ class ArmyMan{
 	}
 	
 	async handleHit() {
-		if (this.lives >= 0) {
+		if (this.lives > 0) {
 			for (let i = 0; i < 3; i++) {
 				noLoop()
 				
-				armyMan.display()
+				this.display()
 				fill(25, 25, 73, 150)
 				rect(this.x, this.y, 75, 75)
 				await sleep(200)
 				
-				armyMan.display()
+				this.display()
 				fill(25, 25, 73)
 				rect(this.x, this.y, 75, 75)
 				await sleep(100)
 			}
-			armyMan.display()
-			armyMan.flickering = false
+			this.display()
+			this.flickering = false
 			this.lives--
 		}
 		loop()
@@ -206,6 +236,7 @@ class Bullet {
 		this.w = 5
 		this.h = 15
 		this.type = type
+		this.hit = 0;
 	}
 	
 	// displays bullet based on who shoots it
@@ -237,13 +268,13 @@ class Bullet {
 			this.y += 5
 		}
 		if (this.type === 'bomb') {
-			this.y -= 3
+			this.y -= 5
 		}
 		if (this.type === 'snipe') {
 			this.y -= 18
 		}
 		if (this.type === 'shield') {
-			//this.y -= 0.1;
+			this.x = p.x;
 		}
 	}
 	
@@ -302,7 +333,7 @@ class Enemy {
 	}
 }
 
-let score = 0;
+let totalScore = 0;
 
 // displays the starting screen before the game
 function startScreen() {
@@ -367,103 +398,153 @@ function startScreen() {
 		text('click aqui para empezar', WIDTH / 2, HEIGHT / 2 + 200)
 		
 	} else{
-		image(playerImg, -60, -20, 300, 300)
-		textSize(35)
-		fill(222)
-		textAlign(LEFT)
-		text('mueve tu nave con las flechas', 180, 100)
-		text('Dispara con la flecha hacia arriba', 180, 140)
-		
-		
-		text('cuida tu munición', 180, 240)
-		text('cambia de arma con las teclas:', 180, 280)
+		imageMode(LEFT)
+		image(tutorialmg[tutorialCount],0 , 0)
 
-		image(playerBulletImg, 210, 300)
-		text('1 : ', 180, 345)
-		text('bala', 180, 385)
-		
-		image(playerBombImg, 465, 323)
-		text('2 : ', 380, 345)
-		text('bomba', 380, 385)
-		
-		image(playerShieldImg, 695, 315,60,60)
-		text('3 : ', 610, 345)
-		text('escudo', 610, 385)
-		
-		image(armyManRun[4], 70, 500)
-		text('PROTEGE AL SOLDADO HASTA QUE', 180, 520)
-		text('LLEGUE A LA META', 180, 560)
-		
-
-		if (dist(mouseX, 0, WIDTH / 2, 0) <= 275 && dist(0, mouseY, 0, HEIGHT -100) <= 30) {
-			fill(35, 35, 113)
-			noStroke()
-			rect(WIDTH / 2, HEIGHT - 100, 550, 60, 20)
-			
-			if (mouseIsPressed) {
+		if(mouseIsPressed){
+			if(tutorialCount === 0 ){
+				mouseIsPressed = false;
+				tutorialCount = 1;
+			} else if(tutorialCount === 1 ){
+				mouseIsPressed = false;
+				tutorialCount = 2;
+			} else if(tutorialCount === 2 ){
+				mouseIsPressed = false;
+				tutorialCount = 3;
+			}
+			else if(tutorialCount === 3 ){
 				started = true
 				tutorial = false
 			}
 		}
-		textAlign(CENTER)
-		fill(255, 234, 0)
-		text('click aqui para empezar', WIDTH / 2, HEIGHT - 100)
 	}
 }
 
 // displays the ending screen when player loses the game
 function loseScreen() {
+	const bulletScore = p.singleLeft * 1.5;
+	const bombScore = p.bombLeft * 25;
+	const shieldScore = p.shieldLeft * 50;
+	const accuracyScore = (bulletScore + bombScore + shieldScore) * (floor(enemiesKilled / (p.shotCount + 1)));
+	const shipScore = p.lives * 200;
+	const soldierScore = soldierSafeCount * 250;
+	const loseScore = -2000;
+	const enemyScore = enemiesKilled * 100
+
+	const totalScore = bulletScore + bombScore + shipScore + accuracyScore + soldierScore + loseScore;
+	
 	background(25, 25, 103)
 	textSize(90)
 	fill(255, 234, 0)
 	textAlign(CENTER, CENTER)
-	text('GAME OVER', WIDTH / 2, HEIGHT / 2 - 17)
-	let result = p.shieldLeft + enemiesKilled
-	let final = result*200 / 90
-	text(`TOTAL = $ ${final}`, WIDTH / 2, HEIGHT / 2 + 240)
+	text('YOU LOSE', WIDTH / 2, HEIGHT / 3)
+	textAlign(LEFT, CENTER)
+	textSize(30)
+	fill(222)
+	text(`Balas ...... ${p.singleLeft} =  $ ${converts(bulletScore)}`, 50, HEIGHT / 2)
+	text(`Bombas ...... ${p.bombLeft} =  $ ${converts(bombScore)}`, 50, HEIGHT / 2 + 40)
+	text(`Escudos ...... ${p.shieldLeft} =  $ ${converts(shieldScore)}`, 50, HEIGHT / 2 + 80)
+	text(`Punteria ...... ${floor(enemiesKilled / (p.shotCount + 1) * 100)} % =  $ ${converts(accuracyScore)}`, 50, HEIGHT / 2 + 120)
+
+	text(`Nave ...... ${p.lives} =  $ ${converts(shipScore)}`, WIDTH / 2, HEIGHT / 2)
+	text(`Soldados ...... ${soldierSafeCount} =  $ ${converts(soldierScore)}`, WIDTH / 2, HEIGHT / 2 + 40)
+	text(`Perdiste ...... =  $ ${converts(loseScore)}`, WIDTH / 2, HEIGHT / 2 + 80)
+	text(`Enemigos ...... ${enemiesKilled} % =  $ ${enemiesKilled}`, WIDTH / 2, HEIGHT / 2 + 120)
+
+	textAlign(CENTER, CENTER)
+	fill(255, 234 , 0)
+	textSize(40)
+	text(`TOTAL = $ ${converts(totalScore)}`, WIDTH / 2, HEIGHT / 2 + 240)
 }
+
+function converts(score) {
+	return ((score *200) / 4000)*100
+}
+function loseScreen() {
+	const bulletScore = p.singleLeft * 1.5;
+	const bombScore = p.bombLeft * 25;
+	const shieldScore = p.shieldLeft * 50;
+	const accuracyScore = (bulletScore + bombScore + shieldScore) * (floor(enemiesKilled / (p.shotCount + 1)));
+	const shipScore = p.lives * 200;
+	const soldierScore = soldierSafeCount * 250;
+	const loseScore = -2000;
+	const enemyScore = enemiesKilled * 100
+
+	totalScore = bulletScore + bombScore + shipScore + accuracyScore + soldierScore + loseScore;
+	
+	background(25, 25, 103)
+	textSize(90)
+	fill(255, 234, 0)
+	textAlign(CENTER, CENTER)
+	text('YOU LOSE', WIDTH / 2, HEIGHT / 3)
+	textAlign(LEFT, CENTER)
+	textSize(30)
+	fill(222)
+	text(`Balas ...... ${p.singleLeft} =  $ ${converts(bulletScore)}`, 50, HEIGHT / 2)
+	text(`Bombas ...... ${p.bombLeft} =  $ ${converts(bombScore)}`, 50, HEIGHT / 2 + 40)
+	text(`Escudos ...... ${p.shieldLeft} =  $ ${converts(shieldScore)}`, 50, HEIGHT / 2 + 80)
+	text(`Punteria ...... ${floor(enemiesKilled / (p.shotCount + 1) * 100)} % =  $ ${converts(accuracyScore)}`, 50, HEIGHT / 2 + 120)
+
+	text(`Nave ...... ${p.lives} =  $ ${converts(shipScore)}`, WIDTH / 2, HEIGHT / 2)
+	text(`Soldados ...... ${soldierSafeCount} =  $ ${converts(soldierScore)}`, WIDTH / 2, HEIGHT / 2 + 40)
+	text(`Perdiste ...... =  $ ${converts(loseScore)}`, WIDTH / 2, HEIGHT / 2 + 80)
+	text(`Enemigos ...... ${enemiesKilled} % =  $ ${enemiesKilled}`, WIDTH / 2, HEIGHT / 2 + 120)
+
+	textAlign(CENTER, CENTER)
+	fill(255, 234 , 0)
+	textSize(40)
+	text(`TOTAL = $ ${converts(totalScore)}`, WIDTH / 2, HEIGHT / 2 + 240)
+}
+
+function converts(score) {
+	return ((score *200) / 4000)*100
+}
+
 
 function subirFinal() {
-	let result = p.singleLeft + p.bombLeft + p.shieldLeft + p.lives + enemiesKilled
-	let final = result*200 / 114	
 	oActivity.addState("balas", p.singleLeft);
 		oActivity.addState("bombas", p.bombLeft);
 		oActivity.addState("escudos", p.shieldLeft);
 		oActivity.addState("vidas", p.lives);
 		oActivity.addState("enemigos", enemiesKilled);
-		oActivity.addResult([{ id: CARRERAS.ADMINISTRACION_EMPRESA, value: final}]);
+		oActivity.addResult([{ id: CARRERAS.ADMINISTRACION_EMPRESA, value: totalScore}]);
 		oActivity.finish();
 }
-
-function subirFinalMal() {
-	let result = p.shieldLeft + enemiesKilled
-	let final = result*200 / 90	
-	oActivity.addState("balas", p.singleLeft);
-		oActivity.addState("bombas", p.bombLeft);
-		oActivity.addState("escudos", p.shieldLeft);
-		oActivity.addState("vidas", p.lives);
-		oActivity.addState("enemigos", enemiesKilled);
-		oActivity.addResult([{ id: CARRERAS.ADMINISTRACION_EMPRESA, value: final}]);
-		oActivity.finish();
-}
-
 // displays the ending screen when player wins the game
 function winScreen() {
+	const bulletScore = p.singleLeft * 1.5;
+	const bombScore = p.bombLeft * 25;
+	const shieldScore = p.shieldLeft * 50;
+	const accuracyScore = (bulletScore + bombScore + shieldScore) * (floor(enemiesKilled / (p.shotCount + 1)));
+	const shipScore = p.lives * 200;
+	const soldierScore = soldierSafeCount * 250;
+	const winScore = 2000;
+	const enemyScore = enemiesKilled * 100
+
+	const totalScore = bulletScore + bombScore + shipScore + accuracyScore + soldierScore + winScore;
+	
 	background(25, 25, 103)
 	textSize(90)
 	fill(255, 234, 0)
 	textAlign(CENTER, CENTER)
 	text('YOU WIN', WIDTH / 2, HEIGHT / 3)
-	textSize(36)
+	textAlign(LEFT, CENTER)
+	textSize(30)
 	fill(222)
-	let result = p.singleLeft + p.bombLeft + p.shieldLeft + p.lives + enemiesKilled
-	let final = result*200 / 114
-	text(`Balas ...... ${p.singleLeft} =  $ ${p.singleLeft*1.5}`, WIDTH / 2, HEIGHT / 2)
-	text(`Bombas ...... ${p.bombLeft} =  $ ${p.bombLeft*25}`, WIDTH / 2, HEIGHT / 2 + 40)
-	text(`Escudos ...... ${p.shieldLeft} =  $ ${p.shieldLeft*55}`, WIDTH / 2, HEIGHT / 2 + 80)
-	text(`Vidas ...... ${p.lives} =  $ ${p.lives*110}`, WIDTH / 2, HEIGHT / 2 + 120)
-	text(`Aliens ...... ${enemiesKilled} =  $ ${enemiesKilled * 12}`, WIDTH / 2, HEIGHT / 2 + 160)
-	text(`TOTAL = $ ${final}`, WIDTH / 2, HEIGHT / 2 + 240)
+	text(`Balas ...... ${p.singleLeft} =  $ ${converts(bulletScore)}`, 50, HEIGHT / 2)
+	text(`Bombas ...... ${p.bombLeft} =  $ ${converts(bombScore)}`, 50, HEIGHT / 2 + 40)
+	text(`Escudos ...... ${p.shieldLeft} =  $ ${converts(shieldScore)}`, 50, HEIGHT / 2 + 80)
+	text(`Punteria ...... ${floor(enemiesKilled / (p.shotCount + 1) * 100)} % =  $ ${converts(accuracyScore)}`, 50, HEIGHT / 2 + 120)
+
+	text(`Nave ...... ${p.lives} =  $ ${converts(shipScore)}`, WIDTH / 2, HEIGHT / 2)
+	text(`Soldados ...... ${soldierSafeCount} =  $ ${converts(soldierScore)}`, WIDTH / 2, HEIGHT / 2 + 40)
+	text(`Perdiste ...... =  $ ${converts(winScore)}`, WIDTH / 2, HEIGHT / 2 + 80)
+	text(`Enemigos ...... ${enemiesKilled} % =  $ ${enemiesKilled}`, WIDTH / 2, HEIGHT / 2 + 120)
+
+	textAlign(CENTER, CENTER)
+	fill(255, 234 , 0)
+	textSize(40)
+	text(`TOTAL = $ ${converts(totalScore)}`, WIDTH / 2, HEIGHT / 2 + 240)
 
 	
 }
@@ -472,17 +553,23 @@ function winScreen() {
 
 const WIDTH = 900
 const HEIGHT = 750
+let tutorialCount = 0;
 
 let p = new Player(WIDTH / 2, HEIGHT - 100)
 let armyMan = new ArmyMan();
+let armyArray = [];
 let enemies = []
 let enemyBullets = []
 let started = false
 let tutorial = false
 let font
 let enemyBulletImg, playerBulletImg, playerImg, enemyImg, enemyDestroyedImg, heart, playerShieldImg
-let armyManRun = []
-let enemiesKilled = 0;
+let armyManRun = [];
+let tutorialmg = [];
+let = enemiesKilled = 0;
+
+let bulletLevel = 9;
+let soldierSafeCount = 0;
 
 function preload() {
 	font = loadFont('upheavtt.ttf')
@@ -490,13 +577,15 @@ function preload() {
 	playerBulletImg = loadImage('./player-bullet.png')
 	playerBombImg = loadImage('./missile.png')
 	playerImg = loadImage('./player2.png')
-	playerImgHeavy = loadImage('./heavyShip.png')
 	enemyImg = loadImage('./enemy2.png')
 	enemyDestroyedImg = loadImage('./destroyedEnemy.png')
 	heart = loadImage('./live.png')
 	playerShieldImg = loadImage('./shield.png')
 	for( let i = 0; i < 5; i++){
 		armyManRun[i] = loadImage('./run' + i + '.png');
+	}
+	for ( let i = 0 ; i < 4 ; i++){
+		tutorialmg[i] = loadImage('./frame' + i + '.png')
 	}
 }
 
@@ -511,6 +600,9 @@ function setup() {
 			//if (i < 12 - j*2)
 				enemies.push(new Enemy((j + 1) * 70 /* + j * 70 */, 50 + (i + 1) * 70))
 		}
+	}
+	for (let i = 0; i < 6; i++){
+		armyArray.push(new ArmyMan( i * (-WIDTH/2 + 100), HEIGHT - 25))
 	}
 }
 
@@ -551,6 +643,10 @@ function draw() {
 							enemies[j+1].timeRemain = enemies[j+1].respawnTime;
 							enemiesKilled += 2 ;
 							}
+							if(j > 11){
+								enemies[j-12].isAlive = false;
+								enemies[j-12].timeRemain = enemies[j-12].respawnTime;
+							}
 						break;
 					}
 					p.bullets.splice(i, 1)
@@ -569,15 +665,30 @@ function draw() {
 	p.shoot()
 	p.display()
 
-	armyMan.display();
-	armyMan.move();
-
+	for(let i = 0; i < armyArray.length; i++){
+		armyArray[i].display();
+		armyArray[i].move();
+		if(!armyArray[i].isSafe && armyArray[i].x > WIDTH - armyArray[i].w){
+			soldierSafeCount++;
+			armyArray[i].isSafe= true;
+			print('holiwis')
+		}
+	}
 	/* handles enemies */
 	for (let i = 0; i < enemies.length; i++) {
 		enemies[i].display()
 		
-		/* random gen of enemy bullets w/ cap, prob. based on # enemies left */
-		if (enemyBullets.length < 30 && floor(random(0, enemies.length * 20)) === 0 ) {
+		/* random gen of enemy bullets w/ cap, prob. based on # enemies left --- recordar numero 20--- */
+
+		/*if (enemyBullets.length < 10 && floor(random(0, enemies.length * 10)) === 0 ) {
+			let index = floor(random(0, enemies.length))
+			if(enemies[index].isAlive) enemyBullets.push(new Bullet(enemies[index].x, enemies[index].y + enemies[index].h / 2 + 15 / 2, 'enemy'))
+		}*/
+
+		/* generation of bullets randomly and based in last armyMan position */
+
+
+		if (enemyBullets.length < 28 - (bulletLevel * 2) && floor(random(0, enemies.length * (10 + bulletLevel))) === 0 ) {
 			let index = floor(random(0, enemies.length))
 			if(enemies[index].isAlive) enemyBullets.push(new Bullet(enemies[index].x, enemies[index].y + enemies[index].h / 2 + 15 / 2, 'enemy'))
 		}
@@ -591,36 +702,61 @@ function draw() {
 			p.handleHit()
 			enemyBullets.splice(i, 1)
 		}
-		if(enemyBullets[i].isColliding(armyMan)){
-			armyMan.handleHit();
-			enemyBullets.splice(i,1)
+
+
+		for(let j = 0; j < armyArray.length; j++){
+			if(enemyBullets[i].isColliding(armyArray[j])){
+				if(armyArray[j].lives > 0){
+					armyArray[j].lives--
+				} else{
+					armyArray[j].handleHit();
+					armyArray.splice(j,1);
+					//j=0;
+					bulletLevel --;
+				}
+				enemyBullets.splice(i,1)
+				break;
+			}
 		}
 		for(let j = 0 ; j < p.bullets.length ; j++){
 			if(enemyBullets[i].isColliding(p.bullets[j])){
-				p.bullets.splice(j,1)
-				enemyBullets.splice(i,1)
-				i=0;
+
+				if(p.bullets[j].type === 'shield'){
+					if(p.bullets[j].hit < 4){
+						p.bullets[j].hit++;
+						p.singleLeft += 2;
+						enemyBullets.splice(i,1);
+						i=0;
+					} else {
+						p.bullets.splice(j,1)
+						enemyBullets.splice(i,1)
+						i=0;
+					}
+				} else { 
+					p.bullets.splice(j,1)
+					enemyBullets.splice(i,1)
+					i=0;
+				}
 			}
 		}
 
 		if (enemyBullets[i].outOfBounds()) { // removes bullet when off screen
 			enemyBullets.splice(i, 1)
+			i = 0;
 		}
 	}
 	
 	/* displays winning and losing screens where appropriate */
-	if (p.lives < 0 || armyMan.lives < 0) {
-		score = 20;
+	for(let i = 0; i < armyArray.length; i++){
+
+	}
+	if (p.lives < 0 || armyArray.length === 0) {
 		
-		loseScreen();
-	} else if (armyMan.x >= WIDTH - armyMan.w) {
-		if(p.lives == 3){
-			score = 200
-		} else if (p.lives == 2){
-			score = 150
-		} else {
-			score = 70
-		}
+		loseScreen()
+		enemyBullets = [];
+		enemies = [];
+
+	} else if (armyArray[armyArray.length-1].x >= WIDTH - armyMan.w) {
 		winScreen()
 		enemyBullets = [];
 		enemies = [];
@@ -628,9 +764,9 @@ function draw() {
 }
 
 function mousePressed(){
-	if (p.lives < 0 || armyMan.lives < 0) {
-		subirFinalMal()
-	} else if(armyMan.x >= WIDTH - armyMan.w) {
+	if (p.lives < 0 || armyArray.length === 0) {
+		subirFinal()
+	} else if(armyArray[armyArray.length-1].x >= WIDTH - armyMan.w) {
 		subirFinal()
 	}
 	
@@ -650,14 +786,14 @@ function keyPressed() {
 	// player single shot
 	if (keyCode === LEFT_ARROW) {
 		p.changeDirection('left');
-		print("hola")
 	  }
 	  if (keyCode === RIGHT_ARROW) {
 		p.changeDirection('right');
 	  }
-	  if (keyCode === UP_ARROW && armyMan.x < WIDTH - armyMan.w) {
+	  if (keyCode === UP_ARROW /* && armyMan.x < WIDTH - armyMan.w */) {
 		p.isShooting = true;
 		p.shoot();
+		p.shotCount++;
 	  	p.isShooting = false;
 	  }
 	  switch(key){
@@ -685,12 +821,11 @@ function keyPressed() {
 	}
 
 	return false; // prevents default browser behaviors
-  }
+}
   
-  function keyReleased(){
-		p.changeDirection('none');
-		print('direction'+p.direction);
-		return false; // prevents default browser behaviors
+function keyReleased(){
+	p.changeDirection('none');
+	return false; // prevents default browser behaviors
 
-  }
+}
 

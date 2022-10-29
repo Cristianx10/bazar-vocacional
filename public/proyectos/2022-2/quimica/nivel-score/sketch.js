@@ -5,7 +5,8 @@ let score = 0;
 
 
 oActivity.setInit(()=>{
-    score = oActivity.getState("score")[0]();
+    //score = oActivity.getState("score")[0]();
+    score = parseInt(localStorage.getItem("score")) ;
     oActivity.addState("page", 'resultados')
 })
 
@@ -36,13 +37,13 @@ function draw() {
 
 function mousePressed() {
     if (mouseX > 1322 && mouseX < 1473 && mouseY > 661 && mouseY < 701) {
-        //  let tiempo1 = localStorage.getItem('time1')
-        //  let tiempo2 = localStorage.getItem('time2')
-        //  let tiempo3 = localStorage.getItem('time3')
+          let tiempo1 = localStorage.getItem('time1')
+          let tiempo2 = localStorage.getItem('time2')
+          let tiempo3 = localStorage.getItem('time3')
 
-        let tiempo1 = oActivity.getState('time1')[0]()
+        /*let tiempo1 = oActivity.getState('time1')[0]()
         let tiempo2 = oActivity.getState('time2')[0]()
-        let tiempo3 = oActivity.getState('time3')[0]()
+        let tiempo3 = oActivity.getState('time3')[0]()*/
 
         oActivity.addState("Tiempo Nivel 1", tiempo1);
         oActivity.addState("Tiempo Nivel 2", tiempo2);

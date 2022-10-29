@@ -24,27 +24,27 @@ var currentCompound = 0;
 var currentAmount = 0;
 
 
-//let score = parseInt(localStorage.getItem("score"));
-
 let score = 0;
-score = oActivity.getState("score")[0]();
+score = parseInt(localStorage.getItem("score"));
+
+//score = oActivity.getState("score")[0]();
 updateDisplayedScore()
-console.log("puntaje: ", score)
 oActivity.addState("page", 'nivel2')
 
 let timer = 0;
 
 //cambiar nivel
 function changeLevel3() {
-    oActivity.addState("time2", timer)
+   // oActivity.addState("time2", timer)
     
-   // localStorage.setItem("time2", timer);
+    localStorage.setItem("time2", timer);
     oActivity.redirect('/proyectos/2022-2/quimica/nivel-3/index.html')
 }
 
 function saveScore(score) {
-    oActivity.addState("score", parseInt(score))
-   // localStorage.setItem("score", score);
+   // oActivity.addState("score", parseInt(score))
+    console.log("segundo nivel",score);
+    localStorage.setItem("score", score);
 }
 
 
@@ -126,7 +126,7 @@ function countdown(minutes, seconds) {
     tick();
 }
 
-countdown(1, 05);
+countdown(3, 00);
 
 
 function generateElements() {
@@ -173,7 +173,12 @@ function generateElements() {
 
                 updateDisplaAmount();
             } else {
-                score -= 5;
+                if (score <= 0){
+                    score = 0;
+                } else {
+
+                    score -= 2;
+                }
 
             }
         }
