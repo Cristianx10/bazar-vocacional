@@ -865,6 +865,9 @@ function mousePressed() {
   //checkNewScreen()
   // esto se borra despues de hacer los cambios de pantalla correctamente
 
+  if(screen == 11){
+    final();
+  }
 
   if (dist(mouseX, mouseY, 1769, 49) < 80) {
     consejo = true;
@@ -980,7 +983,7 @@ function mouseReleased() {
 
 function final() {
 
-  if (mouseIsPressed && dist(mouseX, mouseY, 1920 / 2, 1300)) {
+  if (dist(mouseX, mouseY, 1920 / 2, 1300)) {
     oActivity.addResult([{ id: CARRERAS.PSICOLOGIA, value: puntaje }]);
     oActivity.finish()
   }

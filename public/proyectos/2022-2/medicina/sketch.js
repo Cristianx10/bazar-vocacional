@@ -63,13 +63,13 @@ function preload() {
 
 
     for (let i = 0; i < 3; i++) {
-        screens.push(loadImage(`./assets/screens/level1-${i+1}.png`))
+        screens.push(loadImage(`./assets/screens/level1-${i + 1}.png`))
     }
     for (let i = 0; i < 3; i++) {
-        screens.push(loadImage(`./assets/screens/level2-${i+1}.png`))
+        screens.push(loadImage(`./assets/screens/level2-${i + 1}.png`))
     }
     for (let i = 0; i < 3; i++) {
-        screens.push(loadImage(`./assets/screens/level3-${i+1}.png`))
+        screens.push(loadImage(`./assets/screens/level3-${i + 1}.png`))
     }
 
     screens.push(loadImage(`./assets/screens/score.png`))
@@ -209,7 +209,7 @@ function touchMoved() {
             }
 
             if (dist(bullet.x, bullet.y, windowWidth / 2,
-                    windowHeight / 11 * 5) > 200) {
+                windowHeight / 11 * 5) > 200) {
                 bullet = undefined;
                 interface = 'LEVEL 1: CLOSURE'
 
@@ -267,7 +267,7 @@ function touchMoved() {
             }
 
             if (dist(appendix.x, appendix.y, windowWidth / 2,
-                    windowHeight / 11 * 5) > 300) {
+                windowHeight / 11 * 5) > 300) {
                 appendix = undefined;
                 interface = 'LEVEL 2: CLOSURE'
 
@@ -509,9 +509,9 @@ function showInterface() {
             noStroke();
             fill(255);
             text(score, (windowWidth / 9) * 6, (windowHeight / 11) * 3.3);
-            setTimeout(()=>{
-                oActivity.addResult([{ id: CARRERAS.MEDICINA, value: score }]);  
-            },3000)
+
+            oActivity.addResult([{ id: CARRERAS.MEDICINA, value: score }]);
+
             oActivity.finish();
             break;
     }
@@ -556,7 +556,7 @@ function changeScreen() {
             needle.catched()
             break;
         case 'LEVEL 2: CUT':
-            needle.returnToBoard(windowWidth / 9 * 4.5, windowHeight / 10 * 8.5, )
+            needle.returnToBoard(windowWidth / 9 * 4.5, windowHeight / 10 * 8.5,)
             suturePoints = [];
             break;
         case 'LEVEL 2: EXTRACT':
@@ -574,7 +574,7 @@ function changeScreen() {
             break;
         case 'LEVEL 3: CUT':
             suturePoints = [];
-            needle.returnToBoard(windowWidth / 9 * 4.5, windowHeight / 10 * 8.5, )
+            needle.returnToBoard(windowWidth / 9 * 4.5, windowHeight / 10 * 8.5,)
             break;
         case 'LEVEL 3: EXTRACT':
             scalpel.returnToBoard(windowWidth / 9 * 2, windowHeight / 10 * 8.5)
